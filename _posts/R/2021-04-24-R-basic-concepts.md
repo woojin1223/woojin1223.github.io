@@ -1,12 +1,8 @@
 ---
-title: "[R] 기본 개념"
-categories: 
-    - R
-tags: 
-    - R
-toc: true
-toc_sticky: true
-toc_label: "목차"
+layout: post
+title: "기본 개념"
+categories: R
+tags: R
 ---
 
 ![Rlogo](https://www.r-project.org/Rlogo.png)
