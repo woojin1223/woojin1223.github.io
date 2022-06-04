@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  {% include head.html %}
+  {% include ad.html %}
+  <style>blockquote {
+    font-size: 1em;
+    line-height: 1.4
+  }</style>
+  <link href='http://fonts.googleapis.com/css?family=Gill+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Consolas' rel='stylesheet' type='text/css'>
+
+  <script data-ad-client="ca-pub-9951774327887666" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+</head>
+<body>
+
+{% include sidebar.html %}
+
+<!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+     content to avoid any CSS collisions with our real content. -->
+<div class="wrap">
+  <div class="masthead">
+    <div class="container">
+      <h3 class="masthead-title" align="center">
+        <a href="{{ site.baseurl }}/" title="Home" title="{{ site.title }}">
+          <img class="masthead-logo" src="{{ site.baseurl }}{{ site.logo }}"/>
+        </a>
+        <small>{{ site.tagline }}</small>
+        <!-- HTML elements for search -->
+        <a href="/search/" id="search_icon">
+          <img src="/public/img/search.webp" width="25" height="25"
+               align="right" style="margin-top:5px; margin-bottom:0;"
+               onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=0.5"
+               alt="search">
+        </a>
+      </h3>
+    </div>
+  </div>
+
+  <div class="container content">
+    {{ content }}
+  </div>
+</div>
+
+<label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+<script>
+  (function (document) {
+    let toggle = document.querySelector('.sidebar-toggle');
+    let sidebar = document.querySelector('#sidebar');
+    let checkbox = document.querySelector('#sidebar-checkbox');
+
+    document.addEventListener('click', function (e) {
+      let target = e.target;
+
+      if (target === toggle) {
+        checkbox.checked = !checkbox.checked;
+        e.preventDefault();
+      } else if (checkbox.checked && !sidebar.contains(target)) {
+        /* click outside the sidebar when sidebar is open */
+        checkbox.checked = false;
+      }
+    }, false);
+  })(document);
+</script>
+{% if site.google_analytics_token %}
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    };
+    i[r].l = 1 * new Date();
+    a = s.createElement(o);
+    m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', '{{ site.google_analytics_token }}', 'auto');
+  ga('send', 'pageview');
+</script>
+{% endif %}
+
+<!-- Naver Analytics -->	
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+  if(!wcs_add) var wcs_add = {};
+    wcs_add["wa"] = "18cbce78e94161";
+  wcs_do();
+</script>
+
+</body>
+{% if site.disqus_short_name %}
+<script id="dsq-count-scr" src="//{{ site.disqus_short_name }}.disqus.com/count.js" async></script>
+{% endif %}
+</html>

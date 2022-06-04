@@ -1,0 +1,57 @@
+# pycharm
+코드블럭 접기
+https://www.jetbrains.com/help/pycharm/working-with-source-code.html#code_folding
+북마크
+Ctrl + Shift + A : find action. 여기서 make directory 단축키도 지정 가능.
+
+
+# torch.hub.load
+https://jybaek.tistory.com/813
+
+
+# print
+https://velog.io/@janeljs/python-print-sep-end-file-flush
+
+# pathlib
+https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=hankrah&logNo=221838907175&categoryNo=65&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=search
+
+
+# wandb
+https://docs.wandb.ai/guides/integrations/pytorch
+
+
+# git Permission denied: publickey
+https://zeddios.tistory.com/120
+https://goddaehee.tistory.com/254
+https://gentlesark.tistory.com/86
+https://github.com/settings/keys
+
+
+# latex
+https://ko.overleaf.com/learn/latex/Tables
+https://m.blog.naver.com/ljy5995/221692661617
+https://bskyvision.com/439
+
+
+# Task 설명
+ERNIE 3.0 8~12page에 각 설명들이 많다.
+
+
+
+
+
+[Transformer](https://greeksharifa.github.io/nlp(natural%20language%20processing)%20/%20rnns/2019/08/17/Attention-Is-All-You-Need/)
+
+[ELMo](https://greeksharifa.github.io/nlp(natural%20language%20processing)%20/%20rnns/2019/08/20/ELMo-Deep-contextualized-word-representations/)
+
+[OpenAI GPT](https://greeksharifa.github.io/nlp(natural%20language%20processing)%20/%20rnns/2019/08/28/OpenAI-GPT-2-Language-Models-are-Unsupervised-Multitask-Learners/)
+
+[BERT](https://greeksharifa.github.io/nlp(natural%20language%20processing)%20/%20rnns/2019/08/23/BERT-Pre-training-of-Deep-Bidirectional-Transformers-for-Language-Understanding/)
+
+[ERNIE 1.0](https://greeksharifa.github.io/nlp(natural%20language%20processing)%20/%20rnns/2021/06/14/ERNIE/)
+
+[ViT](https://greeksharifa.github.io/computer%20vision/2021/12/10/ViT-ViViT/#vitan-image-is-worth-16x16-words-transformers-for-image-recognition-at-scale)
+
+
+error 해결
+https://suho413.tistory.com/entry/venv-returned-non-zero-exit-status-1-%EC%97%90%EB%9F%AC

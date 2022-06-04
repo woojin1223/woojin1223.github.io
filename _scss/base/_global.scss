@@ -1,0 +1,36 @@
+@import "../config";
+@import "../bourbon/css3/_selection";
+
+@include selection {
+  background: $theme-color;
+  color: $white;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+html {
+  font-family: $font-sans;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-sans;
+  font-weight: 400;
+  color: $title-color;
+  letter-spacing: -.025rem;
+}
+
+code {
+  color: #666;
+}
+
+.math-container {
+  overflow-x: auto;
+  display: block; /* or use a <div> instead of a span */
+}
