@@ -4,10 +4,10 @@ tagline: "변화를 위한 첫걸음"
 description: "powered by jekyll"
 baseurl: ""
 url: https://woojin1223.github.io
-logo: '/public/img/logo.webp'
+# logo: '/public/img/logo.webp'
 
 # Site configurations
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-redirect-from
 whitelist:
