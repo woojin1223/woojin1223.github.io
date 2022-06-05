@@ -35,7 +35,7 @@ version: 1.0.0
 author:
   name: Ahn Woo Jin
   description: <strong>Data Scientist</strong>, Woo Jin.
-  gravatar: # 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
+  gravatar: /public/img/achu.jpg # 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
   contact:
     # linkedin:  <hide>
     github: https://github.com/woojin1223
