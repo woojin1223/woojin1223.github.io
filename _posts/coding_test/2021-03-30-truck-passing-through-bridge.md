@@ -1,13 +1,7 @@
 ---
 title: "[프로그래머스] 다리를 지나는 트럭"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 큐
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: 코딩테스트
+tags: [프로그래머스, 큐]
 ---
 
 ## 문제 설명

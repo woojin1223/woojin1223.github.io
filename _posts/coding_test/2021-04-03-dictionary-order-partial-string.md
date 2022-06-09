@@ -1,14 +1,7 @@
 ---
 title: "[프로그래머스] 사전순 부분 문자열"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 해시
-    - 스택
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: 코딩테스트
+tags: [프로그래머스, 해시, 스택]
 ---
 
 ## 문제 설명

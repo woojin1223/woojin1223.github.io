@@ -1,14 +1,7 @@
 ---
 title: "[프로그래머스] 방문 길이"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 그래프
-    - 해시
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: 코딩테스트
+tags: [프로그래머스, 그래프, 해시]
 ---
 
 ## 문제 설명

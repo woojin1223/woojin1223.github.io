@@ -1,14 +1,7 @@
 ---
-title: "[프로그래머스][파이썬] 소수 만들기"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 파이썬
-    - 소수
-toc: true
-toc_sticky: true
-toc_label: "목차"
+title: "[프로그래머스] 소수 만들기"
+categories: 코딩테스트
+tags: [프로그래머스, 파이썬, 소수]
 ---
 
 ## 문제 링크

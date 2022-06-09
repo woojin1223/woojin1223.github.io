@@ -1,14 +1,7 @@
 ---
-title: "[프로그래머스][파이썬] 최댓값과 최솟값"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 파이썬
-    - 문자열
-toc: true
-toc_sticky: true
-toc_label: "목차"
+title: "[프로그래머스] 최댓값과 최솟값"
+categories: 코딩테스트
+tags: [프로그래머스, 파이썬, 문자열]
 ---
 
 ## 문제 링크

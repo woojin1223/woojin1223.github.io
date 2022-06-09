@@ -1,12 +1,7 @@
 ---
 title: "[프로그래머스] 피보나치 수"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: 코딩테스트
+tags: 프로그래머스
 ---
 
 ## 문제 설명

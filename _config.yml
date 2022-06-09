@@ -38,25 +38,19 @@ nav:
   Home:
     - '/'
   Contents:
-    - '/contents/'
-    - {Categories: '/contents/categories/'}
-    - {Tags: '/contents/tags/'}
+    - '/blog/'
+    - Categories: '/blog/categories/'
+    - Tags: '/blog/tags/'
   About:
     - '/about/'
 
 # Where are tags and categories displayed
-tag_page: '/contents/tags/'
-category_page: '/contents/categories/'
+tag_page: '/blog/tags/'
+category_page: '/blog/categories/'
 
 hero:
   image: /public/img/yosigo.jpg
   caption: Photograph by YOSIGO.
-
-plugins:
-  - jekyll-redirect-from
-
-whitelist:
-  - jekyll-redirect-from
 
 # Plugins
 mathjax: true # whether support mathjax
