@@ -9,17 +9,9 @@ encoding: utf-8
 # Site configurations
 gems:
   - jekyll-paginate
-  - jekyll-redirect-from
-whitelist:
-  - jekyll-redirect-from
-
 markdown: kramdown
-highlighter: rouge
 kramdown:
   input: GFM
-  syntax_highlighter_opts:
-    default_lang: html
-    css_class   : 'base16.solarized'
 excerpt_separator: "<!-- more -->"
 sass:
   style: compressed
@@ -33,7 +25,7 @@ version: 1.0.0
 author:
   name: Ahn Woo Jin
   description: <strong>Data Scientist</strong>, Woo Jin.
-  gravatar: 8b9b5b0f787c7b89e9914c86cfb26257 # 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
+  gravatar: 0a638fc7996869b1b67fb90ccf77dcfe # 8b9b5b0f787c7b89e9914c86cfb26257 # md5 hash of your email address
   contact:
     # linkedin:  <hide>
     github: https://github.com/woojin1223
