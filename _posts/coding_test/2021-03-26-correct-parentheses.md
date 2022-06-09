@@ -1,14 +1,7 @@
 ---
-title: "[프로그래머스][파이썬] 올바른 괄호"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 파이썬
-    - 스택
-toc: true
-toc_sticky: true
-toc_label: "목차"
+title: "[프로그래머스] 올바른 괄호"
+categories: 코딩테스트
+tags:  [프로그래머스, 파이썬, 스택]
 ---
 
 ## 문제 설명
