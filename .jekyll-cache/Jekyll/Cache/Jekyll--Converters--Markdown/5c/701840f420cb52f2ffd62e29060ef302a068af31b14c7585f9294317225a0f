@@ -1,4 +1,4 @@
-I"@<h2 id="문제-설명">문제 설명</h2>
+I"@<h2 id="문제-설명">문제 설명</h2>
 
 <p>게임 캐릭터를 4가지 명령어를 통해 움직이려 합니다.<br />
 명령어는 다음과 같습니다.</p>
@@ -46,13 +46,13 @@
 <p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/35e62f0a-43c6-4142-bec6-6d28fbc57216/%E1%84%87%E1%85%A1%E1%86%BC%E1%84%86%E1%85%AE%E1%86%AB%E1%84%80%E1%85%B5%E1%86%AF%E1%84%8B%E1%85%B56_nzhumd.png" alt="그림6" /></p>
 
 <p>이때 캐릭터가 처음 걸어본 길의 길이는 7이 됩니다.<br />
-명령어가 매개변수 <code class="language-plaintext highlighter-rouge">dirs</code>로 주어질 때, 게임 캐릭터가 처음 걸어본 길의 길이를 구하여 return 하는 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성해 주세요.</p>
+명령어가 매개변수 <code class="language-html highlighter-rouge">dirs</code>로 주어질 때, 게임 캐릭터가 처음 걸어본 길의 길이를 구하여 return 하는 <code class="language-html highlighter-rouge">solution</code> 함수를 완성해 주세요.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">dirs</code>는 string형으로 주어지며, ‘U’, ‘D’, ‘R’, ‘L’ 이외에 문자는 주어지지 않습니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">dirs</code>의 길이는 500 이하의 자연수입니다</li>
+  <li><code class="language-html highlighter-rouge">dirs</code>는 string형으로 주어지며, ‘U’, ‘D’, ‘R’, ‘L’ 이외에 문자는 주어지지 않습니다.</li>
+  <li><code class="language-html highlighter-rouge">dirs</code>의 길이는 500 이하의 자연수입니다</li>
 </ul>
 
 <h2 id="입출력-예">입출력 예</h2>
@@ -92,7 +92,7 @@
 
 <h2 id="풀이-1">풀이 1</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># --- 직관적인 풀이 ---
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># --- 직관적인 풀이 ---
 </span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">dirs</span><span class="p">):</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="c1"># 시작 좌표를 0, 0으로 지정
 </span>    <span class="n">check</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span> <span class="c1"># 좌표를 키로 사용하는 해시 생성
@@ -116,7 +116,7 @@
 
 <h2 id="풀이-2">풀이 2</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># --- 무방향 그래프 풀이 ---
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># --- 무방향 그래프 풀이 ---
 </span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">dirs</span><span class="p">):</span>
     <span class="n">dir_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">"R"</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s">"L"</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s">"U"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s">"D"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)}</span>
     <span class="n">result_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -135,7 +135,7 @@
 
 <h2 id="풀이-3">풀이 3</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 
 <span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">dirs</span><span class="p">):</span>
     <span class="n">dir_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">"R"</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s">"L"</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s">"U"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s">"D"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)}</span>

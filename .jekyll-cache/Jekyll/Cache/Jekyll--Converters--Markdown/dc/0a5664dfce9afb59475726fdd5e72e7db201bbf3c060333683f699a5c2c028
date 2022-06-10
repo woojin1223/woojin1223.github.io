@@ -1,12 +1,12 @@
-I"5<h2 id="문제-설명">문제 설명</h2>
+I"<h2 id="문제-설명">문제 설명</h2>
 
-<p>초 단위로 기록된 주식가격이 담긴 배열 <code class="language-plaintext highlighter-rouge">prices</code>가 매개변수로 주어질 때, <strong>가격이 떨어지지 않은 기간</strong>은 몇 초인지를 return 하도록 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성하세요.</p>
+<p>초 단위로 기록된 주식가격이 담긴 배열 <code class="language-html highlighter-rouge">prices</code>가 매개변수로 주어질 때, <strong>가격이 떨어지지 않은 기간</strong>은 몇 초인지를 return 하도록 <code class="language-html highlighter-rouge">solution</code> 함수를 완성하세요.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">prices</code>의 각 가격은 1 이상 10,000 이하인 자연수입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">prices</code>의 길이는 2 이상 100,000 이하입니다.</li>
+  <li><code class="language-html highlighter-rouge">prices</code>의 각 가격은 1 이상 10,000 이하인 자연수입니다.</li>
+  <li><code class="language-html highlighter-rouge">prices</code>의 길이는 2 이상 100,000 이하입니다.</li>
 </ul>
 
 <h2 id="입출력-예">입출력 예</h2>
@@ -20,8 +20,8 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">[1, 2, 3, 2, 3]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[4, 3, 1, 1, 0]</code></td>
+      <td><code class="language-html highlighter-rouge">[1, 2, 3, 2, 3]</code></td>
+      <td><code class="language-html highlighter-rouge">[4, 3, 1, 1, 0]</code></td>
     </tr>
   </tbody>
 </table>
@@ -38,7 +38,7 @@
 
 <h2 id="풀이">풀이</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">prices</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">prices</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
     <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
     

@@ -1,12 +1,12 @@
-I"�#<h2 id="문제-설명">문제 설명</h2>
+I"�#<h2 id="문제-설명">문제 설명</h2>
 
-<p>두 정수 <code class="language-plaintext highlighter-rouge">left</code>와 <code class="language-plaintext highlighter-rouge">right</code>가 매개변수로 주어집니다.<br />
-<code class="language-plaintext highlighter-rouge">left</code>부터 <code class="language-plaintext highlighter-rouge">right</code>까지의 모든 수들 중에서, 약수의 개수가 짝수인 수는 더하고, 약수의 개수가 홀수인 수는 뺀 수를 return 하도록 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성해주세요.</p>
+<p>두 정수 <code class="language-html highlighter-rouge">left</code>와 <code class="language-html highlighter-rouge">right</code>가 매개변수로 주어집니다.<br />
+<code class="language-html highlighter-rouge">left</code>부터 <code class="language-html highlighter-rouge">right</code>까지의 모든 수들 중에서, 약수의 개수가 짝수인 수는 더하고, 약수의 개수가 홀수인 수는 뺀 수를 return 하도록 <code class="language-html highlighter-rouge">solution</code> 함수를 완성해주세요.</p>
 
 <h2 id="제한-사항">제한 사항</h2>
 
 <ul>
-  <li>1 ≤ <code class="language-plaintext highlighter-rouge">left</code> ≤ <code class="language-plaintext highlighter-rouge">right</code> ≤ 1,000</li>
+  <li>1 ≤ <code class="language-html highlighter-rouge">left</code> ≤ <code class="language-html highlighter-rouge">right</code> ≤ 1,000</li>
 </ul>
 
 <h2 id="입출력-예">입출력 예</h2>
@@ -126,7 +126,7 @@
 
 <h2 id="풀이">풀이</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># --- 완전 탐색 풀이 ---
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># --- 완전 탐색 풀이 ---
 # 시간 복잡도: O((right - left)right)
 </span>
 <span class="k">def</span> <span class="nf">get_n_aliquot</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>

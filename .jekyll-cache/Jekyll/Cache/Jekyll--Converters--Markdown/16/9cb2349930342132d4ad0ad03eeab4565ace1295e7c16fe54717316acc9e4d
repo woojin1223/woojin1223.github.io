@@ -1,13 +1,13 @@
-I"�<h2 id="문제-설명">문제 설명</h2>
+I"v<h2 id="문제-설명">문제 설명</h2>
 
 <p><strong>JadenCase</strong>란 모든 단어의 첫 문자가 대문자이고, 그 외의 알파벳은 소문자인 문자열입니다.<br />
-문자열 <code class="language-plaintext highlighter-rouge">s</code>가 주어졌을 때, <code class="language-plaintext highlighter-rouge">s</code>를 JadenCase로 바꾼 문자열을 리턴하는 함수, <code class="language-plaintext highlighter-rouge">solution</code>을 완성해주세요.</p>
+문자열 <code class="language-html highlighter-rouge">s</code>가 주어졌을 때, <code class="language-html highlighter-rouge">s</code>를 JadenCase로 바꾼 문자열을 리턴하는 함수, <code class="language-html highlighter-rouge">solution</code>을 완성해주세요.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">s</code>는 길이 1 이상인 문자열입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">s</code>는 알파벳과 공백문자(“ “)로 이루어져 있습니다.</li>
+  <li><code class="language-html highlighter-rouge">s</code>는 길이 1 이상인 문자열입니다.</li>
+  <li><code class="language-html highlighter-rouge">s</code>는 알파벳과 공백문자(“ “)로 이루어져 있습니다.</li>
   <li>첫 문자가 영문이 아닐때에는 이어지는 영문은 소문자로 씁니다. (첫번째 입출력 예 참고)</li>
 </ul>
 
@@ -22,19 +22,19 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">"3people unFollowed me"</code></td>
-      <td><code class="language-plaintext highlighter-rouge">"3people Unfollowed Me"</code></td>
+      <td><code class="language-html highlighter-rouge">"3people unFollowed me"</code></td>
+      <td><code class="language-html highlighter-rouge">"3people Unfollowed Me"</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">"for the last week"</code></td>
-      <td><code class="language-plaintext highlighter-rouge">"For The Last Week"</code></td>
+      <td><code class="language-html highlighter-rouge">"for the last week"</code></td>
+      <td><code class="language-html highlighter-rouge">"For The Last Week"</code></td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="풀이">풀이</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="n">s_splited</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">string</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s_splited</span><span class="p">):</span>

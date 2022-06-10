@@ -1,13 +1,13 @@
-I"�<h2 id="문제-설명">문제 설명</h2>
+I"�<h2 id="문제-설명">문제 설명</h2>
 
 <p>주어진 숫자 중 3개의 수를 더했을 때 소수가 되는 경우의 개수를 구하려고 합니다.<br />
-숫자들이 들어있는 배열 <code class="language-plaintext highlighter-rouge">nums</code> 가 매개변수로 주어질 때, <code class="language-plaintext highlighter-rouge">nums</code> 에 있는 숫자들 중 서로 다른 3개를 골라 더했을 때 소수가 되는 경우의 개수를 return 하도록 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성해주세요.</p>
+숫자들이 들어있는 배열 <code class="language-html highlighter-rouge">nums</code> 가 매개변수로 주어질 때, <code class="language-html highlighter-rouge">nums</code> 에 있는 숫자들 중 서로 다른 3개를 골라 더했을 때 소수가 되는 경우의 개수를 return 하도록 <code class="language-html highlighter-rouge">solution</code> 함수를 완성해주세요.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">nums</code> 에 들어있는 숫자의 개수는 3개 이상 50개 이하입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">nums</code> 의 각 원소는 1 이상 1000 이하의 자연수이며, 중복된 숫자가 들어있지 않습니다.</li>
+  <li><code class="language-html highlighter-rouge">nums</code> 에 들어있는 숫자의 개수는 3개 이상 50개 이하입니다.</li>
+  <li><code class="language-html highlighter-rouge">nums</code> 의 각 원소는 1 이상 1000 이하의 자연수이며, 중복된 숫자가 들어있지 않습니다.</li>
 </ul>
 
 <h2 id="입출력-예">입출력 예</h2>
@@ -21,12 +21,12 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">[1, 2, 3, 4]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">1</code></td>
+      <td><code class="language-html highlighter-rouge">[1, 2, 3, 4]</code></td>
+      <td><code class="language-html highlighter-rouge">1</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">[1, 2, 7, 6, 4]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">4</code></td>
+      <td><code class="language-html highlighter-rouge">[1, 2, 7, 6, 4]</code></td>
+      <td><code class="language-html highlighter-rouge">4</code></td>
     </tr>
   </tbody>
 </table>
@@ -50,7 +50,7 @@
 
 <h2 id="풀이">풀이</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
 
 <span class="k">def</span> <span class="nf">get_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>

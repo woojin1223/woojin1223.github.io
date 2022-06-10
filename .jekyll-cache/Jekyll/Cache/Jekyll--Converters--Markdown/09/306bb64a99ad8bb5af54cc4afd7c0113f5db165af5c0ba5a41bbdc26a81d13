@@ -1,4 +1,4 @@
-I"1)<h2 id="문제-설명">문제 설명</h2>
+I")<h2 id="문제-설명">문제 설명</h2>
 
 <p>프렌즈대학교 컴퓨터공학과 조교인 제이지는 네오 학과장님의 지시로, 학생들의 인적사항을 정리하는 업무를 담당하게 되었다.</p>
 
@@ -26,16 +26,16 @@
 물론 [“이름”, “전공”, “학년”]을 함께 사용해도 릴레이션의 모든 튜플을 유일하게 식별할 수 있지만, 최소성을 만족하지 못하기 때문에 후보 키가 될 수 없다.<br />
 따라서, 위의 학생 인적사항의 후보키는 “학번”, [“이름”, “전공”] 두 개가 된다.</p>
 
-<p>릴레이션을 나타내는 문자열 배열 <code class="language-plaintext highlighter-rouge">relation</code>이 매개변수로 주어질 때, 이 릴레이션에서 후보 키의 개수를 return 하도록 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성하라.</p>
+<p>릴레이션을 나타내는 문자열 배열 <code class="language-html highlighter-rouge">relation</code>이 매개변수로 주어질 때, 이 릴레이션에서 후보 키의 개수를 return 하도록 <code class="language-html highlighter-rouge">solution</code> 함수를 완성하라.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">relation</code>은 2차원 문자열 배열이다.</li>
-  <li><code class="language-plaintext highlighter-rouge">relation</code>의 컬럼(column)의 길이는 1 이상 8 이하이며, 각각의 컬럼은 릴레이션의 속성을 나타낸다.</li>
-  <li><code class="language-plaintext highlighter-rouge">relation</code>의 로우(row)의 길이는 1 이상 20 이하이며, 각각의 로우는 릴레이션의 튜플을 나타낸다.</li>
-  <li><code class="language-plaintext highlighter-rouge">relation</code>의 모든 문자열의 길이는 1 이상 8 이하이며, 알파벳 소문자와 숫자로만 이루어져 있다.</li>
-  <li><code class="language-plaintext highlighter-rouge">relation</code>의 모든 튜플은 유일하게 식별 가능하다.(즉, 중복되는 튜플은 없다.)사용된다.</li>
+  <li><code class="language-html highlighter-rouge">relation</code>은 2차원 문자열 배열이다.</li>
+  <li><code class="language-html highlighter-rouge">relation</code>의 컬럼(column)의 길이는 1 이상 8 이하이며, 각각의 컬럼은 릴레이션의 속성을 나타낸다.</li>
+  <li><code class="language-html highlighter-rouge">relation</code>의 로우(row)의 길이는 1 이상 20 이하이며, 각각의 로우는 릴레이션의 튜플을 나타낸다.</li>
+  <li><code class="language-html highlighter-rouge">relation</code>의 모든 문자열의 길이는 1 이상 8 이하이며, 알파벳 소문자와 숫자로만 이루어져 있다.</li>
+  <li><code class="language-html highlighter-rouge">relation</code>의 모든 튜플은 유일하게 식별 가능하다.(즉, 중복되는 튜플은 없다.)사용된다.</li>
 </ul>
 
 <h2 id="입출력-예">입출력 예</h2>
@@ -49,8 +49,8 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">[["100", "ryan", "music", "2"], ["200", "apeach", "math", "2"], ["300", "tube", "computer", "3"], ["400", "con", "computer", "4"], ["500", "muzi", "music", "3"], ["600", "apeach", "music", "2"]]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">2</code></td>
+      <td><code class="language-html highlighter-rouge">[["100", "ryan", "music", "2"], ["200", "apeach", "math", "2"], ["300", "tube", "computer", "3"], ["400", "con", "computer", "4"], ["500", "muzi", "music", "3"], ["600", "apeach", "music", "2"]]</code></td>
+      <td><code class="language-html highlighter-rouge">2</code></td>
     </tr>
   </tbody>
 </table>
@@ -65,7 +65,7 @@
 
 <h2 id="풀이">풀이</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
 <span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
 
 <span class="k">def</span> <span class="nf">is_candidate</span><span class="p">(</span><span class="n">relation</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>

@@ -1,4 +1,4 @@
-I"�<h2 id="문제-설명">문제 설명</h2>
+I"�<h2 id="문제-설명">문제 설명</h2>
 
 <p>△△ 게임대회가 개최되었습니다.<br />
 이 대회는 N명이 참가하고, 토너먼트 형식으로 진행됩니다.<br />
@@ -10,14 +10,14 @@ N명의 참가자는 각각 1부터 N번을 차례대로 배정받습니다.<br 
 게임은 최종 한 명이 남을 때까지 진행됩니다.</p>
 
 <p>이때, 처음 라운드에서 A번을 가진 참가자는 경쟁자로 생각하는 B번 참가자와 몇 번째 라운드에서 만나는지 궁금해졌습니다.<br />
-게임 참가자 수 <code class="language-plaintext highlighter-rouge">N</code>, 참가자 번호 <code class="language-plaintext highlighter-rouge">A</code>, 경쟁자 번호 <code class="language-plaintext highlighter-rouge">B</code>가 함수 <code class="language-plaintext highlighter-rouge">solution</code>의 매개변수로 주어질 때, <strong>처음 라운드에서 A번을 가진 참가자는 경쟁자로 생각하는 B번 참가자와 몇 번째 라운드에서 만나는지</strong> return 하는 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성해 주세요.<br />
+게임 참가자 수 <code class="language-html highlighter-rouge">N</code>, 참가자 번호 <code class="language-html highlighter-rouge">A</code>, 경쟁자 번호 <code class="language-html highlighter-rouge">B</code>가 함수 <code class="language-html highlighter-rouge">solution</code>의 매개변수로 주어질 때, <strong>처음 라운드에서 A번을 가진 참가자는 경쟁자로 생각하는 B번 참가자와 몇 번째 라운드에서 만나는지</strong> return 하는 <code class="language-html highlighter-rouge">solution</code> 함수를 완성해 주세요.<br />
 단, A번 참가자와 B번 참가자는 서로 붙게 되기 전까지 항상 이긴다고 가정합니다.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">N</code> : $2^1$ 이상 $2^{20}$ 이하인 자연수 (2의 지수 승으로 주어지므로 부전승은 발생하지 않습니다.)</li>
-  <li><code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code> : N 이하인 자연수 (단, A ≠ B 입니다.)</li>
+  <li><code class="language-html highlighter-rouge">N</code> : $2^1$ 이상 $2^{20}$ 이하인 자연수 (2의 지수 승으로 주어지므로 부전승은 발생하지 않습니다.)</li>
+  <li><code class="language-html highlighter-rouge">A</code>, <code class="language-html highlighter-rouge">B</code> : N 이하인 자연수 (단, A ≠ B 입니다.)</li>
 </ul>
 
 <h2 id="입출력-예">입출력 예</h2>
@@ -33,10 +33,10 @@ N명의 참가자는 각각 1부터 N번을 차례대로 배정받습니다.<br 
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">8</code></td>
-      <td><code class="language-plaintext highlighter-rouge">4</code></td>
-      <td><code class="language-plaintext highlighter-rouge">7</code></td>
-      <td><code class="language-plaintext highlighter-rouge">3</code></td>
+      <td><code class="language-html highlighter-rouge">8</code></td>
+      <td><code class="language-html highlighter-rouge">4</code></td>
+      <td><code class="language-html highlighter-rouge">7</code></td>
+      <td><code class="language-html highlighter-rouge">3</code></td>
     </tr>
   </tbody>
 </table>
@@ -55,7 +55,7 @@ N명의 참가자는 각각 1부터 N번을 차례대로 배정받습니다.<br 
 
 <h2 id="풀이">풀이</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
         <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
     <span class="k">else</span><span class="p">:</span>

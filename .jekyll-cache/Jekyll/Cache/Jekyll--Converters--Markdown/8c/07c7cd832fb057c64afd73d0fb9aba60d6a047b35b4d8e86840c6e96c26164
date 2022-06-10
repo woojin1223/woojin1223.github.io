@@ -1,20 +1,20 @@
-I"Y<h2 id="소개">소개</h2>
+I"�<h2 id="소개">소개</h2>
 
 <p>R 코드를 작성하다 보면 <u>코드에 대한 부연 설명</u>이 필요합니다.<br />
 이는 본인이 작성한 코드를 다시 볼 때 쉽게 이해하기 위함도 있지만 여러 사람들과 같이 코딩할 때 그들을 쉽게 이해시키기 위함도 있습니다.<br />
 프로젝트의 규모가 커질 수록 혼자 코딩하지 않고 여러 사람들과 협업을 하여 코딩을 하기 때문에 <u>코드에 대한 부연 설명은 선택이 아닌 필수</u>입니다.</p>
 
-<p>R 코드를 작성하는 파일인 <strong>R Script</strong>(<code class="language-plaintext highlighter-rouge">.R</code>)는 주석(#)으로 코드에 대한 설명을 넣을 수 있지만, 가시성이 좋지 않고 글자 크기를 조절하거나 굵게 하는 등 형식을 마음대로 바꿀 수 없다는 단점이 있습니다.<br />
+<p>R 코드를 작성하는 파일인 <strong>R Script</strong>(<code class="language-html highlighter-rouge">.R</code>)는 주석(#)으로 코드에 대한 설명을 넣을 수 있지만, 가시성이 좋지 않고 글자 크기를 조절하거나 굵게 하는 등 형식을 마음대로 바꿀 수 없다는 단점이 있습니다.<br />
 즉, R script에는 코드가 메인이고 텍스트는 서브 기능을 할 뿐입니다.</p>
 
-<p>하지만, <strong>R Markdown</strong>(<code class="language-plaintext highlighter-rouge">.Rmd</code>) 파일에는 코드와 더불어 텍스트를 자유로운 형식으로 쓸 수 있습니다.<br />
+<p>하지만, <strong>R Markdown</strong>(<code class="language-html highlighter-rouge">.Rmd</code>) 파일에는 코드와 더불어 텍스트를 자유로운 형식으로 쓸 수 있습니다.<br />
 즉, R Markdown을 사용하여 <u>R 코드를 곁들인 프로젝트 보고서</u>를 작성할 수 있습니다.<br />
-그리고 <code class="language-plaintext highlighter-rouge">html</code> 과 <code class="language-plaintext highlighter-rouge">pdf</code> 등 다양한 파일 형식으로 보고서를 만들 수 있습니다.<br />
+그리고 <code class="language-html highlighter-rouge">html</code> 과 <code class="language-html highlighter-rouge">pdf</code> 등 다양한 파일 형식으로 보고서를 만들 수 있습니다.<br />
 아래는 R Markdown 파일의 예시입니다.</p>
 
 <h2 id="예시">예시</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code>---
 title: "R Markdown"
 author: "Tong Nam"
 date: "2021 04 25"
@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;http://rmarkdown.rstudio.com&gt;.
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <span class="nt">&lt;http:</span><span class="err">//</span><span class="na">rmarkdown.rstudio.com</span><span class="nt">&gt;</span>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
@@ -47,7 +47,7 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 </code></pre></div></div>
 
 <p>RStudio의 상단 탭에 있는 <em>File &gt; New File &gt; R Markdown</em> 에서 OK를 클릭하여 위 예시와 같이 기본적인 내용이 들어 있는 Rmd 파일을 만들 수 있습니다.<br />
-그리고 Rmd 파일에서 <code class="language-plaintext highlighter-rouge">Knit</code> 버튼을 클릭하거나 <code class="language-plaintext highlighter-rouge">Ctrl + Shift + K</code> 를 누르면 HTML 형식의 보고서가 만들어집니다.</p>
+그리고 Rmd 파일에서 <code class="language-html highlighter-rouge">Knit</code> 버튼을 클릭하거나 <code class="language-html highlighter-rouge">Ctrl + Shift + K</code> 를 누르면 HTML 형식의 보고서가 만들어집니다.</p>
 
 <p><img src="/assets/images/rmd_tutorial.PNG" alt="rmd_tutorial" /></p>
 

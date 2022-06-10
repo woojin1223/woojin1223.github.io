@@ -1,8 +1,8 @@
-I".<h2 id="문제-설명">문제 설명</h2>
+I"�<h2 id="문제-설명">문제 설명</h2>
 
 <p>트럭 여러 대가 강을 가로지르는 일 차선 다리를 정해진 순으로 건너려 합니다.<br />
 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 알아내야 합니다.<br />
-트럭은 1초에 1만큼 움직이며, 다리 길이는 <code class="language-plaintext highlighter-rouge">bridge_length</code>이고 다리는 무게 <code class="language-plaintext highlighter-rouge">weight</code>까지 견딥니다.<br />
+트럭은 1초에 1만큼 움직이며, 다리 길이는 <code class="language-html highlighter-rouge">bridge_length</code>이고 다리는 무게 <code class="language-html highlighter-rouge">weight</code>까지 견딥니다.<br />
 ※ 트럭이 다리에 완전히 오르지 않은 경우, 이 트럭의 무게는 고려하지 않습니다.</p>
 
 <p>예를 들어, 길이가 2이고 10kg 무게를 견디는 다리가 있습니다.<br />
@@ -65,15 +65,15 @@
 
 <p>따라서, 모든 트럭이 다리를 지나려면 최소 8초가 걸립니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">solution</code> 함수의 매개변수로 다리 길이 <code class="language-plaintext highlighter-rouge">bridge_length</code>, 다리가 견딜 수 있는 무게 <code class="language-plaintext highlighter-rouge">weight</code>, 트럭별 무게 <code class="language-plaintext highlighter-rouge">truck_weights</code>가 주어집니다.<br />
-이때 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 return 하도록 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성하세요.</p>
+<p><code class="language-html highlighter-rouge">solution</code> 함수의 매개변수로 다리 길이 <code class="language-html highlighter-rouge">bridge_length</code>, 다리가 견딜 수 있는 무게 <code class="language-html highlighter-rouge">weight</code>, 트럭별 무게 <code class="language-html highlighter-rouge">truck_weights</code>가 주어집니다.<br />
+이때 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 return 하도록 <code class="language-html highlighter-rouge">solution</code> 함수를 완성하세요.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">bridge_length</code>는 1 이상 10,000 이하입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">weight</code>는 1 이상 10,000 이하입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">truck_weights</code>의 길이는 1 이상 10,000 이하입니다.</li>
+  <li><code class="language-html highlighter-rouge">bridge_length</code>는 1 이상 10,000 이하입니다.</li>
+  <li><code class="language-html highlighter-rouge">weight</code>는 1 이상 10,000 이하입니다.</li>
+  <li><code class="language-html highlighter-rouge">truck_weights</code>의 길이는 1 이상 10,000 이하입니다.</li>
   <li>모든 트럭의 무게는 1 이상 weight 이하입니다.</li>
 </ul>
 
@@ -90,29 +90,29 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">2</code></td>
-      <td><code class="language-plaintext highlighter-rouge">10</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[7, 4, 5, 6]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">8</code></td>
+      <td><code class="language-html highlighter-rouge">2</code></td>
+      <td><code class="language-html highlighter-rouge">10</code></td>
+      <td><code class="language-html highlighter-rouge">[7, 4, 5, 6]</code></td>
+      <td><code class="language-html highlighter-rouge">8</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">100</code></td>
-      <td><code class="language-plaintext highlighter-rouge">100</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[10]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">101</code></td>
+      <td><code class="language-html highlighter-rouge">100</code></td>
+      <td><code class="language-html highlighter-rouge">100</code></td>
+      <td><code class="language-html highlighter-rouge">[10]</code></td>
+      <td><code class="language-html highlighter-rouge">101</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">100</code></td>
-      <td><code class="language-plaintext highlighter-rouge">100</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[10, 10, 10, 10, 10, 10, 10, 10, 10, 10]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">110</code></td>
+      <td><code class="language-html highlighter-rouge">100</code></td>
+      <td><code class="language-html highlighter-rouge">100</code></td>
+      <td><code class="language-html highlighter-rouge">[10, 10, 10, 10, 10, 10, 10, 10, 10, 10]</code></td>
+      <td><code class="language-html highlighter-rouge">110</code></td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="풀이">풀이</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 
 <span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">bridge_length</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">truck_weights</span><span class="p">):</span>
     <span class="n">bridge</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>

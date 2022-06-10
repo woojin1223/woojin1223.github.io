@@ -1,4 +1,4 @@
-I"	0<h2 id="문제-설명">문제 설명</h2>
+I"p/<h2 id="문제-설명">문제 설명</h2>
 
 <p>m x n 크기인 사무실이 있습니다.<br />
 사무실에는 전염병에 걸린 직원이 있는데, 이 직원은 매일 상하좌우로 병을 퍼트려 다른 직원을 감염시킵니다.<br />
@@ -19,23 +19,23 @@
 
 <p><img src="https://grepp-programmers.s3.amazonaws.com/files/production/49d73ec1ca/4cc4355f-407c-4d26-b1d6-87ba7f374a65.png" alt="그림3" /></p>
 
-<p>사무실의 크기 <code class="language-plaintext highlighter-rouge">m</code>, <code class="language-plaintext highlighter-rouge">n</code>과 병에 걸린 직원의 위치 <code class="language-plaintext highlighter-rouge">infests</code>, 백신을 맞은 직원의 위치 <code class="language-plaintext highlighter-rouge">vaccinateds</code> 가 매개변수로 주어집니다.<br />
-이때 <strong>백신을 맞은 직원을 제외한 모든 직원이 병에 감염되기까지 며칠이 걸리는지</strong> return 하는 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성해주세요.</p>
+<p>사무실의 크기 <code class="language-html highlighter-rouge">m</code>, <code class="language-html highlighter-rouge">n</code>과 병에 걸린 직원의 위치 <code class="language-html highlighter-rouge">infests</code>, 백신을 맞은 직원의 위치 <code class="language-html highlighter-rouge">vaccinateds</code> 가 매개변수로 주어집니다.<br />
+이때 <strong>백신을 맞은 직원을 제외한 모든 직원이 병에 감염되기까지 며칠이 걸리는지</strong> return 하는 <code class="language-html highlighter-rouge">solution</code> 함수를 완성해주세요.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">m</code>과 <code class="language-plaintext highlighter-rouge">n</code>은 1 이상 300 이하인 자연수입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">infests</code> 의 길이는 1 이상 <code class="language-plaintext highlighter-rouge">m</code> * <code class="language-plaintext highlighter-rouge">n</code> 이하입니다.
+  <li><code class="language-html highlighter-rouge">m</code>과 <code class="language-html highlighter-rouge">n</code>은 1 이상 300 이하인 자연수입니다.</li>
+  <li><code class="language-html highlighter-rouge">infests</code> 의 길이는 1 이상 <code class="language-html highlighter-rouge">m</code> * <code class="language-html highlighter-rouge">n</code> 이하입니다.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">infests</code> 의 원소는 <code class="language-plaintext highlighter-rouge">[a, b]</code> 형식이며, 1 ≤ a ≤ m, 1 ≤ b ≤ n입니다.</li>
-      <li><code class="language-plaintext highlighter-rouge">infests</code> 에는 같은 원소가 두 번 이상 들어있지 않습니다.</li>
+      <li><code class="language-html highlighter-rouge">infests</code> 의 원소는 <code class="language-html highlighter-rouge">[a, b]</code> 형식이며, 1 ≤ a ≤ m, 1 ≤ b ≤ n입니다.</li>
+      <li><code class="language-html highlighter-rouge">infests</code> 에는 같은 원소가 두 번 이상 들어있지 않습니다.</li>
     </ul>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">vaccinateds</code> 는 길이가 1 이상 m * n 이하입니다.
+  <li><code class="language-html highlighter-rouge">vaccinateds</code> 는 길이가 1 이상 m * n 이하입니다.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">vaccinateds</code> 의 원소는 <code class="language-plaintext highlighter-rouge">[a, b]</code> 형식이며, 1 ≤ a ≤ m, 1 ≤ b ≤ n입니다.</li>
-      <li><code class="language-plaintext highlighter-rouge">vaccinateds</code> 에는 같은 원소가 두 번 이상 들어있지 않습니다.</li>
+      <li><code class="language-html highlighter-rouge">vaccinateds</code> 의 원소는 <code class="language-html highlighter-rouge">[a, b]</code> 형식이며, 1 ≤ a ≤ m, 1 ≤ b ≤ n입니다.</li>
+      <li><code class="language-html highlighter-rouge">vaccinateds</code> 에는 같은 원소가 두 번 이상 들어있지 않습니다.</li>
     </ul>
   </li>
   <li>백신을 맞은 직원이 병에 걸린 경우는 주어지지 않습니다.</li>
@@ -56,25 +56,25 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">2</code></td>
-      <td><code class="language-plaintext highlighter-rouge">4</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[[1, 4], [2, 2]]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[[1, 2]]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">2</code></td>
+      <td><code class="language-html highlighter-rouge">2</code></td>
+      <td><code class="language-html highlighter-rouge">4</code></td>
+      <td><code class="language-html highlighter-rouge">[[1, 4], [2, 2]]</code></td>
+      <td><code class="language-html highlighter-rouge">[[1, 2]]</code></td>
+      <td><code class="language-html highlighter-rouge">2</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">2</code></td>
-      <td><code class="language-plaintext highlighter-rouge">3</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[[2, 2]]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[[1, 2], [2, 1], [2, 3]]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">-1</code></td>
+      <td><code class="language-html highlighter-rouge">2</code></td>
+      <td><code class="language-html highlighter-rouge">3</code></td>
+      <td><code class="language-html highlighter-rouge">[[2, 2]]</code></td>
+      <td><code class="language-html highlighter-rouge">[[1, 2], [2, 1], [2, 3]]</code></td>
+      <td><code class="language-html highlighter-rouge">-1</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">2</code></td>
-      <td><code class="language-plaintext highlighter-rouge">2</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[[1, 1], [2, 2]]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[[1, 2], [2, 1]]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+      <td><code class="language-html highlighter-rouge">2</code></td>
+      <td><code class="language-html highlighter-rouge">2</code></td>
+      <td><code class="language-html highlighter-rouge">[[1, 1], [2, 2]]</code></td>
+      <td><code class="language-html highlighter-rouge">[[1, 2], [2, 1]]</code></td>
+      <td><code class="language-html highlighter-rouge">0</code></td>
     </tr>
   </tbody>
 </table>
@@ -107,7 +107,7 @@
 
 <h2 id="풀이">풀이</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 
 <span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">infests</span><span class="p">,</span> <span class="n">vaccinateds</span><span class="p">):</span>

@@ -1,4 +1,4 @@
-I"<<h2 id="문제-설명">문제 설명</h2>
+I"6<h2 id="문제-설명">문제 설명</h2>
 
 <p>짝지어 제거하기는, 알파벳 소문자로 이루어진 문자열을 가지고 시작합니다.<br />
 먼저 문자열에서 같은 알파벳이 2개 붙어 있는 짝을 찾습니다.<br />
@@ -30,12 +30,12 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">"baabaa"</code></td>
-      <td><code class="language-plaintext highlighter-rouge">1</code></td>
+      <td><code class="language-html highlighter-rouge">"baabaa"</code></td>
+      <td><code class="language-html highlighter-rouge">1</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">"cdcd"</code></td>
-      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+      <td><code class="language-html highlighter-rouge">"cdcd"</code></td>
+      <td><code class="language-html highlighter-rouge">0</code></td>
     </tr>
   </tbody>
 </table>
@@ -56,7 +56,7 @@
 
 <h2 id="풀이-1">풀이 1</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
     
     <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
@@ -70,7 +70,7 @@
 
 <h2 id="풀이-2">풀이 2</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># --- 풀이 1과 같은 풀이 다른 로직 ---
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># --- 풀이 1과 같은 풀이 다른 로직 ---
 </span><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
     

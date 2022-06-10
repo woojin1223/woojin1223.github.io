@@ -1,4 +1,4 @@
-I"�<h2 id="문제-링크">문제 링크</h2>
+I"r<h2 id="문제-링크">문제 링크</h2>
 
 <p><a href="https://programmers.co.kr/learn/courses/30/lessons/42747">https://programmers.co.kr/learn/courses/30/lessons/42747</a></p>
 
@@ -8,7 +8,7 @@
 
 <p>어떤 과학자가 발표한 논문 n편 중, h번 이상 인용된 논문이 h편 이상이고 나머지 논문이 h번 이하 인용되었다면 <strong>h의 최댓값</strong>이 이 과학자의 H-Index입니다.</p>
 
-<p>어떤 과학자가 발표한 논문의 인용 횟수를 담은 배열 <code class="language-plaintext highlighter-rouge">citations</code>가 매개변수로 주어질 때, 이 과학자의 H-Index를 return 하도록 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 작성해주세요.</p>
+<p>어떤 과학자가 발표한 논문의 인용 횟수를 담은 배열 <code class="language-html highlighter-rouge">citations</code>가 매개변수로 주어질 때, 이 과학자의 H-Index를 return 하도록 <code class="language-html highlighter-rouge">solution</code> 함수를 작성해주세요.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
@@ -40,13 +40,13 @@
 
 <h2 id="풀이-1">풀이 1</h2>
 
-<p>H-Index이 가질 수 있는 값의 범위는 0부터 n(=<code class="language-plaintext highlighter-rouge">len(citations)</code>)까지 입니다.<br />
-<code class="language-plaintext highlighter-rouge">citations</code>를 정렬한 후, <code class="language-plaintext highlighter-rouge">bisect</code> 모듈의 <code class="language-plaintext highlighter-rouge">bisect_left</code> 함수를 사용하여<br />
-h번 이하 인용된 논문의 개수를 <code class="language-plaintext highlighter-rouge">left</code>, h번 이상 인용된 논문의 개수를 <code class="language-plaintext highlighter-rouge">right</code>에 각각 할당합니다.<br />
-h가 <code class="language-plaintext highlighter-rouge">left</code>와 <code class="language-plaintext highlighter-rouge">right</code> 사이에 있는 수라면 H-Index 후보 값입니다.<br />
+<p>H-Index이 가질 수 있는 값의 범위는 0부터 n(=<code class="language-html highlighter-rouge">len(citations)</code>)까지 입니다.<br />
+<code class="language-html highlighter-rouge">citations</code>를 정렬한 후, <code class="language-html highlighter-rouge">bisect</code> 모듈의 <code class="language-html highlighter-rouge">bisect_left</code> 함수를 사용하여<br />
+h번 이하 인용된 논문의 개수를 <code class="language-html highlighter-rouge">left</code>, h번 이상 인용된 논문의 개수를 <code class="language-html highlighter-rouge">right</code>에 각각 할당합니다.<br />
+h가 <code class="language-html highlighter-rouge">left</code>와 <code class="language-html highlighter-rouge">right</code> 사이에 있는 수라면 H-Index 후보 값입니다.<br />
 위 조건을 만족하는 h의 최댓값이 H-index이므로 위 작업을 h가 0부터 n까지 반복합니다.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">bisect</span> <span class="kn">import</span> <span class="n">bisect_left</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="kn">from</span> <span class="nn">bisect</span> <span class="kn">import</span> <span class="n">bisect_left</span>
 
 <span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">citations</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">citations</span><span class="p">)</span>
@@ -64,13 +64,13 @@ h가 <code class="language-plaintext highlighter-rouge">left</code>와 <code cla
 
 <h2 id="풀이-2">풀이 2</h2>
 
-<p><code class="language-plaintext highlighter-rouge">citations</code>: [3, 0, 6, 1, 5]<br />
-<code class="language-plaintext highlighter-rouge">citations.sort(reverse=True)</code>: [6, 5, 3, 1, 0]<br />
-<code class="language-plaintext highlighter-rouge">enumerate(citations, start=1)</code>: ((1, 6), (2, 5), (3, 3), (4, 1), (5, 0))<br />
-<code class="language-plaintext highlighter-rouge">map(min, enumerate(citations, start=1))</code>: (1, 2, 3, 1, 0)<br />
-<code class="language-plaintext highlighter-rouge">max(map(min, enumerate(citations, start=1)))</code>: 3</p>
+<p><code class="language-html highlighter-rouge">citations</code>: [3, 0, 6, 1, 5]<br />
+<code class="language-html highlighter-rouge">citations.sort(reverse=True)</code>: [6, 5, 3, 1, 0]<br />
+<code class="language-html highlighter-rouge">enumerate(citations, start=1)</code>: ((1, 6), (2, 5), (3, 3), (4, 1), (5, 0))<br />
+<code class="language-html highlighter-rouge">map(min, enumerate(citations, start=1))</code>: (1, 2, 3, 1, 0)<br />
+<code class="language-html highlighter-rouge">max(map(min, enumerate(citations, start=1)))</code>: 3</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">citations</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">citations</span><span class="p">):</span>
     <span class="n">citations</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">answer</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">citations</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
 

@@ -1,10 +1,10 @@
-I"E<h2 id="문제">문제</h2>
+I"S<h2 id="문제">문제</h2>
 
 <p><a href="https://programmers.co.kr/learn/courses/30/lessons/64065">문제 링크</a></p>
 
 <h2 id="풀이-1">풀이 1</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"{"</span><span class="p">,</span> <span class="s">"["</span><span class="p">)</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"}"</span><span class="p">,</span> <span class="s">"]"</span><span class="p">)</span>
     <span class="n">s</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
@@ -21,7 +21,7 @@
 
 <h2 id="풀이-2">풀이 2</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Counter를 이용한 풀이 (더 효율적)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># Counter를 이용한 풀이 (더 효율적)
 </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 

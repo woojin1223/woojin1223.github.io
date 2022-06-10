@@ -1,4 +1,4 @@
-I"v+<h2 id="문제-설명">문제 설명</h2>
+I"4+<h2 id="문제-설명">문제 설명</h2>
 
 <p>빙고는 N x N 크기의 게임 보드 칸에 1 부터 N x N 까지의 자연수를 중복 없이 하나씩 적은 후 숫자를 하나씩 지워나가는 게임입니다.<br />
 이때, 가로, 세로, 대각선 방향으로 한 줄에 적힌 숫자를 모두 지울 경우 빙고를 1개 만들었다고 합니다.<br />
@@ -10,15 +10,15 @@
 
 <p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/f28064ab-b5fc-4d60-a385-d41202dd959a/%E1%84%87%E1%85%B5%E1%86%BC%E1%84%80%E1%85%A9_xibpii.png" alt="그림2" /></p>
 
-<p>빙고 게임 보드에 적힌 숫자가 담겨있는 배열 <code class="language-plaintext highlighter-rouge">board</code>, 게임 보드에서 순서대로 지운 숫자가 들어있는 배열 <code class="language-plaintext highlighter-rouge">nums</code> 가 매개변수로 주어질 때, <code class="language-plaintext highlighter-rouge">board</code> 에서 <code class="language-plaintext highlighter-rouge">nums</code> 에 들어있는 숫자를 모두 지우면 몇 개의 빙고가 만들어지는지 return 하도록 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성해 주세요.</p>
+<p>빙고 게임 보드에 적힌 숫자가 담겨있는 배열 <code class="language-html highlighter-rouge">board</code>, 게임 보드에서 순서대로 지운 숫자가 들어있는 배열 <code class="language-html highlighter-rouge">nums</code> 가 매개변수로 주어질 때, <code class="language-html highlighter-rouge">board</code> 에서 <code class="language-html highlighter-rouge">nums</code> 에 들어있는 숫자를 모두 지우면 몇 개의 빙고가 만들어지는지 return 하도록 <code class="language-html highlighter-rouge">solution</code> 함수를 완성해 주세요.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">board</code> 는 게임 보드 칸에 적힌 숫자를 뜻하는 NxN크기의 2차원 배열이며, N은 2 이상 500이하의 자연수입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">board</code> 의 각 칸에는 1 이상 N x N 이하의 자연수가 중복 없이 하나씩 들어있습니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">nums</code> 는 <code class="language-plaintext highlighter-rouge">board</code> 에서 지울 숫자가 들어있는 배열이며, 길이는 1 이상 NxN이하입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">nums</code> 에 들어있는 숫자는 1 이상 N x N 이하의 자연수이며, 중복된 수가 들어있지 않습니다.</li>
+  <li><code class="language-html highlighter-rouge">board</code> 는 게임 보드 칸에 적힌 숫자를 뜻하는 NxN크기의 2차원 배열이며, N은 2 이상 500이하의 자연수입니다.</li>
+  <li><code class="language-html highlighter-rouge">board</code> 의 각 칸에는 1 이상 N x N 이하의 자연수가 중복 없이 하나씩 들어있습니다.</li>
+  <li><code class="language-html highlighter-rouge">nums</code> 는 <code class="language-html highlighter-rouge">board</code> 에서 지울 숫자가 들어있는 배열이며, 길이는 1 이상 NxN이하입니다.</li>
+  <li><code class="language-html highlighter-rouge">nums</code> 에 들어있는 숫자는 1 이상 N x N 이하의 자연수이며, 중복된 수가 들어있지 않습니다.</li>
 </ul>
 
 <h2 id="입출력-예">입출력 예</h2>
@@ -33,14 +33,14 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">[[11, 13, 15, 16], [12, 1, 4, 3], [10, 2, 7, 8], [5, 14, 6, 9]]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[14, 3, 2, 4, 13, 1, 16, 11, 5, 15]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">3</code></td>
+      <td><code class="language-html highlighter-rouge">[[11, 13, 15, 16], [12, 1, 4, 3], [10, 2, 7, 8], [5, 14, 6, 9]]</code></td>
+      <td><code class="language-html highlighter-rouge">[14, 3, 2, 4, 13, 1, 16, 11, 5, 15]</code></td>
+      <td><code class="language-html highlighter-rouge">3</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">[[6, 15, 17, 14, 23], [5, 12, 16, 13, 25], [21, 4, 2, 1, 22], [10, 20, 3, 18, 8], [11, 9, 19, 24, 7]]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">[15, 7, 2, 25, 9, 16, 12, 18, 5, 4, 10, 13, 20]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">2</code></td>
+      <td><code class="language-html highlighter-rouge">[[6, 15, 17, 14, 23], [5, 12, 16, 13, 25], [21, 4, 2, 1, 22], [10, 20, 3, 18, 8], [11, 9, 19, 24, 7]]</code></td>
+      <td><code class="language-html highlighter-rouge">[15, 7, 2, 25, 9, 16, 12, 18, 5, 4, 10, 13, 20]</code></td>
+      <td><code class="language-html highlighter-rouge">2</code></td>
     </tr>
   </tbody>
 </table>
@@ -63,7 +63,7 @@
 
 <h2 id="풀이-1">풀이 1</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">nums</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">nums</span><span class="p">):</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
     <span class="n">nums</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
     <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
@@ -85,7 +85,7 @@
 
 <h2 id="풀이-2">풀이 2</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">nums</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">nums</span><span class="p">):</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
     <span class="n">nums</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
     <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>

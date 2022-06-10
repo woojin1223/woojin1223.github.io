@@ -1,10 +1,10 @@
-I"�<h2 id="문제-설명">문제 설명</h2>
+I"�<h2 id="문제-설명">문제 설명</h2>
 
-<p>어떤 문자열 <code class="language-plaintext highlighter-rouge">s</code>가 주어졌을 때, <code class="language-plaintext highlighter-rouge">s</code>로부터 만들 수 있는 부분 문자열 중 사전 순으로 가장 뒤에 나오는 문자열을 찾으려 합니다.<br />
+<p>어떤 문자열 <code class="language-html highlighter-rouge">s</code>가 주어졌을 때, <code class="language-html highlighter-rouge">s</code>로부터 만들 수 있는 부분 문자열 중 사전 순으로 가장 뒤에 나오는 문자열을 찾으려 합니다.<br />
 부분 문자열을 만드는 방법은 다음과 같습니다.</p>
 
 <ol>
-  <li><code class="language-plaintext highlighter-rouge">s</code>에서 일부 문자를 선택해 새로운 문자열을 만듭니다.</li>
+  <li><code class="language-html highlighter-rouge">s</code>에서 일부 문자를 선택해 새로운 문자열을 만듭니다.</li>
   <li>단, 이때 문자의 순서는 뒤바꾸지 않습니다.</li>
 </ol>
 
@@ -20,13 +20,13 @@ xyb</p>
 
 <p>이 중 사전 순으로 가장 뒤에 있는 문자열은 “yb”입니다.</p>
 
-<p>문자열 <code class="language-plaintext highlighter-rouge">s</code>가 주어졌을 때 <code class="language-plaintext highlighter-rouge">s</code>로부터 만들 수 있는 부분 문자열 중 사전 순으로 가장 뒤에 나오는 문자열을 리턴하는 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성해주세요.</p>
+<p>문자열 <code class="language-html highlighter-rouge">s</code>가 주어졌을 때 <code class="language-html highlighter-rouge">s</code>로부터 만들 수 있는 부분 문자열 중 사전 순으로 가장 뒤에 나오는 문자열을 리턴하는 <code class="language-html highlighter-rouge">solution</code> 함수를 완성해주세요.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">s</code>는 길이가 1 이상 1,000,000 이하인 문자열입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">s</code>는 알파벳 소문자로만 이루어져 있습니다.</li>
+  <li><code class="language-html highlighter-rouge">s</code>는 길이가 1 이상 1,000,000 이하인 문자열입니다.</li>
+  <li><code class="language-html highlighter-rouge">s</code>는 알파벳 소문자로만 이루어져 있습니다.</li>
 </ul>
 
 <h2 id="입출력-예">입출력 예</h2>
@@ -40,12 +40,12 @@ xyb</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">"xyb"</code></td>
-      <td><code class="language-plaintext highlighter-rouge">"yb"</code></td>
+      <td><code class="language-html highlighter-rouge">"xyb"</code></td>
+      <td><code class="language-html highlighter-rouge">"yb"</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">"yxyc"</code></td>
-      <td><code class="language-plaintext highlighter-rouge">"yyc"</code></td>
+      <td><code class="language-html highlighter-rouge">"yxyc"</code></td>
+      <td><code class="language-html highlighter-rouge">"yyc"</code></td>
     </tr>
   </tbody>
 </table>
@@ -82,7 +82,7 @@ yxyc</p>
 
 <h2 id="풀이-1">풀이 1</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 
 <span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="n">char_index_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
@@ -108,7 +108,7 @@ yxyc</p>
 
 <h2 id="풀이-2">풀이 2</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
     
     <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>

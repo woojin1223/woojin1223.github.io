@@ -1,4 +1,4 @@
-I"s,<h2 id="문제-설명">문제 설명</h2>
+I"H,<h2 id="문제-설명">문제 설명</h2>
 
 <p>레스토랑을 운영하던 스카피는 코로나19로 인한 불경기를 극복하고자 메뉴를 새로 구성하려고 고민하고 있습니다.<br />
 기존에는 단품으로만 제공하던 메뉴를 조합해서 코스요리 형태로 재구성해서 새로운 메뉴를 제공하기로 결정했습니다.<br />
@@ -80,29 +80,29 @@
 
 <h2 id="문제">문제</h2>
 
-<p>각 손님들이 주문한 단품메뉴들이 문자열 형식으로 담긴 배열 <code class="language-plaintext highlighter-rouge">orders</code>, “스카피”가 <strong>추가하고 싶어하는</strong> 코스요리를 구성하는 단품메뉴들의 갯수가 담긴 배열 <code class="language-plaintext highlighter-rouge">course</code>가 매개변수로 주어질 때, “스카피”가 새로 추가하게 될 코스요리의 메뉴 구성을 문자열 형태로 배열에 담아 return 하도록 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성해 주세요.</p>
+<p>각 손님들이 주문한 단품메뉴들이 문자열 형식으로 담긴 배열 <code class="language-html highlighter-rouge">orders</code>, “스카피”가 <strong>추가하고 싶어하는</strong> 코스요리를 구성하는 단품메뉴들의 갯수가 담긴 배열 <code class="language-html highlighter-rouge">course</code>가 매개변수로 주어질 때, “스카피”가 새로 추가하게 될 코스요리의 메뉴 구성을 문자열 형태로 배열에 담아 return 하도록 <code class="language-html highlighter-rouge">solution</code> 함수를 완성해 주세요.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">orders</code> 배열의 크기는 2 이상 20 이하입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">orders</code> 배열의 각 원소는 크기가 2 이상 10 이하인 문자열입니다.
+  <li><code class="language-html highlighter-rouge">orders</code> 배열의 크기는 2 이상 20 이하입니다.</li>
+  <li><code class="language-html highlighter-rouge">orders</code> 배열의 각 원소는 크기가 2 이상 10 이하인 문자열입니다.
     <ul>
       <li>각 문자열은 알파벳 대문자로만 이루어져 있습니다.</li>
       <li>각 문자열에는 같은 알파벳이 중복해서 들어있지 않습니다.</li>
     </ul>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">course</code> 배열의 크기는 1 이상 10 이하입니다.
+  <li><code class="language-html highlighter-rouge">course</code> 배열의 크기는 1 이상 10 이하입니다.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">course</code> 배열의 각 원소는 2 이상 10 이하인 자연수가 <strong>오름차순</strong>으로 정렬되어 있습니다.</li>
-      <li><code class="language-plaintext highlighter-rouge">course</code> 배열에는 같은 값이 중복해서 들어있지 않습니다.</li>
+      <li><code class="language-html highlighter-rouge">course</code> 배열의 각 원소는 2 이상 10 이하인 자연수가 <strong>오름차순</strong>으로 정렬되어 있습니다.</li>
+      <li><code class="language-html highlighter-rouge">course</code> 배열에는 같은 값이 중복해서 들어있지 않습니다.</li>
     </ul>
   </li>
   <li>정답은 각 코스요리 메뉴의 구성을 문자열 형식으로 배열에 담아 사전 순으로 <strong>오름차순</strong> 정렬해서 return 해주세요.
     <ul>
       <li>배열의 각 원소에 저장된 문자열 또한 알파벳 <strong>오름차순</strong>으로 정렬되어야 합니다.</li>
       <li>만약 가장 많이 함께 주문된 메뉴 구성이 여러 개라면, 모두 배열에 담아 return 하면 됩니다.</li>
-      <li><code class="language-plaintext highlighter-rouge">orders</code>와 <code class="language-plaintext highlighter-rouge">course</code> 매개변수는 return 하는 배열의 길이가 1 이상이 되도록 주어집니다.</li>
+      <li><code class="language-html highlighter-rouge">orders</code>와 <code class="language-html highlighter-rouge">course</code> 매개변수는 return 하는 배열의 길이가 1 이상이 되도록 주어집니다.</li>
     </ul>
   </li>
 </ul>
@@ -161,7 +161,7 @@
 
 <h2 id="풀이">풀이</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">defaultdict</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">combinations</span>
 
 <span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>

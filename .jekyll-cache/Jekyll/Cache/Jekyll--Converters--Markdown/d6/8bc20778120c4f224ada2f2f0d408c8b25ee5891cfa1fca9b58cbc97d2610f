@@ -1,4 +1,4 @@
-I"�:<h2 id="문제-링크">문제 링크</h2>
+I"�:<h2 id="문제-링크">문제 링크</h2>
 
 <p><a href="https://programmers.co.kr/learn/courses/30/lessons/17679">https://programmers.co.kr/learn/courses/30/lessons/17679</a></p>
 
@@ -25,7 +25,7 @@
 
 <p>위 초기 배치를 문자로 표시하면 아래와 같다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TTTANT
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code>TTTANT
 RRFACC
 RRRFCC
 TRRRAA
@@ -39,9 +39,9 @@ TMMTTJ
 <h2 id="입력-형식">입력 형식</h2>
 
 <ul>
-  <li>입력으로 판의 높이 <code class="language-plaintext highlighter-rouge">m</code>, 폭 <code class="language-plaintext highlighter-rouge">n</code>과 판의 배치 정보 <code class="language-plaintext highlighter-rouge">board</code>가 들어온다.</li>
+  <li>입력으로 판의 높이 <code class="language-html highlighter-rouge">m</code>, 폭 <code class="language-html highlighter-rouge">n</code>과 판의 배치 정보 <code class="language-html highlighter-rouge">board</code>가 들어온다.</li>
   <li>2 ≦ n, m ≦ 30</li>
-  <li><code class="language-plaintext highlighter-rouge">board</code>는 길이 <code class="language-plaintext highlighter-rouge">n</code>인 문자열 <code class="language-plaintext highlighter-rouge">m</code>개의 배열로 주어진다. 블록을 나타내는 문자는 대문자 A에서 Z가 사용된다.</li>
+  <li><code class="language-html highlighter-rouge">board</code>는 길이 <code class="language-html highlighter-rouge">n</code>인 문자열 <code class="language-html highlighter-rouge">m</code>개의 배열로 주어진다. 블록을 나타내는 문자는 대문자 A에서 Z가 사용된다.</li>
 </ul>
 
 <h2 id="출력-형식">출력 형식</h2>
@@ -84,12 +84,12 @@ TMMTTJ
 
 <h2 id="풀이">풀이</h2>
 
-<p><code class="language-plaintext highlighter-rouge">check_block(board, i, j)</code>: <code class="language-plaintext highlighter-rouge">board[i][j]</code>, <code class="language-plaintext highlighter-rouge">board[i][j + 1]</code>, <code class="language-plaintext highlighter-rouge">board[i + 1][j]</code>, <code class="language-plaintext highlighter-rouge">board[i + 1][j + 1]</code>가 같은 모양의 블록인 경우면 <code class="language-plaintext highlighter-rouge">True</code> 아니면 <code class="language-plaintext highlighter-rouge">False</code><br />
-<code class="language-plaintext highlighter-rouge">get_deleted_block(board, i, j)</code>: <code class="language-plaintext highlighter-rouge">board[i][j]</code>, <code class="language-plaintext highlighter-rouge">board[i][j + 1]</code>, <code class="language-plaintext highlighter-rouge">board[i + 1][j]</code>, <code class="language-plaintext highlighter-rouge">board[i + 1][j + 1]</code>가 같은 모양의 블록인 경우 해당하는 index를 집합에 담아서 반환<br />
-<code class="language-plaintext highlighter-rouge">get_lowered_block(board)</code>: 블록이 지워진 후 위에 있는 블록을 아래로 떨어뜨려 <code class="language-plaintext highlighter-rouge">board</code>의 빈 공간을 채워 반환<br />
-<code class="language-plaintext highlighter-rouge">get_deleted_board(m, n, board)</code>: 주어진 <code class="language-plaintext highlighter-rouge">board</code>에서 같은 모양의 2x2 블록을 다 지우고 나서 아래로 떨어뜨린 <code class="language-plaintext highlighter-rouge">board</code>를 반환</p>
+<p><code class="language-html highlighter-rouge">check_block(board, i, j)</code>: <code class="language-html highlighter-rouge">board[i][j]</code>, <code class="language-html highlighter-rouge">board[i][j + 1]</code>, <code class="language-html highlighter-rouge">board[i + 1][j]</code>, <code class="language-html highlighter-rouge">board[i + 1][j + 1]</code>가 같은 모양의 블록인 경우면 <code class="language-html highlighter-rouge">True</code> 아니면 <code class="language-html highlighter-rouge">False</code><br />
+<code class="language-html highlighter-rouge">get_deleted_block(board, i, j)</code>: <code class="language-html highlighter-rouge">board[i][j]</code>, <code class="language-html highlighter-rouge">board[i][j + 1]</code>, <code class="language-html highlighter-rouge">board[i + 1][j]</code>, <code class="language-html highlighter-rouge">board[i + 1][j + 1]</code>가 같은 모양의 블록인 경우 해당하는 index를 집합에 담아서 반환<br />
+<code class="language-html highlighter-rouge">get_lowered_block(board)</code>: 블록이 지워진 후 위에 있는 블록을 아래로 떨어뜨려 <code class="language-html highlighter-rouge">board</code>의 빈 공간을 채워 반환<br />
+<code class="language-html highlighter-rouge">get_deleted_board(m, n, board)</code>: 주어진 <code class="language-html highlighter-rouge">board</code>에서 같은 모양의 2x2 블록을 다 지우고 나서 아래로 떨어뜨린 <code class="language-html highlighter-rouge">board</code>를 반환</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">check_block</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">check_block</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="s">"0"</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">False</span>
     

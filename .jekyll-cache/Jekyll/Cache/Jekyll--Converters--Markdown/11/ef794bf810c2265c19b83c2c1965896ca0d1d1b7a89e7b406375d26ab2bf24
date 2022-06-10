@@ -1,4 +1,4 @@
-I"�<p><img src="https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg" alt="RStudiologo" /></p>
+I"�<p><img src="https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg" alt="RStudiologo" /></p>
 
 <h2 id="소개">소개</h2>
 
@@ -96,15 +96,15 @@
 <p><strong>3</strong>. Alt + -</p>
 
 <ul>
-  <li><strong>Assignment operator</strong>(<code class="language-plaintext highlighter-rouge">&lt;-</code>)를 삽입하는 단축키</li>
+  <li><strong>Assignment operator</strong>(<code class="language-html highlighter-rouge"><span class="nt">&lt;-</span></code>)를 삽입하는 단축키</li>
 </ul>
 
 <p><strong>4</strong>. Ctrl + Shift + M</p>
 
 <ul>
-  <li><strong>Pipe operator</strong>(<code class="language-plaintext highlighter-rouge">%&gt;%</code>)를 삽입하는 단축키
+  <li><strong>Pipe operator</strong>(<code class="language-html highlighter-rouge">%&gt;%</code>)를 삽입하는 단축키
     <ul>
-      <li>Pipe operator에 대한 설명은 <code class="language-plaintext highlighter-rouge">magrittr</code> 패키지 관련 포스팅에서 하겠음</li>
+      <li>Pipe operator에 대한 설명은 <code class="language-html highlighter-rouge">magrittr</code> 패키지 관련 포스팅에서 하겠음</li>
     </ul>
   </li>
 </ul>
@@ -113,7 +113,7 @@
 
 <ul>
   <li>해당하는 줄을 <strong>주석</strong> 처리하는 단축키</li>
-  <li>여러 줄을 드래그하여 <code class="language-plaintext highlighter-rouge">ctrl + shift + c</code> 누르면 드래그된 줄 전부를 주석 처리할 수 있음</li>
+  <li>여러 줄을 드래그하여 <code class="language-html highlighter-rouge">ctrl + shift + c</code> 누르면 드래그된 줄 전부를 주석 처리할 수 있음</li>
   <li>다시 한 번 누르면 주석 해제됨</li>
 </ul>
 
@@ -132,7 +132,7 @@
 
 <ul>
   <li><strong>작업 경로</strong>(working directory)를 설정하는 단축키</li>
-  <li>작업 경로 설정은 <code class="language-plaintext highlighter-rouge">setwd()</code> 함수를 사용하여 할 수도 있고 <code class="language-plaintext highlighter-rouge">ctrl + shift + h</code> 를 눌러 마우스로 직접 경로를 설정할 수도 있음
+  <li>작업 경로 설정은 <code class="language-html highlighter-rouge">setwd()</code> 함수를 사용하여 할 수도 있고 <code class="language-html highlighter-rouge">ctrl + shift + h</code> 를 눌러 마우스로 직접 경로를 설정할 수도 있음
     <ul>
       <li>작업 경로에 대한 자세한 설명은 R 문법에 대한 포스팅에서 하겠음</li>
     </ul>

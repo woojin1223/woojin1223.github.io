@@ -1,4 +1,4 @@
-I"<h2 id="문제-설명">문제 설명</h2>
+I"�<h2 id="문제-설명">문제 설명</h2>
 
 <p>S사에서는 각 부서에 필요한 물품을 지원해 주기 위해 부서별로 물품을 구매하는데 필요한 금액을 조사했습니다.<br />
 그러나, 전체 예산이 정해져 있기 때문에 모든 부서의 물품을 구매해 줄 수는 없습니다.<br />
@@ -7,14 +7,14 @@
 <p>물품을 구매해 줄 때는 각 부서가 신청한 금액만큼을 모두 지원해 줘야 합니다.<br />
 예를 들어 1,000원을 신청한 부서에는 정확히 1,000원을 지원해야 하며, 1,000원보다 적은 금액을 지원해 줄 수는 없습니다.</p>
 
-<p>부서별로 신청한 금액이 들어있는 배열 <code class="language-plaintext highlighter-rouge">d</code> 와 예산 <code class="language-plaintext highlighter-rouge">budget</code> 이 매개변수로 주어질 때, 최대 몇 개의 부서에 물품을 지원해 줄 수 있는지 return 하도록 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성해주세요.</p>
+<p>부서별로 신청한 금액이 들어있는 배열 <code class="language-html highlighter-rouge">d</code> 와 예산 <code class="language-html highlighter-rouge">budget</code> 이 매개변수로 주어질 때, 최대 몇 개의 부서에 물품을 지원해 줄 수 있는지 return 하도록 <code class="language-html highlighter-rouge">solution</code> 함수를 완성해주세요.</p>
 
 <h2 id="제한사항">제한사항</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">d</code> 는 부서별로 신청한 금액이 들어있는 배열이며, 길이(전체 부서의 개수)는 1 이상 100 이하입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">d</code> 의 각 원소는 부서별로 신청한 금액을 나타내며, 부서별 신청 금액은 1 이상 100,000 이하의 자연수입니다.</li>
-  <li><code class="language-plaintext highlighter-rouge">budget</code> 은 예산을 나타내며, 1 이상 10,000,000 이하의 자연수입니다.</li>
+  <li><code class="language-html highlighter-rouge">d</code> 는 부서별로 신청한 금액이 들어있는 배열이며, 길이(전체 부서의 개수)는 1 이상 100 이하입니다.</li>
+  <li><code class="language-html highlighter-rouge">d</code> 의 각 원소는 부서별로 신청한 금액을 나타내며, 부서별 신청 금액은 1 이상 100,000 이하의 자연수입니다.</li>
+  <li><code class="language-html highlighter-rouge">budget</code> 은 예산을 나타내며, 1 이상 10,000,000 이하의 자연수입니다.</li>
   <li>물품을 구매해 줄 수 있는 부서 개수의 최댓값을 return 하세요.</li>
 </ul>
 
@@ -30,14 +30,14 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">[1, 3, 2, 5, 4]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">9</code></td>
-      <td><code class="language-plaintext highlighter-rouge">3</code></td>
+      <td><code class="language-html highlighter-rouge">[1, 3, 2, 5, 4]</code></td>
+      <td><code class="language-html highlighter-rouge">9</code></td>
+      <td><code class="language-html highlighter-rouge">3</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">[2, 2, 3, 3]</code></td>
-      <td><code class="language-plaintext highlighter-rouge">10</code></td>
-      <td><code class="language-plaintext highlighter-rouge">4</code></td>
+      <td><code class="language-html highlighter-rouge">[2, 2, 3, 3]</code></td>
+      <td><code class="language-html highlighter-rouge">10</code></td>
+      <td><code class="language-html highlighter-rouge">4</code></td>
     </tr>
   </tbody>
 </table>
@@ -71,7 +71,7 @@
 
 <h2 id="풀이">풀이</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">budget</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">budget</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">budget</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
     
