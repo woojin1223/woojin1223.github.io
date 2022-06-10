@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "기본 개념"
+title: "[R] 기본 개념"
 categories: R
 tags: R
 ---

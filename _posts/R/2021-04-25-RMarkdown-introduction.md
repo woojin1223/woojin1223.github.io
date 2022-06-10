@@ -1,13 +1,7 @@
 ---
 title: "[RMarkdown] 소개"
-categories: 
-    - RMarkdown
-tags:
-    - R
-    - RMarkdown
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: RMarkdown
+tags: [R, RMarkdown]
 ---
 
 ## 소개
@@ -62,7 +56,7 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 RStudio의 상단 탭에 있는 _File > New File > R Markdown_ 에서 OK를 클릭하여 위 예시와 같이 기본적인 내용이 들어 있는 Rmd 파일을 만들 수 있습니다.  
 그리고 Rmd 파일에서 `Knit` 버튼을 클릭하거나 `Ctrl + Shift + K` 를 누르면 HTML 형식의 보고서가 만들어집니다.
 
-![rmd_tutorial](/assets/images/rmd_tutorial.PNG)  
+![rmd_tutorial](/public/img/2021-04-25-RMarkdown-introduction/rmd_tutorial.PNG)
 
 R Markdown 파일은 다음과 같이 <u>세 가지 요소</u>로 구성되어 있습니다.
 
@@ -74,7 +68,7 @@ R Markdown 파일은 다음과 같이 <u>세 가지 요소</u>로 구성되어 �
 
 아래 그림을 참고하여 R Markdown의 세 가지 구성 요소를 쉽게 이해할 수 있습니다.  
 
-![three_components](/assets/images/three_components.png)
+![three_components](/public/img/2021-04-25-RMarkdown-introduction/three_components.png)
 
 ---
 

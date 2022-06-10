@@ -1,14 +1,7 @@
 ---
 title: "[RMarkdown] R Code Chunk"
-categories: 
-    - RMarkdown
-tags:
-    - R
-    - RMarkdown
-    - RCodeChunk
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: RMarkdown
+tags: [R, RMarkdown, RCodeChunk]
 ---
 
 ## R Code Chunk
@@ -25,7 +18,7 @@ Code Chunk를 만드는 방법은 <b>Markdown에서 코드 블럭을 만드는 �
 또한, 단축키 <code>Ctrl + Alt + I</code> 를 눌러서 Code Chunk를 빠르게 삽입할 수 있다.<br>
 참고로 이 단축키는 R Script 파일에선 작동이 안되고 R Markdown 파일에서만 작동된다.</p>
 
-![three_components](/assets/images/three_components.png)
+![three_components](/public/img/2021-04-25-RMarkdown-R-code-chunk/three_components.png)
 
 ## Code Chunk 실행
 
@@ -223,7 +216,7 @@ hist(rnorm(10))
 (출력 결과)  
 `hist(rnorm(10))` 를 실행하면 평균이 0이고 표준편차가 1인 정규 분포에서 임의 추출된 표본 10개에 대한 히스토그램이 출력된다. 
 
-![histogram](/assets/images/histogram.png)
+![histogram](/public/img/2021-04-25-RMarkdown-R-code-chunk/histogram.png)
 
 (Rmd에서 `results="hide"` 설정을 한 경우)
 

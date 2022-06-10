@@ -1,16 +1,10 @@
 ---
 title: "[RStudio] 기본 개념"
-categories: 
-    - RStudio
-tags:
-    - R
-    - RStudio
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: RStudio
+tags: [R, RStudio]
 ---
 
-![RStudiologo](https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg)
+<center><img src="https://d33wubrfki0l68.cloudfront.net/62bcc8535a06077094ca3c29c383e37ad7334311/a263f/assets/img/logo.svg" height="30px" alt="RStudiologo"></center>
 
 ## 소개
 

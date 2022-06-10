@@ -1,15 +1,9 @@
 ---
 title: "[RMarkdown] YAML Header"
-categories: 
-    - RMarkdown
-tags:
-    - R
-    - RMarkdown
-    - YAML Header
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: RMarkdown
+tags: [R, RMarkdown, YAML Header]
 ---
+
 ## YAML Header
 
 **R Markdown 소개** 포스트에서 R Markdown의 세 가지 구성 요소는 YAML Header, Markdown Text, R Code Chunk라고 언급을 했습니다.  
@@ -56,7 +50,8 @@ hobby: 산책
 }
 ```
 
-#### 2. YAML에서 목록은 Markdown의 목록과 유사하게 글머리 기호 `-` 를 사용하여 작성합니다. 
+#### 2. YAML에서 목록은 Markdown의 목록과 유사하게 글머리 기호 `-` 를 사용하여 작성합니다.
+
 단, 들여쓰기에 유의해야 합니다. 또한, Python의 리스트 형식과 같은 방법으로 한 줄로 작성할 수 있습니다.  
 
 (YAML 예시)
@@ -141,7 +136,7 @@ output: html_document
 
 보고서의 제일 상단에 아래 그림과 같이 출력됩니다.  
 
-![yaml_header](/assets/images/yaml_header.png)
+![yaml_header](/public/img/2021-04-26-RMarkdown-yaml-header/yaml_header.png)
 
 ## 대표적인 key
 

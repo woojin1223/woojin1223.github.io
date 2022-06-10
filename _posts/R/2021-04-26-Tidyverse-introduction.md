@@ -1,17 +1,12 @@
 ---
 title: "[Tidyverse] 소개"
-categories: 
-    - Tidyverse
-tags:
-    - R
-    - Tidyverse
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: Tidyverse
+tags: [R, Tidyverse]
 ---
+
 # Tidyverse - 소개
 
-<center><img src="https://www.tidyverse.org/images/hex-tidyverse.png" height="100px" alt="tidyverse_logo"></center>
+<center><img src="https://www.tidyverse.org/images/hex-tidyverse.png" height="30px" alt="tidyverse_logo"></center>
 
 [Tidyverse 공식 홈페이지](https://www.tidyverse.org/)에 있는 tidyverse 소개 문구를 인용하면서 이 글을 시작하겠습니다.
 
