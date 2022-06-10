@@ -6,8 +6,7 @@ url: https://woojin1223.github.io/
 logo: '/public/img/logo.webp'
 
 # Site configurations
-gems:
-  - jekyll-paginate
+plugins: [jekyll-paginate]
 markdown: kramdown
 kramdown:
   input: GFM
