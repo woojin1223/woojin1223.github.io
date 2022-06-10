@@ -53,7 +53,7 @@ hero:
 
 # Plugins
 mathjax: true # whether support mathjax
-# google_analytics_token: 'G-7BD8CT32B0' # leave blank if you don't want google analytics
+google_analytics_token: 'G-7BD8CT32B0' # leave blank if you don't want google analytics
 # disqus_short_name: # 'greeksharifa-github-io' # leave blank if you don't want disqus
 
 # comments:
@@ -62,11 +62,3 @@ mathjax: true # whether support mathjax
               # "staticman", "staticman_v2", "utterances", "custom"
   # disqus:
     # shortname : # "greeksharifa-github-io"                    # disqus의 shortname 기재
-
-# Analytics
-analytics:
-  provider               : "google-gtag" 
-                          # false (default), "google", "google-universal", "google-gtag", "custom"
-  google:
-    tracking_id          : "G-7BD8CT32B0"
-    anonymize_ip         : # true, false (default)

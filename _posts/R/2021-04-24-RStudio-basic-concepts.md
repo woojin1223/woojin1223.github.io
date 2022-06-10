@@ -52,39 +52,39 @@ toc_label: "목차"
 
 RStudio 사용자에게 도움되는 단축키를 소개합니다.
 
-#### 1. Ctrl + Shift + N
+**1**. Ctrl + Shift + N
 
 - 새 **Script** 창을 생성하는 단축키
     + Script는 코드를 작성하는 공간을 말함
     + R Script의 경우 Script에서 코드 작성 뿐만 아니라 코드 실행도 할 수 있음
 
-#### 2. Ctrl + Enter / Alt + Enter
+**2**. Ctrl + Enter / Alt + Enter
 
 - **Ctrl + Enter**: 해당하는 줄의 코드를 실행 후 다음 줄에 커서 이동
 - **Alt + Enter**: 해당하는 줄의 코드를 실행 (커서 이동 X)
 
-#### 3. Alt + -
+**3**. Alt + -
 
 - **Assignment operator**(`<-`)를 삽입하는 단축키
 
-#### 4. Ctrl + Shift + M
+**4**. Ctrl + Shift + M
 
 - **Pipe operator**(`%>%`)를 삽입하는 단축키
     + Pipe operator에 대한 설명은 `magrittr` 패키지 관련 포스팅에서 하겠음
 
-#### 5. Ctrl + Shift + C
+**5**. Ctrl + Shift + C
 
 - 해당하는 줄을 **주석** 처리하는 단축키
 - 여러 줄을 드래그하여 `ctrl + shift + c` 누르면 드래그된 줄 전부를 주석 처리할 수 있음
 - 다시 한 번 누르면 주석 해제됨
 
-#### 6. Ctrl + Shift + R
+**6**. Ctrl + Shift + R
 
 - **Section**을 삽입하는 단축키
     + Section은 Script 안에서 구역을 나누는 단위를 말함
     + Section에 대한 자세한 설명은 R 문법에 대한 포스팅에서 하겠음
 
-#### 7. Ctrl + Shift + H
+**7**. Ctrl + Shift + H
 
 - **작업 경로**(working directory)를 설정하는 단축키
 - 작업 경로 설정은 `setwd()` 함수를 사용하여 할 수도 있고 `ctrl + shift + h` 를 눌러 마우스로 직접 경로를 설정할 수도 있음
