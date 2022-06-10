@@ -1,15 +1,7 @@
 ---
 title: "[프로그래머스] 뉴스 클러스터링"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 카카오
-    - 문자열
-    - 정규표현식
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: 코딩테스트
+tags: [프로그래머스, 카카오, 문자열, 정규표현식]
 ---
 
 ## 문제 설명

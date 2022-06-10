@@ -1,16 +1,7 @@
 ---
 title: "[프로그래머스] 수식 최대화"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 카카오
-    - 문자열
-    - 정규표현식
-    - 완전탐색
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: 코딩테스트
+tags: [프로그래머스, 카카오, 문자열, 정규표현식, 완전탐색]
 ---
 
 ## 문제 설명

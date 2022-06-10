@@ -1,16 +1,7 @@
 ---
 title: "[프로그래머스][파이썬] 프렌즈4블록"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 파이썬
-    - 카카오
-    - 행렬
-    - 구현
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: 코딩테스트
+tags: [프로그래머스, 파이썬, 카카오, 행렬, 구현]
 ---
 
 ## 문제 링크
