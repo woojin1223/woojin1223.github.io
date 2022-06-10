@@ -1,13 +1,7 @@
 ---
 title: "[프로그래머스] 나머지 한 점"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 해시
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: 코딩테스트
+tags: [프로그래머스, 해시]
 ---
 
 ## 문제 설명

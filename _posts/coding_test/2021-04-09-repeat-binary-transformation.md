@@ -1,13 +1,7 @@
 ---
 title: "[프로그래머스] 이진 변환 반복하기"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 문자열
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: 코딩테스트
+tags: [프로그래머스, 문자열]
 ---
 
 ## 문제 설명

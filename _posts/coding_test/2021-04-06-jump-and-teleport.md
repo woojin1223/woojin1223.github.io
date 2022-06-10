@@ -1,13 +1,7 @@
 ---
 title: "[프로그래머스] 점프와 순간 이동"
-categories: 
-    - 코딩테스트
-tags: 
-    - 프로그래머스
-    - 탐욕법
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: 코딩테스트
+tags: [프로그래머스, 탐욕법]
 ---
 
 ## 문제 설명
