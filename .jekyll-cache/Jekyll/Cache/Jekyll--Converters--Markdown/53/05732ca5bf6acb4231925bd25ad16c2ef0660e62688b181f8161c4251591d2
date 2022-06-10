@@ -1,0 +1,153 @@
+I"	0<h2 id="문제-설명">문제 설명</h2>
+
+<p>m x n 크기인 사무실이 있습니다.<br />
+사무실에는 전염병에 걸린 직원이 있는데, 이 직원은 매일 상하좌우로 병을 퍼트려 다른 직원을 감염시킵니다.<br />
+단, 백신을 접종한 직원은 면역력이 있어 감염되지 않습니다.</p>
+
+<p>예를 들어 2 x 4 크기 사무실에서, 병에 걸린 직원의 위치가 (1, 4), (2, 2)이고 백신을 맞은 직원의 위치가 (1, 2)입니다.<br />
+이때 백신을 맞은 직원을 제외한 모든 직원이 병에 감염되기 까지는 이틀이 소요됩니다.</p>
+
+<p>0일</p>
+
+<p><img src="https://grepp-programmers.s3.amazonaws.com/files/production/9c4fb28f8a/efffcfc1-f803-46fc-b3fd-54169a20600b.png" alt="그림1" /></p>
+
+<p>1일</p>
+
+<p><img src="https://grepp-programmers.s3.amazonaws.com/files/production/9fdf14b30f/178463e2-09ad-46ae-a4d9-571572271946.png" alt="그림2" /></p>
+
+<p>2일</p>
+
+<p><img src="https://grepp-programmers.s3.amazonaws.com/files/production/49d73ec1ca/4cc4355f-407c-4d26-b1d6-87ba7f374a65.png" alt="그림3" /></p>
+
+<p>사무실의 크기 <code class="language-plaintext highlighter-rouge">m</code>, <code class="language-plaintext highlighter-rouge">n</code>과 병에 걸린 직원의 위치 <code class="language-plaintext highlighter-rouge">infests</code>, 백신을 맞은 직원의 위치 <code class="language-plaintext highlighter-rouge">vaccinateds</code> 가 매개변수로 주어집니다.<br />
+이때 <strong>백신을 맞은 직원을 제외한 모든 직원이 병에 감염되기까지 며칠이 걸리는지</strong> return 하는 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 완성해주세요.</p>
+
+<h2 id="제한사항">제한사항</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">m</code>과 <code class="language-plaintext highlighter-rouge">n</code>은 1 이상 300 이하인 자연수입니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">infests</code> 의 길이는 1 이상 <code class="language-plaintext highlighter-rouge">m</code> * <code class="language-plaintext highlighter-rouge">n</code> 이하입니다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">infests</code> 의 원소는 <code class="language-plaintext highlighter-rouge">[a, b]</code> 형식이며, 1 ≤ a ≤ m, 1 ≤ b ≤ n입니다.</li>
+      <li><code class="language-plaintext highlighter-rouge">infests</code> 에는 같은 원소가 두 번 이상 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">vaccinateds</code> 는 길이가 1 이상 m * n 이하입니다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">vaccinateds</code> 의 원소는 <code class="language-plaintext highlighter-rouge">[a, b]</code> 형식이며, 1 ≤ a ≤ m, 1 ≤ b ≤ n입니다.</li>
+      <li><code class="language-plaintext highlighter-rouge">vaccinateds</code> 에는 같은 원소가 두 번 이상 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li>백신을 맞은 직원이 병에 걸린 경우는 주어지지 않습니다.</li>
+  <li>병을 아무리 퍼트려도 백신을 맞은 직원을 제외한 모든 직원이 병에 감염될 수 없다면 -1을 리턴합니다.</li>
+</ul>
+
+<h2 id="입출력-예">입출력 예</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>m</th>
+      <th>n</th>
+      <th>infests</th>
+      <th>vaccinateds</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">2</code></td>
+      <td><code class="language-plaintext highlighter-rouge">4</code></td>
+      <td><code class="language-plaintext highlighter-rouge">[[1, 4], [2, 2]]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">[[1, 2]]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">2</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">2</code></td>
+      <td><code class="language-plaintext highlighter-rouge">3</code></td>
+      <td><code class="language-plaintext highlighter-rouge">[[2, 2]]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">[[1, 2], [2, 1], [2, 3]]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">-1</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">2</code></td>
+      <td><code class="language-plaintext highlighter-rouge">2</code></td>
+      <td><code class="language-plaintext highlighter-rouge">[[1, 1], [2, 2]]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">[[1, 2], [2, 1]]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="입출력-예에-대한-설명">입출력 예에 대한 설명</h2>
+
+<ul>
+  <li>입출력 예 #1</li>
+</ul>
+
+<p>문제의 예시와 같습니다.</p>
+
+<ul>
+  <li>입출력 예 #2</li>
+</ul>
+
+<p><img src="https://grepp-programmers.s3.amazonaws.com/files/production/931ce64a33/486ea8a6-4d6f-45b1-9af2-35e36e049326.png" alt="그림4" /></p>
+
+<p>전염병자의 근처가 백신 접종자로 막혀있어, 다른 직원에게 병이 도달하지 않습니다.<br />
+따라서 -1을 리턴합니다.</p>
+
+<ul>
+  <li>입출력 예 #3</li>
+</ul>
+
+<p><img src="https://grepp-programmers.s3.amazonaws.com/files/production/93d4ee8842/77ec17c9-949f-4ccb-bf11-2c3010a2f9a8.png" alt="그림5" /></p>
+
+<p>처음부터 모든 직원이 전염병을 앓고 있거나, 백신을 맞은 상태입니다.<br />
+따라서 0을 리턴합니다.</p>
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">infests</span><span class="p">,</span> <span class="n">vaccinateds</span><span class="p">):</span>
+    <span class="n">infested</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">infests</span><span class="p">:</span>
+        <span class="n">infested</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vaccinateds</span><span class="p">:</span>
+        <span class="n">infested</span><span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="n">infests</span><span class="p">])</span>
+    <span class="n">dirs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="n">new_infest</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">infest</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">infest</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">i</span>
+
+            <span class="k">for</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+                <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">-</span> <span class="mi">1</span>
+
+                <span class="k">if</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="n">m</span> <span class="ow">or</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="k">if</span> <span class="n">infested</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">infested</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">new_infest</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="n">nx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ny</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        
+        <span class="k">if</span> <span class="n">new_infest</span><span class="p">:</span>
+            <span class="n">queue</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_infest</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="nb">sum</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">infested</span><span class="p">))</span> <span class="o">!=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">n</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">count</span>
+</code></pre></div></div>
+:ET

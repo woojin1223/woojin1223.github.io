@@ -1,0 +1,151 @@
+I"�:<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/17679">https://programmers.co.kr/learn/courses/30/lessons/17679</a></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p>블라인드 공채를 통과한 신입 사원 라이언은 신규 게임 개발 업무를 맡게 되었다.<br />
+이번에 출시할 게임 제목은 “프렌즈4블록”.<br />
+같은 모양의 카카오프렌즈 블록이 2×2 형태로 4개가 붙어있을 경우 사라지면서 점수를 얻는 게임이다.</p>
+
+<p><img src="http://t1.kakaocdn.net/welcome2018/pang1.png" alt="image1" /></p>
+
+<p>만약 판이 위와 같이 주어질 경우, 라이언이 2×2로 배치된 7개 블록과 콘이 2×2로 배치된 4개 블록이 지워진다.<br />
+같은 블록은 여러 2×2에 포함될 수 있으며, 지워지는 조건에 만족하는 2×2 모양이 여러 개 있다면 한꺼번에 지워진다.</p>
+
+<p><img src="http://t1.kakaocdn.net/welcome2018/pang2.png" alt="image2" /></p>
+
+<p>블록이 지워진 후에 위에 있는 블록이 아래로 떨어져 빈 공간을 채우게 된다.</p>
+
+<p><img src="http://t1.kakaocdn.net/welcome2018/pang3.png" alt="image3" /></p>
+
+<p>만약 빈 공간을 채운 후에 다시 2×2 형태로 같은 모양의 블록이 모이면 다시 지워지고 떨어지고를 반복하게 된다.</p>
+
+<p><img src="http://t1.kakaocdn.net/welcome2018/pang4.png" alt="image4" /></p>
+
+<p>위 초기 배치를 문자로 표시하면 아래와 같다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TTTANT
+RRFACC
+RRRFCC
+TRRRAA
+TTMMMF
+TMMTTJ
+</code></pre></div></div>
+
+<p>각 문자는 라이언(R), 무지(M), 어피치(A), 프로도(F), 네오(N), 튜브(T), 제이지(J), 콘(C)을 의미한다.<br />
+입력으로 블록의 첫 배치가 주어졌을 때, 지워지는 블록은 모두 몇 개인지 판단하는 프로그램을 제작하라.</p>
+
+<h2 id="입력-형식">입력 형식</h2>
+
+<ul>
+  <li>입력으로 판의 높이 <code class="language-plaintext highlighter-rouge">m</code>, 폭 <code class="language-plaintext highlighter-rouge">n</code>과 판의 배치 정보 <code class="language-plaintext highlighter-rouge">board</code>가 들어온다.</li>
+  <li>2 ≦ n, m ≦ 30</li>
+  <li><code class="language-plaintext highlighter-rouge">board</code>는 길이 <code class="language-plaintext highlighter-rouge">n</code>인 문자열 <code class="language-plaintext highlighter-rouge">m</code>개의 배열로 주어진다. 블록을 나타내는 문자는 대문자 A에서 Z가 사용된다.</li>
+</ul>
+
+<h2 id="출력-형식">출력 형식</h2>
+
+<p>입력으로 주어진 판 정보를 가지고 몇 개의 블록이 지워질지 출력하라.</p>
+
+<h2 id="입출력-예시">입출력 예시</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>m</th>
+      <th>n</th>
+      <th>board</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>[“CCBDE”, “AAADE”, “AAABF”, “CCBBF”]</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>6</td>
+      <td>[“TTTANT”, “RRFACC”, “RRRFCC”, “TRRRAA”, “TTMMMF”, “TMMTTJ”]</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="예제에-대한-설명">예제에 대한 설명</h2>
+
+<ul>
+  <li>입출력 예제 1의 경우, 첫 번째에는 A 블록 6개가 지워지고, 두 번째에는 B 블록 4개와 C 블록 4개가 지워져, 모두 14개의 블록이 지워진다.</li>
+  <li>입출력 예제 2는 본문 설명에 있는 그림을 옮긴 것이다. 11개와 4개의 블록이 차례로 지워지며, 모두 15개의 블록이 지워진다.</li>
+</ul>
+
+<h2 id="풀이">풀이</h2>
+
+<p><code class="language-plaintext highlighter-rouge">check_block(board, i, j)</code>: <code class="language-plaintext highlighter-rouge">board[i][j]</code>, <code class="language-plaintext highlighter-rouge">board[i][j + 1]</code>, <code class="language-plaintext highlighter-rouge">board[i + 1][j]</code>, <code class="language-plaintext highlighter-rouge">board[i + 1][j + 1]</code>가 같은 모양의 블록인 경우면 <code class="language-plaintext highlighter-rouge">True</code> 아니면 <code class="language-plaintext highlighter-rouge">False</code><br />
+<code class="language-plaintext highlighter-rouge">get_deleted_block(board, i, j)</code>: <code class="language-plaintext highlighter-rouge">board[i][j]</code>, <code class="language-plaintext highlighter-rouge">board[i][j + 1]</code>, <code class="language-plaintext highlighter-rouge">board[i + 1][j]</code>, <code class="language-plaintext highlighter-rouge">board[i + 1][j + 1]</code>가 같은 모양의 블록인 경우 해당하는 index를 집합에 담아서 반환<br />
+<code class="language-plaintext highlighter-rouge">get_lowered_block(board)</code>: 블록이 지워진 후 위에 있는 블록을 아래로 떨어뜨려 <code class="language-plaintext highlighter-rouge">board</code>의 빈 공간을 채워 반환<br />
+<code class="language-plaintext highlighter-rouge">get_deleted_board(m, n, board)</code>: 주어진 <code class="language-plaintext highlighter-rouge">board</code>에서 같은 모양의 2x2 블록을 다 지우고 나서 아래로 떨어뜨린 <code class="language-plaintext highlighter-rouge">board</code>를 반환</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">check_block</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="s">"0"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    
+    <span class="n">block_sum</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">block_sum</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+<span class="k">def</span> <span class="nf">get_deleted_block</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">check_block</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">get_lowered_board</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+    <span class="n">board_colwise</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">board</span><span class="p">)]</span> 
+    
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">board_colwise</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s">"0"</span><span class="p">:</span>
+                <span class="n">col</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">board_colwise</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">get_deleted_board</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
+    <span class="n">deleted_block</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">deleted_block</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">get_deleted_block</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">deleted_block</span><span class="p">:</span>
+        <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="s">"0"</span>
+    
+    <span class="n">board</span> <span class="o">=</span> <span class="n">get_lowered_board</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+                
+    <span class="k">return</span> <span class="n">board</span>
+
+<span class="k">def</span> <span class="nf">count_zeros</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="s">"0"</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
+    <span class="n">board</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">board</span><span class="p">]</span>
+    
+    <span class="k">while</span> <span class="n">board</span> <span class="o">!=</span> <span class="n">get_deleted_board</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
+        <span class="n">board</span> <span class="o">=</span> <span class="n">get_deleted_board</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">count_zeros</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
+</code></pre></div></div>
+:ET

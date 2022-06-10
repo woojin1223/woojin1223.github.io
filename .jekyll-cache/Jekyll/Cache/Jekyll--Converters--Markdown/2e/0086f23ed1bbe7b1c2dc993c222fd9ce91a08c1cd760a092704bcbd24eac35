@@ -1,0 +1,93 @@
+I"�<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42885">https://programmers.co.kr/learn/courses/30/lessons/42885</a></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p>무인도에 갇힌 사람들을 구명보트를 이용하여 구출하려고 합니다. 구명보트는 작아서 <strong>한 번에 최대 2명</strong>씩 밖에 탈 수 없고, <strong>무게 제한</strong>도 있습니다.<br />
+예를 들어, 사람들의 몸무게가 <code class="language-plaintext highlighter-rouge">[70kg, 50kg, 80kg, 50kg]</code>이고 구명보트의 무게 제한이 <code class="language-plaintext highlighter-rouge">100kg</code>이라면 2번째 사람과 4번째 사람은 같이 탈 수 있지만 1번째 사람과 3번째 사람의 무게의 합은 150kg이므로 구명보트의 무게 제한을 초과하여 같이 탈 수 없습니다.<br />
+<strong>구명보트를 최대한 적게 사용</strong>하여 모든 사람을 구출하려고 합니다.<br />
+사람들의 몸무게를 담은 배열 <code class="language-plaintext highlighter-rouge">people</code>과 구명보트의 무게 제한 <code class="language-plaintext highlighter-rouge">limit</code>가 매개변수로 주어질 때, 모든 사람을 구출하기 위해 필요한 <strong>구명보트 개수의 최솟값</strong>을 return 하도록 <code class="language-plaintext highlighter-rouge">solution</code> 함수를 작성해주세요.</p>
+
+<h2 id="제한사항">제한사항</h2>
+
+<ul>
+  <li>무인도에 갇힌 사람은 1명 이상 50,000명 이하입니다.</li>
+  <li>각 사람의 몸무게는 40kg 이상 240kg 이하입니다.</li>
+  <li>구명보트의 무게 제한은 40kg 이상 240kg 이하입니다.</li>
+  <li>구명보트의 무게 제한은 항상 사람들의 몸무게 중 최댓값보다 크게 주어지므로 사람들을 구출할 수 없는 경우는 없습니다.</li>
+</ul>
+
+<h2 id="입출력-예">입출력 예</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>people</th>
+      <th>limit</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[70, 50, 80, 50]</td>
+      <td>100</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>[70, 80, 50]</td>
+      <td>100</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="풀이-1">풀이 1</h2>
+
+<p>구명보트에는 <strong>무게 제한</strong>과 <strong>인원 제한</strong>이 있습니다.<br />
+구명보트를 최소한으로 사용하려면 매번 무게 제한을 크게 벗어나지 않게 사람들을 태워야 합니다.<br />
+즉, 사람들을 몸무게 기준으로 오름차순 정렬한 후, 제일 무거운 사람과 제일 가벼운 사람의 무게의 합이 <code class="language-plaintext highlighter-rouge">limit</code> 이하라면 보트에 태우고 초과라면 제일 무거운 사람만 태우는 작업을 반복합니다.<br />
+위 작업은 <code class="language-plaintext highlighter-rouge">collections</code> 모듈의 <code class="language-plaintext highlighter-rouge">deque</code> 클래스를 사용하면 쉽게 구현할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">people</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
+    <span class="n">people</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">people</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
+    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">while</span> <span class="n">people</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">people</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">people</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">people</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">:</span>
+            <span class="n">people</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">people</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">people</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+        
+        <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+    <span class="k">return</span> <span class="n">cnt</span>
+</code></pre></div></div>
+
+<h2 id="풀이-2">풀이 2</h2>
+
+<p>로직은 <strong>풀이 1</strong>과 동일합니다.<br />
+하지만, <strong>풀이 1</strong>은 <code class="language-plaintext highlighter-rouge">deque</code>을 사용하여 구현했다면 <strong>풀이 2</strong>는 투포인터 방법을 사용하여 구현합니다.<br />
+투포인터 방법을 사용하여 2명을 태운 보트의 개수를 <code class="language-plaintext highlighter-rouge">answer</code>에 저장합니다.<br />
+2명을 태우지 않았다면 1명만 태운 것이므로 전체 사람 수에다가 <code class="language-plaintext highlighter-rouge">answer</code>을 뺀 값이 정답입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">people</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
+    <span class="n">people</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
+    <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">people</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="n">people</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="n">end</span> <span class="o">-=</span> <span class="mi">1</span>
+    
+    <span class="k">return</span> <span class="n">n</span> <span class="o">-</span> <span class="n">answer</span>
+</code></pre></div></div>
+:ET

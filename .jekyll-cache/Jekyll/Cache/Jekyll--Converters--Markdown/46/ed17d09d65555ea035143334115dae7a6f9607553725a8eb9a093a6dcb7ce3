@@ -1,0 +1,130 @@
+I"^0<h2 id="문제-설명">문제 설명</h2>
+
+<p>여러 언론사에서 쏟아지는 뉴스, 특히 속보성 뉴스를 보면 비슷비슷한 제목의 기사가 많아 정작 필요한 기사를 찾기가 어렵다.<br />
+Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들이 편리하게 다양한 뉴스를 찾아볼 수 있도록 문제점을 개선하는 업무를 맡게 되었다.</p>
+
+<p>개발의 방향을 잡기 위해 튜브는 우선 최근 화제가 되고 있는 “카카오 신입 개발자 공채” 관련 기사를 검색해보았다.</p>
+
+<ul>
+  <li>카카오 첫 공채..’블라인드’ 방식 채용</li>
+  <li>카카오, 합병 후 첫 공채.. 블라인드 전형으로 개발자 채용</li>
+  <li>카카오, 블라인드 전형으로 신입 개발자 공채</li>
+  <li>카카오 공채, 신입 개발자 코딩 능력만 본다</li>
+  <li>카카오, 신입 공채.. “코딩 실력만 본다”</li>
+  <li>카카오 “코딩 능력만으로 2018 신입 개발자 뽑는다”</li>
+</ul>
+
+<p>기사의 제목을 기준으로 “블라인드 전형”에 주목하는 기사와 “코딩 테스트”에 주목하는 기사로 나뉘는 걸 발견했다.<br />
+튜브는 이들을 각각 묶어서 보여주면 카카오 공채 관련 기사를 찾아보는 사용자에게 유용할 듯싶었다.</p>
+
+<p>유사한 기사를 묶는 기준을 정하기 위해서 논문과 자료를 조사하던 튜브는 “자카드 유사도”라는 방법을 찾아냈다.</p>
+
+<p><strong>자카드 유사도</strong>는 집합 간의 유사도를 검사하는 여러 방법 중의 하나로 알려져 있다.<br />
+두 집합 <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code> 사이의 자카드 유사도 <code class="language-plaintext highlighter-rouge">J(A, B)</code>는 두 집합의 교집합 크기를 두 집합의 합집합 크기로 나눈 값으로 정의된다.</p>
+
+<p>예를 들어 집합 <code class="language-plaintext highlighter-rouge">A</code> = {1, 2, 3}, 집합 <code class="language-plaintext highlighter-rouge">B</code> = {2, 3, 4}라고 할 때, 교집합 <code class="language-plaintext highlighter-rouge">A ∩ B</code> = {2, 3}, 합집합 <code class="language-plaintext highlighter-rouge">A ∪ B</code> = {1, 2, 3, 4}이 되므로, 집합 <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code> 사이의 자카드 유사도 <code class="language-plaintext highlighter-rouge">J(A, B)</code> = 2/4 = 0.5가 된다.<br />
+집합 A와 집합 B가 모두 공집합일 경우에는 나눗셈이 정의되지 않으니 따로 <code class="language-plaintext highlighter-rouge">J(A, B)</code> = 1로 정의한다.</p>
+
+<p>자카드 유사도는 원소의 중복을 허용하는 다중집합에 대해서 확장할 수 있다.<br />
+다중집합 <code class="language-plaintext highlighter-rouge">A</code>는 원소 “1”을 3개 가지고 있고, 다중집합 <code class="language-plaintext highlighter-rouge">B</code>는 원소 “1”을 5개 가지고 있다고 하자.<br />
+이 다중집합의 교집합 <code class="language-plaintext highlighter-rouge">A ∩ B</code>는 원소 “1”을 min(3, 5)인 3개, 합집합 <code class="language-plaintext highlighter-rouge">A ∪ B</code>는 원소 “1”을 max(3, 5)인 5개 가지게 된다.<br />
+다중집합 <code class="language-plaintext highlighter-rouge">A</code> = {1, 1, 2, 2, 3}, 다중집합 <code class="language-plaintext highlighter-rouge">B</code> = {1, 2, 2, 4, 5}라고 하면, 교집합 <code class="language-plaintext highlighter-rouge">A ∩ B</code> = {1, 2, 2}, 합집합 <code class="language-plaintext highlighter-rouge">A ∪ B</code> = {1, 1, 2, 2, 3, 4, 5}가 되므로, 자카드 유사도 <code class="language-plaintext highlighter-rouge">J(A, B)</code> = 3/7, 약 0.42가 된다.</p>
+
+<p>이를 이용하여 문자열 사이의 유사도를 계산하는데 이용할 수 있다.<br />
+문자열 <code class="language-plaintext highlighter-rouge">"FRANCE</code>“와 <code class="language-plaintext highlighter-rouge">"FRENCH"</code>가 주어졌을 때, 이를 두 글자씩 끊어서 다중집합을 만들 수 있다.<br />
+각각 {FR, RA, AN, NC, CE}, {FR, RE, EN, NC, CH}가 되며, 교집합은 {FR, NC}, 합집합은 {FR, RA, AN, NC, CE, RE, EN, CH}가 되므로, 두 문자열 사이의 자카드 유사도 <code class="language-plaintext highlighter-rouge">J("FRANCE", "FRENCH")</code> = 2/8 = 0.25가 된다.</p>
+
+<h2 id="입력-형식">입력 형식</h2>
+
+<ul>
+  <li>입력으로는 <code class="language-plaintext highlighter-rouge">str1</code>과 <code class="language-plaintext highlighter-rouge">str2</code>의 두 문자열이 들어온다. 각 문자열의 길이는 2 이상, 1,000 이하이다.</li>
+  <li>입력으로 들어온 문자열은 두 글자씩 끊어서 다중집합의 원소로 만든다. 이때 영문자로 된 글자 쌍만 유효하고, 기타 공백이나 숫자, 특수 문자가 들어있는 경우는 그 글자 쌍을 버린다. 예를 들어 “ab+”가 입력으로 들어오면, “ab”만 다중집합의 원소로 삼고, “b+”는 버린다.</li>
+  <li>다중집합 원소 사이를 비교할 때, 대문자와 소문자의 차이는 무시한다. “AB”와 “Ab”, “ab”는 같은 원소로 취급한다.</li>
+</ul>
+
+<h2 id="출력-형식">출력 형식</h2>
+
+<p>입력으로 들어온 두 문자열의 자카드 유사도를 출력한다.<br />
+유사도 값은 0에서 1 사이의 실수이므로, 이를 다루기 쉽도록 65536을 곱한 후에 소수점 아래를 버리고 정수부만 출력한다.</p>
+
+<h2 id="입출력-예">입출력 예</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>str1</th>
+      <th>str2</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FRANCE</td>
+      <td>french</td>
+      <td>16384</td>
+    </tr>
+    <tr>
+      <td>handshake</td>
+      <td>shake hands</td>
+      <td>65536</td>
+    </tr>
+    <tr>
+      <td>aa1+aa2</td>
+      <td>AAAA12</td>
+      <td>43690</td>
+    </tr>
+    <tr>
+      <td>E=M*C^2</td>
+      <td>e=m*c^2</td>
+      <td>65536</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">search</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span> <span class="n">str2</span><span class="p">):</span>
+    <span class="n">str1</span><span class="p">,</span> <span class="n">str2</span> <span class="o">=</span> <span class="n">str1</span><span class="p">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">str2</span><span class="p">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">str1</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s">"[^a-z]"</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+            <span class="n">A</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">str2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">str2</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s">"[^a-z]"</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+            <span class="n">B</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">65536</span>
+    
+    <span class="n">result_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result_dict</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="nb">KeyError</span><span class="p">:</span>
+            <span class="n">result_dict</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">B</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result_dict</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="nb">KeyError</span><span class="p">:</span>
+            <span class="n">result_dict</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">numerator</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">denominator</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result_dict</span><span class="p">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">numerator</span> <span class="o">+=</span> <span class="nb">min</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">denominator</span> <span class="o">+=</span> <span class="nb">max</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="mi">65536</span> <span class="o">*</span> <span class="p">(</span><span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">))</span>
+</code></pre></div></div>
+:ET

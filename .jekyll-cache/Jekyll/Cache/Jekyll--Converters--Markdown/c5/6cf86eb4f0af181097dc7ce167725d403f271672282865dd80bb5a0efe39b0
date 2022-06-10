@@ -1,0 +1,70 @@
+I";<h2 id="문제-설명">문제 설명</h2>
+
+<p>효진이는 멀리 뛰기를 연습하고 있습니다. 효진이는 한번에 1칸, 또는 2칸을 뛸 수 있습니다. 칸이 총 4개 있을 때, 효진이는</p>
+
+<p>(1칸, 1칸, 1칸, 1칸)<br />
+(1칸, 2칸, 1칸)<br />
+(1칸, 1칸, 2칸)<br />
+(2칸, 1칸, 1칸)<br />
+(2칸, 2칸)</p>
+
+<p>의 5가지 방법으로 맨 끝 칸에 도달할 수 있습니다.<br />
+멀리뛰기에 사용될 칸의 수 <code class="language-plaintext highlighter-rouge">n</code>이 주어질 때, 효진이가 끝에 도달하는 방법이 몇 가지인지 알아내, 여기에 1234567를 나눈 나머지를 리턴하는 함수, <code class="language-plaintext highlighter-rouge">solution</code>을 완성하세요.<br />
+예를 들어 4가 입력된다면, 5를 return하면 됩니다.</p>
+
+<h2 id="제한-사항">제한 사항</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">n</code>은 1 이상, 2000 이하인 정수입니다.</li>
+</ul>
+
+<h2 id="입출력-예">입출력 예</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><code class="language-plaintext highlighter-rouge">n</code></th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="입출력-예-설명">입출력 예 설명</h2>
+
+<h3 id="입출력-예-1">입출력 예 #1</h3>
+
+<p>위에서 설명한 내용과 같습니다.</p>
+
+<h3 id="입출력-예-2">입출력 예 #2</h3>
+
+<p>(2칸, 1칸)<br />
+(1칸, 2칸)<br />
+(1칸, 1칸, 1칸)<br />
+총 3가지 방법으로 멀리 뛸 수 있습니다.</p>
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a_1</span><span class="p">,</span> <span class="n">a_2</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+    
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a_1</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a_2</span>
+    
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="n">a_1</span><span class="p">,</span> <span class="n">a_2</span> <span class="o">=</span> <span class="n">a_2</span><span class="p">,</span> <span class="n">a_1</span> <span class="o">+</span> <span class="n">a_2</span>
+    
+    <span class="k">return</span> <span class="n">a_2</span> <span class="o">%</span> <span class="mi">1234567</span>
+</code></pre></div></div>
+:ET
