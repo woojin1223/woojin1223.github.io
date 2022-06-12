@@ -3,7 +3,7 @@ title: WJ's blog
 tagline: '변화를 위한 첫걸음'
 description: 'blog for change'
 url: https://woojin1223.github.io/
-logo: '/public/img/logo.png'
+logo: '/public/img/favicon.ico'
 
 # Site configurations
 plugins: [jekyll-paginate]
