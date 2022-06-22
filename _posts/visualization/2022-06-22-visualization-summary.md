@@ -1,6 +1,5 @@
 ---
-layout: post
-title: "[시각화] 정리"
+title: "시각화 정리"
 categories: 시각화
 tags: R
 ---
@@ -38,7 +37,7 @@ tags: R
 `geom_point()`를 사용하여 기본적인 산점도를 그리고 `geom_smooth()`를 통해서 스무딩 선을 표현할 수 있다.
 
 ```r
-options(scipen=999) # turn-off scientific notation like 1e+48
+options(scipen = 999) # turn-off scientific notation like 1e+48
 library(ggplot2)
 theme_set(theme_bw()) # pre-set the bw theme.
 data("midwest", package = "ggplot2")
