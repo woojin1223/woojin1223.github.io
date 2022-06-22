@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "[R] 기본 개념"
 categories: R
 tags: R

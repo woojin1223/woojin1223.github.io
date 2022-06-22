@@ -1,15 +1,9 @@
 ---
 title: "[RMarkdown] Markdown"
-categories: 
-    - RMarkdown
-tags:
-    - R
-    - RMarkdown
-    - Markdown
-toc: true
-toc_sticky: true
-toc_label: "목차"
+categories: RMarkdown
+tags: [R, RMarkdown, Markdown]
 ---
+
 <center><img src="https://raw.githubusercontent.com/dcurtis/markdown-mark/360a3657fef7f6ad0b303296a95ad52985caa0d3/svg/markdown-mark.svg" height="150px" alt="markdown_logo"></center>
 
 ## Markdown
