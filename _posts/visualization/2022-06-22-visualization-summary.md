@@ -553,19 +553,40 @@ ggplot(df, aes(x = x, y = y, fill = category)) +
 구성을 보여주는 전형적인 방법인 원형 차트는 전달된 정보의 관점에서 와플 차트와 거의 동일하다. `geom_bar()`와 `coord_polar()을` 활용하여 구현할 수 있다.
 
 ```r
+library(dplyr)
+library(forcats)
 library(ggplot2)
-theme_set(theme_classic())
+library(ggrepel)
+
+# prepare data
+df <- mpg %>% 
+  group_by(class) %>% 
+  summarize(cnt = n()) %>% 
+  mutate(prop = round((cnt / sum(cnt)) * 100, 1)) %>% 
+  arrange(prop)
+
+text_df <- df %>% 
+    mutate(csum = rev(cumsum(rev(prop))), 
+         pos = prop/2 + lead(csum, 1),
+         pos = if_else(is.na(pos), prop/2, pos))
 
 # pie chart
-ggplot(mpg, aes(x = "", fill = factor(class))) + 
-  geom_bar(width = 1) + 
-  theme(axis.line = element_blank(), plot.title = element_text(hjust = 0.5)) +
-  labs(title = "Pie chart of class", 
-       fill = "class", 
-       x = "", 
-       y = "") + 
+df %>% 
+  ggplot(aes(x = "", y = prop, fill = fct_inorder(class))) +
+  geom_bar(color = "black", stat = "identity") +
   coord_polar(theta = "y", start = 0) +
-  scale_fill_brewer(palette = "BrBG")
+  geom_label_repel(data = text_df,
+                   aes(y = pos, label = paste0(prop, "%")),
+                   size = 4.5, nudge_x = 1, show.legend = FALSE) +
+  guides(fill = guide_legend(reverse = TRUE)) +
+  theme(axis.line = element_blank(), 
+        axis.text = element_blank(), 
+        plot.title = element_text(hjust = 0.5)) +
+  labs(x = "", 
+       y = "", 
+       title = "Pie chart of class", 
+       fill = "class") + 
+  scale_fill_brewer(palette = "Pastel1")
 ```
 
 ![](/public/img/2022-06-22-visualization-summary/pie_chart-1.png)
