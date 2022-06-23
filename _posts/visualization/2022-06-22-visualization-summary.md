@@ -224,6 +224,8 @@ ggplot(economics[1:100,], aes(x = date, y = returns_perc)) +
 
 ![](/public/img/2022-06-22-visualization-summary/area_chart-1.png)
 
+<div style="margin-bottom:100px;"></div>
+
 # 순위 (Ranking)
 
 여러 항목의 위치 또는 성능을 서로 비교하는 데 사용되는 시각화 방법이다. 실제 값보다 항목간 순위 비교가 중요하다고 생각될 때 많이 쓰인다.
@@ -361,6 +363,8 @@ ggplot(health, aes(x = pct_2013, xend = pct_2014, y = Area, group = Area)) +
 
 ![](/public/img/2022-06-22-visualization-summary/dumbbell_chart-1.png)
 
+<div style="margin-bottom:100px;"></div>
+
 # 분포 (Distribution)
 
 많은 데이터 포인트가 존재할 때, 데이터 포인트가 어디에 어떻게 분포되어 있는지 파악하고 싶을 때 사용된다.
@@ -480,6 +484,8 @@ ggplot(email_campaign_funnel, aes(x = Stage, y = Users, fill = Gender)) + # fill
 
 ![](/public/img/2022-06-22-visualization-summary/population_pyramid-1.png)
 
+<div style="margin-bottom:100px;"></div>
+
 # 구성 (Composition)
 
 전체에서 여러 개의 범주가 각각 차지하는 비중이 얼마나 되는지를 표현하고 싶을 때 적절한 시각화 방법이 된다.
@@ -589,6 +595,8 @@ ggplot(proglangs, aes(area = value,
 ```
 
 ![](/public/img/2022-06-22-visualization-summary/treemap-1.png)
+
+<div style="margin-bottom:100px;"></div>
 
 # 변화 (Change)
 
@@ -829,6 +837,8 @@ grid.arrange(airpassenger, nottem, ncol=2)
 
 ![](/public/img/2022-06-22-visualization-summary/seasonal_plot-1.png)
 
+<div style="margin-bottom:100px;"></div>
+
 # 군집 (Clustering)
 
 소속집단을 모르는(unlabeled) 데이터들을 서로 동질적인 집단으로 분류하는 방법이다. 군집 분석은 데이터들 사이의 유사성에 근거하여 한 군집 안에 있는 데이터들은 유사하고, 다른 군집에 있는 데이터와는 서로 다르게 군집을 형성한다. 초기 데이터를 탐색할 때에도 매우 유용한 시각화 도구 중 하나이다.
@@ -884,6 +894,8 @@ ggplot(df_pc, aes(PC1, PC2, col = Species)) +
 ```
 
 ![](/public/img/2022-06-22-visualization-summary/clustering-1.png)
+
+<div style="margin-bottom:100px;"></div>
 
 # 공간 (Spatial)
 
