@@ -4,10 +4,14 @@ categories: 시각화
 tags: [R, ggplot2]
 ---
 
+<div style="margin-bottom:100px;"></div>
+
 # 시각화를 해야 하는 이유
 
 - 효과적인 정보 전달
 - 정확한 분석을 위한 탐색적 데이터 분석
+
+<div style="margin-bottom:100px;"></div>
 
 # 효과적인 시각화란 무엇인가?
 
@@ -15,6 +19,8 @@ tags: [R, ggplot2]
 - 단순하지만 필요한 정보가 모두 담겨있는 것
 - 정보 전달의 목적을 해치지 않는 적절한 미적 요소를 추가하는 것
 - 하나의 시각화에 정보가 과부하 되지 않는 것
+
+<div style="margin-bottom:100px;"></div>
 
 # 여덟 가지의 대표적인 시각화 유형
 
@@ -27,12 +33,11 @@ tags: [R, ggplot2]
 7. 군집 (Clustering)
 8. 공간 (Spatial)
 
+<div style="margin-bottom:100px;"></div>
+
 # 상관관계 (Correlation)
 
 두 수치형 변수의 상관관계를 파악하는 데 도움이 된다.
-
-<hr>
-<div style="margin-bottom:60px;"></div>
 
 ## 산점도 (Scatter plot)
 
@@ -136,7 +141,7 @@ ggcorrplot(corr_matrix,
 
 ![](/public/img/2022-06-22-visualization-summary/correlogram-1.png)
 
-<div style="margin-bottom:60px;"></div>
+<div style="margin-bottom:100px;"></div>
 
 # 편차 (Deviation)
 
