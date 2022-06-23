@@ -1,7 +1,7 @@
 ---
-title: "시각화 정리"
+title: "R로 구현하는 시각화 방법론 정리"
 categories: 시각화
-tags: R
+tags: [R, ggplot2]
 ---
 
 # 시각화를 해야 하는 이유
@@ -30,6 +30,9 @@ tags: R
 # 상관관계 (Correlation)
 
 두 수치형 변수의 상관관계를 파악하는 데 도움이 된다.
+
+<hr>
+<div style="margin-bottom:60px;"></div>
 
 ## 산점도 (Scatter plot)
 
@@ -132,6 +135,8 @@ ggcorrplot(corr_matrix,
 ```
 
 ![](/public/img/2022-06-22-visualization-summary/correlogram-1.png)
+
+<div style="margin-bottom:60px;"></div>
 
 # 편차 (Deviation)
 
@@ -885,7 +890,7 @@ library(ggmap)
 library(ggalt) 
 
 # google API register 
-register_google(key = "AIzaSyBjDkoYysOVCCGK-evX8uq2CSv-Q33V1hI") 
+register_google(key = "AIzaSyBjDkoYysOVCCGK-evX8uq2CSv-Q33V1hI")  # type your api key
 
 # get Seoul's coordinates 
 seoul <- geocode("seoul") # get longitude and latitude 
