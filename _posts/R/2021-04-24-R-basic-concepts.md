@@ -4,6 +4,8 @@ categories: R
 tags: R
 ---
 
+<div style="margin-bottom:100px;"></div>
+
 ![Rlogo](https://www.r-project.org/Rlogo.png)
 
 # 소개
@@ -25,6 +27,8 @@ tags: R
 - 자유도가 높음 → 배우기 어려움
 - 다른 언어(C, Matlab, Python, Julia 등)에 비해 컴퓨팅 속도가 느림
 - 특히, for 문  속도가 느림
+
+<div style="margin-bottom:100px;"></div>
 
 # 특징
 
@@ -175,6 +179,8 @@ y
 ```
 [1]  1.00  3.25  5.50  7.75 10.00
 ```
+
+<div style="margin-bottom:100px;"></div>
 
 # Style Guide
 
