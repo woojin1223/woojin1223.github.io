@@ -1,7 +1,7 @@
 ---
 title: "R로 구현하는 산점도"
 categories: 시각화
-tags: [R, ggplot2]
+tags: [R, ggplot2, 산점도]
 ---
 
 <div style="margin-bottom:100px;"></div>
@@ -25,7 +25,7 @@ ggplot(midwest, aes(x = area, y = poptotal)) +
   labs(x = "area", 
        y = "population", 
        title = "Scatterplot", 
-       subtitle = "Area vs. population", 
+       subtitle = "area vs. population", 
        caption = "source: midwest")
 ```
 
