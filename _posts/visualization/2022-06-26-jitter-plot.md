@@ -32,4 +32,4 @@ jitter <- g + geom_jitter(width = 0.5, size = 1) +
 grid.arrange(point, jitter, ncol = 2)
 ```
 
-![](/public/img/2022-06-22-visualization-summary/scatter_plot-1.png)
+![](/public/img/2022-06-22-visualization-summary/jitter_plot-1.png)
