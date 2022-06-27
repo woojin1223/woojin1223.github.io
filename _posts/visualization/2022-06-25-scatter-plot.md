@@ -8,7 +8,7 @@ tags: [R, ggplot2, 산점도]
 
 ## 산점도 (Scatter plot)
 
-두 변수 사이의 관계 특성을 이해하고자 할 때마다 항상 첫 번째로 떠올릴 수 있는 것은 산점도다.
+두 변수 사이의 관계 특성을 이해하고자 할 때 첫 번째로 떠올릴 수 있는 것은 산점도이다.
 `geom_point()`를 사용하여 기본적인 산점도를 그리고 `geom_smooth()`를 통해서 스무딩 선을 표현할 수 있다.
 
 ```r
@@ -19,12 +19,12 @@ data("midwest", package = "ggplot2")
 
 # scatter plot with smooth plot
 ggplot(midwest, aes(x = area, y = poptotal)) + 
-  geom_point(aes(col = state, size = popdensity)) + 
+  geom_point() + 
   geom_smooth(method = "loess", se = FALSE) + 
   coord_cartesian(xlim = c(0, 0.1), ylim = c(0, 500000)) +
   labs(x = "area", 
        y = "population", 
-       title = "Scatterplot", 
+       title = "Scatter plot", 
        subtitle = "area vs. population", 
        caption = "source: midwest")
 ```
