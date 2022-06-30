@@ -1,0 +1,30 @@
+cd /mnt/c/Users/WooJin/Desktop/blog/woojin1223.github.io/
+
+[배틀그라운드 분석 올리기]
+
+[구글 애널리틱스 적용하기]
+
+[로고 이미지 수정하기]
+
+[Related Posts 제대로 작동하게 만들기]
+
+[데이터 분석 멘토링 내용 포스팅하기]
+
+[크롤링 개념 정리한 것 포스팅하기]
+
+[데이터 엔지니어링 기본 개념 정리하기]
+
+[그로스 해킹 기본 개념 정리하기]
+
+[게임 업계의 데이터 분석 개념 정리하기]
+
+[추천형, 발견형, 관계형 쇼핑 개념 정리하기]
+
+[PySpark 함수 정리]
+
+[SQL 명령어 정리]
+
+[model-agnostic 방법 정리]
+partial dependence plot, shap
+
+[EBM 공부한 것 정리]

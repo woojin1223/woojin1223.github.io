@@ -8,13 +8,13 @@ tags: [R, ggplot2, 산점도]
 
 ## 지터 플롯 (Jitter plot)
 
-지터는 데이터 값에 약간의 노이즈를 추가하는 방법을 말한다. 노이즈를 추가하면 데이터 값이 조금씩 움직여서 같은 값을 가지는 데이터가 그래프에 여러 번 겹쳐진 채 표시되는 것을 막아준다. `geom_point()`를 사용하는 대신 `geom_jitter()`를 사용하여 시각화할 수 있다. `geom_point()`와 `geom_jitter()` 둘 다 산점도를 그리지만 겹쳐진 점을 표시하는 방법에 차이가 있다.
+지터는 데이터 값에 약간의 노이즈를 추가하는 방법을 말한다. 지터로 산점도를 그리면 데이터 값이 조금 움직여서 같은 값을 가지는 데이터가 그래프에 겹쳐져 표시되지 않는다. `geom_point()`를 사용하는 대신 `geom_jitter()`를 사용하여 시각화할 수 있다. `geom_point()`와 `geom_jitter()` 둘 다 산점도를 그리지만 **겹쳐진 점을 표시하는 방법에 차이**가 있다.
 
 ```r
 # load package and data
 library(ggplot2)
 library(gridExtra)
-theme_set(theme_bw()) # pre-set the bw theme.
+theme_set(theme_bw()) # set the classic dark-on-light ggplot2 theme
 data("mpg", package = "ggplot2")
 
 g <- ggplot(mpg, aes(cty, hwy))

@@ -16,7 +16,7 @@ tags: [R, ggplot2, 산점도]
 ```r
 # load package and data
 library(ggplot2)
-theme_set(theme_bw()) # pre-set the bw theme.
+theme_set(theme_bw()) # set the classic dark-on-light ggplot2 theme
 data("mpg", package = "ggplot2")
 mpg_select <- mpg[mpg$manufacturer %in% c("audi", "ford", "honda", "hyundai"),]
 
