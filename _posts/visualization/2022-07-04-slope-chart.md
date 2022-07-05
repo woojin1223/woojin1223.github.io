@@ -43,4 +43,4 @@ p + theme(panel.grid = element_blank(),
           axis.text.x = element_blank())
 ```
 
-![](/public/img/2022-06-22-visualization-summary/slop_chart-1.png)
+![](/public/img/2022-06-22-visualization-summary/slope_chart-1.png)
