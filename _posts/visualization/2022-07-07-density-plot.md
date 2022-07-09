@@ -17,7 +17,7 @@ theme_set(theme_classic()) # set a classic-looking theme, with x and y axis line
 data("mpg", package = "ggplot2")
 
 # density plot
-ggplot(mpg, aes(cty)) + 
+ggplot(mpg, aes(x = cty)) + 
   geom_density(aes(fill = factor(cyl)), alpha = 0.8) + 
   labs(x = "city mileage",
        title = "Density plot", 
