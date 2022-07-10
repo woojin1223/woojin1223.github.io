@@ -14,7 +14,7 @@ tags: [R, ggplot2, 바이올린플롯]
 # load package and data
 library(ggplot2)
 library(gridExtra)
-theme_set(theme_bw())
+theme_set(theme_bw()) # set the classic dark-on-light ggplot2 theme
 data("mpg", package = "ggplot2")
 
 # violin plot
