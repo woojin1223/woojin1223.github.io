@@ -28,3 +28,9 @@ cd /mnt/c/Users/WooJin/Desktop/blog/woojin1223.github.io/
 partial dependence plot, shap
 
 [EBM 공부한 것 정리]
+
+[이상치 탐지]
+https://slowsteadystat.tistory.com/10?category=922379
+https://slowsteadystat.tistory.com/15?category=922379
+https://slowsteadystat.tistory.com/25?category=922381
+https://slowsteadystat.tistory.com/19?category=922386
