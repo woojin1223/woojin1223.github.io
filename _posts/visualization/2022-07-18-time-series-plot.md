@@ -49,7 +49,7 @@ ggplot(economics) +
        caption = "source: economics")
 ```
 
-![](/public/img/2022-06-22-visualization-summary/plot_df-1.png)
+![](/public/img/2022-06-22-visualization-summary/ts_plot_df-1.png)
 
 ### Time series plot for a yearly or monthly time series
 
@@ -97,7 +97,7 @@ yearly <- ggplot(economics_y) +
 grid.arrange(monthly, yearly, ncol = 2)
 ```
 
-![](/public/img/2022-06-22-visualization-summary/plot_ym-1.png)
+![](/public/img/2022-06-22-visualization-summary/ts_plot_ym-1.png)
 
 ### Time series plot from a multiple columns of dataframe
 
@@ -131,4 +131,4 @@ ggplot(df) +
        color = NULL)
 ```
 
-![](/public/img/2022-06-22-visualization-summary/plot_mc-1.png)
+![](/public/img/2022-06-22-visualization-summary/ts_plot_mc-1.png)
