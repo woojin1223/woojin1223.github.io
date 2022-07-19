@@ -1,7 +1,7 @@
 ---
 title: "R로 구현하는 바이올린 플롯"
 categories: 시각화
-tags: [R, ggplot2, 바이올린플롯]
+tags: [R, ggplot2, 바이올린 플롯]
 ---
 
 <div style="margin-bottom:100px;"></div>

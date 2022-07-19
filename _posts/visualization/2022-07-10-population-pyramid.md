@@ -1,7 +1,7 @@
 ---
 title: "R로 구현하는 인구 피라미드"
 categories: 시각화
-tags: [R, ggplot2, 인구피라미드]
+tags: [R, ggplot2, 인구 피라미드]
 ---
 
 <div style="margin-bottom:100px;"></div>

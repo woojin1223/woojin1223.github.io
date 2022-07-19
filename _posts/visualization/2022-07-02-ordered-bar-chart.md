@@ -1,7 +1,7 @@
 ---
 title: "R로 구현하는 순위 막대 그래프"
 categories: 시각화
-tags: [R, ggplot2, 막대그래프]
+tags: [R, ggplot2, 막대 그래프]
 ---
 
 <div style="margin-bottom:100px;"></div>

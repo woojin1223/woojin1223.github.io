@@ -1,7 +1,7 @@
 ---
 title: "R로 구현하는 덤벨 차트"
 categories: 시각화
-tags: [R, ggplot2, 덤벨차트]
+tags: [R, ggplot2, 덤벨 차트]
 ---
 
 <div style="margin-bottom:100px;"></div>

@@ -1,7 +1,7 @@
 ---
 title: "R로 구현하는 시계열 그래프"
 categories: 시각화
-tags: [R, ggplot2, 시계열그래프]
+tags: [R, ggplot2, 시계열 그래프]
 ---
 
 <div style="margin-bottom:100px;"></div>
@@ -30,7 +30,7 @@ autoplot(AirPassengers) +
 
 ### Time series plot from a time dataframe
 
-시각화하고자 하는 대상이 시계열 객체가 아닌 데이터프레임 형태일때에는 `geom_line()`을 사용하여 시계열 그래프로 표현할 수 있다.
+시각화하고자 하는 대상이 시계열 객체가 아닌 데이터프레임 형태일때 `geom_line()`을 사용하여 시계열 그래프로 표현할 수 있다.
 
 ```r
 # load package and data
