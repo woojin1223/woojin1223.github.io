@@ -35,7 +35,7 @@ autoplot(AirPassengers) +
 ```r
 # load package and data
 library(ggplot2)
-theme_set(theme_classic()) # set a classic-looking theme, with x and y axis lines and no
+theme_set(theme_classic()) # set a classic-looking theme, with x and y axis lines and no grid lines
 data("economics", package = "ggplot2")
 
 # compute percent returns

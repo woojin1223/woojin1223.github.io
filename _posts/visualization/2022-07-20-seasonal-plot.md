@@ -15,7 +15,7 @@ tags: [R, ggplot2, 계절성 차트]
 library(forecast)
 library(ggplot2)
 library(gridExtra)
-theme_set(theme_classic()) # set a classic-looking theme, with x and y axis lines and no
+theme_set(theme_classic()) # set a classic-looking theme, with x and y axis lines and no grid lines
 data("nottem")
 data("AirPassengers")
 
