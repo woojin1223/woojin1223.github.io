@@ -8,11 +8,11 @@ tags: [R, ggplot2, 산점도]
 
 ## 산점도 (Scatter plot)
 
-두 변수 사이의 관계 특성을 이해하고자 할 때 첫 번째로 떠올릴 수 있는 것은 산점도이다.
+**두 수치형 변수의 관계**를 살펴 보고자 할 때 가장 기본이 되는 도표는 산점도이다. 
 `geom_point()`를 사용하여 기본적인 산점도를 그리고 `geom_smooth()`를 통해서 스무딩 선을 시각화할 수 있다.
 
 ```r
-options(scipen = 999) # turn-off scientific notation like 1e+48
+# load package and data
 library(ggplot2)
 theme_set(theme_bw()) # set the classic dark-on-light ggplot2 theme
 data("midwest", package = "ggplot2")

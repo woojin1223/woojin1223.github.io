@@ -8,7 +8,7 @@ tags: [R, ggplot2, 덤벨 차트]
 
 ## 덤벨 차트 (Dumbbell chart)
 
-덤벨 차트는 슬로프 차트와 동일한 정보를 전달하지만 두 시점에서 값의 증감을 덤벨 형태로 표현한다는 점에서 차이가 있다. `ggalt` 패키지의 `geom_dumbbell()`을 사용하여 시각화할 수 있다.
+덤벨 차트는 [슬로프 차트](https://woojin1223.github.io/%EC%8B%9C%EA%B0%81%ED%99%94/2022/07/04/slope-chart/)와 동일한 정보를 전달하지만 두 시점에서 값의 증감을 덤벨 형태로 표현한다는 점에서 차이가 있다. `ggalt` 패키지의 `geom_dumbbell()`을 사용하여 시각화할 수 있다.
 
 ```r
 # load package and data
@@ -18,6 +18,8 @@ library(scales)
 library(tidyr)
 theme_set(theme_classic()) # set a classic-looking theme, with x and y axis lines and no grid lines
 health <- read.csv("https://raw.githubusercontent.com/selva86/datasets/master/health.csv")
+
+# prepare data
 health$Area <- factor(health$Area, levels = as.character(health$Area)) # for right ordering of the dumbbells
 health2 <- gather(health, key = "year", value = "percent", -Area)
 

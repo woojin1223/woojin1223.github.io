@@ -16,6 +16,7 @@ library(ggplot2)
 theme_set(theme_bw()) # set the classic dark-on-light ggplot2 theme
 data("mtcars")
 
+# prepare data
 mtcars$`car name` <- rownames(mtcars) # create new column for car names
 mtcars$mpg_z <- round((mtcars$mpg - mean(mtcars$mpg)) / sd(mtcars$mpg), 2) # compute normalized mpg
 mtcars$mpg_type <- ifelse(mtcars$mpg_z < 0, "below", "above") # above / below avg flag
@@ -30,10 +31,10 @@ ggplot(mtcars, aes(x = `car name`, y = mpg_z, col = mpg_type)) +
   scale_color_manual(name = "Normalized mileage", 
                     values = c("above" = "lightgoldenrod3", "below" = "skyblue"),
                     labels = c("Above average", "Below average")) + 
-  labs(title = "Diverging lollipop chart", 
-       subtitle = "Normalized mileage from mtcars") + 
   ylim(-2.5, 2.5) + 
-  coord_flip()
+  labs(title = "Diverging lollipop chart", 
+       subtitle = "Normalized mileage from mtcars") +
+  coord_flip() # flip axes
 ```
 
 ![](/public/img/2022-06-22-visualization-summary/diverging_lollipop_chart-1.png)

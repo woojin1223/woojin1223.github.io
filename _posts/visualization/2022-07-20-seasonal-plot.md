@@ -23,10 +23,8 @@ data("AirPassengers")
 nottem_small <- window(nottem, start = c(1920, 1), end = c(1925, 12)) # subset a smaller time window 
 
 # seasonal plot 
-airpassenger <- ggseasonplot(AirPassengers) + 
-  theme(axis.text.x = element_text(angle = 60, vjust = 0.5))
-nottem <- ggseasonplot(nottem_small) +
-  theme(axis.text.x = element_text(angle = 60, vjust = 0.5))
+airpassenger <- ggseasonplot(AirPassengers)
+nottem <- ggseasonplot(nottem_small)
 
 grid.arrange(airpassenger, nottem, ncol = 2)
 ```

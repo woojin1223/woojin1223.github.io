@@ -8,7 +8,7 @@ tags: [R, ggplot2, 시계열 그래프]
 
 ## 시계열 그래프 (Time series plot)
 
-시간의 흐름에 따른 특정 값의 변화를 표현할 때 주로 활용된다. 
+**시간의 흐름에 따른 특정 값의 변화**를 표현할 때 주로 활용된다. 
 
 ### Time series plot from a time series object (ts)
 
