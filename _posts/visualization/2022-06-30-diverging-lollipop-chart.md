@@ -8,7 +8,7 @@ tags: [R, ggplot2, 롤리팝 차트]
 
 ## 롤리팝 차트 (Diverging lollipop chart)
 
-Diverging lollipop chart는 [diverging bar chart](https://woojin1223.github.io/%EC%8B%9C%EA%B0%81%ED%99%94/2022/06/29/diverging-bar-chart/)와 동일한 정보를 전달하지만 구체적으로 어떤 값을 가지는지 추가로 알 수 있다. `geom_point()`와 `geom_segment()`를 사용하여 시각화할 수 있다.
+롤리팝 차트는 [분산형 막대 그래프](https://woojin1223.github.io/%EC%8B%9C%EA%B0%81%ED%99%94/2022/06/29/diverging-bar-chart/)와 동일한 정보를 전달하지만 구체적으로 어떤 값을 가지는지 추가로 알 수 있다. `geom_point()`와 `geom_segment()`를 사용하여 시각화할 수 있다.
 
 ```r
 # load package and data

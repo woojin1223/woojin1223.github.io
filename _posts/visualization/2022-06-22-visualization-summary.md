@@ -143,7 +143,7 @@ ggcorrplot(corr_matrix,
 
 ![](/public/img/2022-06-22-visualization-summary/correlogram-1.png)
 
-<div style="margin-bottom:100px;"></div>
+<div style="margin-bottom:200px;"></div>
 
 # 편차 (Deviation)
 
@@ -185,7 +185,7 @@ ggplot(mtcars) +
 
 ## 롤리팝 차트 (Diverging lollipop chart)
 
-Diverging lollipop chart는 [diverging bar chart](https://woojin1223.github.io/%EC%8B%9C%EA%B0%81%ED%99%94/2022/06/29/diverging-bar-chart/)와 동일한 정보를 전달하지만 구체적으로 어떤 값을 가지는지 추가로 알 수 있다. `geom_point()`와 `geom_segment()`를 사용하여 시각화할 수 있다.
+롤리팝 차트는 분산형 막대 그래프와 동일한 정보를 전달하지만 구체적으로 어떤 값을 가지는지 추가로 알 수 있다. `geom_point()`와 `geom_segment()`를 사용하여 시각화할 수 있다.
 
 ```r
 # load package and data
@@ -216,7 +216,7 @@ ggplot(mtcars, aes(x = `car name`, y = mpg_z, col = mpg_type)) +
 
 ![](/public/img/2022-06-22-visualization-summary/diverging_lollipop_chart-1.png)
 
-<div style="margin-bottom:100px;"></div>
+<div style="margin-bottom:200px;"></div>
 
 # 순위 (Ranking)
 
@@ -254,7 +254,7 @@ mpg %>%
 
 ## 점 그래프 (Dot plot)
 
-점 그래프는 [순위 막대 그래프](https://woojin1223.github.io/%EC%8B%9C%EA%B0%81%ED%99%94/2022/07/02/ordered-bar-chart/)와 동일한 정보를 전달한다. 하지만 순위 막대 그래프와 정반대로 x축에는 수치형 변수, y축에는 범주형 변수가 들어간다. 점으로 시각화함으로서 항목들이 서로 얼마나 멀리 떨어져 있는지가 강조된다.
+점 그래프는 순위 막대 그래프와 동일한 정보를 전달한다. 하지만 순위 막대 그래프와 정반대로 x축에는 수치형 변수, y축에는 범주형 변수가 들어간다. 점으로 시각화함으로서 **항목들이 서로 얼마나 멀리 떨어져 있는지가 강조**된다.
 
 ```r
 # load package and data
@@ -328,7 +328,7 @@ p + theme(panel.grid = element_blank(),
 
 ## 덤벨 차트 (Dumbbell chart)
 
-덤벨 차트는 [슬로프 차트](https://woojin1223.github.io/%EC%8B%9C%EA%B0%81%ED%99%94/2022/07/04/slope-chart/)와 동일한 정보를 전달하지만 두 시점에서 값의 증감을 덤벨 형태로 표현한다는 점에서 차이가 있다. `ggalt` 패키지의 `geom_dumbbell()`을 사용하여 시각화할 수 있다.
+덤벨 차트는 슬로프 차트와 동일한 정보를 전달하지만 두 시점에서 값의 증감을 덤벨 형태로 표현한다는 점에서 차이가 있다. `ggalt` 패키지의 `geom_dumbbell()`을 사용하여 시각화할 수 있다.
 
 ```r
 # load package and data
@@ -362,7 +362,7 @@ ggplot(health) +
 
 ![](/public/img/2022-06-22-visualization-summary/dumbbell_chart-1.png)
 
-<div style="margin-bottom:100px;"></div>
+<div style="margin-bottom:200px;"></div>
 
 # 분포 (Distribution)
 
@@ -398,7 +398,7 @@ grid.arrange(hist_binwidth, hist_bins, ncol = 2)
 
 ## 밀도 그래프 (Density plot)
 
-[히스토그램](https://woojin1223.github.io/%EC%8B%9C%EA%B0%81%ED%99%94/2022/07/06/histogram/)은 막대를 그리는 구간인 bin의 개수 혹은 너비를 어떻게 잡는지에 따라 전혀 다른 모양이 될 수 있다. `goem_density()`로 시각화할 수 있는 밀도 그래프는 막대의 너비를 가정하지 않고 **모든 점에서 데이터의 밀도, 즉 확률밀도함수를 추정**한다.
+히스토그램은 막대를 그리는 구간인 bin의 개수 혹은 너비를 어떻게 잡는지에 따라 전혀 다른 모양이 될 수 있다. `goem_density()`로 시각화할 수 있는 밀도 그래프는 막대의 너비를 가정하지 않고 **모든 점에서 데이터의 밀도, 즉 확률밀도함수를 추정**한다.
 
 ```r
 # load package and data
@@ -502,7 +502,7 @@ ggplot(email_campaign_funnel) +
 
 ![](/public/img/2022-06-22-visualization-summary/population_pyramid-1.png)
 
-<div style="margin-bottom:100px;"></div>
+<div style="margin-bottom:200px;"></div>
 
 # 구성 (Composition)
 
@@ -574,7 +574,7 @@ ggplot(df) +
 
 ## 원형 차트 (Pie chart)
 
-원형 차트는 정보 전달의 관점에서 [와플 차트](https://woojin1223.github.io/%EC%8B%9C%EA%B0%81%ED%99%94/2022/07/12/waffle-chart/)와 거의 동일하다. `geom_bar()`와 `coord_polar()`을 사용하여 구현할 수 있다.
+원형 차트는 정보 전달의 관점에서 와플 차트와 거의 동일하다. `geom_bar()`와 `coord_polar()`을 사용하여 구현할 수 있다.
 
 ```r
 # load package and data
@@ -643,7 +643,7 @@ ggplot(proglangs, aes(area = value,
 
 ![](/public/img/2022-06-22-visualization-summary/treemap-1.png)
 
-<div style="margin-bottom:100px;"></div>
+<div style="margin-bottom:200px;"></div>
 
 # 변화 (Change)
 
@@ -862,7 +862,7 @@ grid.arrange(airpassenger, nottem, ncol = 2)
 
 ![](/public/img/2022-06-22-visualization-summary/seasonal_plot-1.png)
 
-<div style="margin-bottom:100px;"></div>
+<div style="margin-bottom:200px;"></div>
 
 # 군집 (Clustering)
 
