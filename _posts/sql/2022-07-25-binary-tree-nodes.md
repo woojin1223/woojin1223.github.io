@@ -1,7 +1,7 @@
 ---
 title: "[HackerRank] Binary Tree Nodes"
-categories: sql
-tags: [HackerRank]
+categories: SQL
+tags: [HackerRank, MySQL]
 ---
 
 ## 문제 링크
