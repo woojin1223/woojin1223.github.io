@@ -1,5 +1,5 @@
 ---
-title: "[HackerRank] Binary Tree Nodes"
+title: "[HackerRank] Challenges"
 categories: SQL
 tags: [HackerRank, MySQL]
 ---
