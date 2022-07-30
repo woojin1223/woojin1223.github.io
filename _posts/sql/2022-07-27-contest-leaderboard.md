@@ -32,7 +32,7 @@ FROM (
         hacker_id
     ) AS y
     LEFT JOIN hackers 
-        using (hacker_id) 
+        USING (hacker_id) 
 WHERE 
     total_score > 0 
 ORDER BY 

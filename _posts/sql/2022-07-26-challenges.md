@@ -55,7 +55,7 @@ FROM (
             )
     ) AS z
 LEFT JOIN hackers 
-    using (hacker_id) 
+    USING (hacker_id) 
 ORDER BY 
     challenges_created DESC, hacker_id
 ```

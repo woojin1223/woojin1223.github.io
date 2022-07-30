@@ -29,9 +29,9 @@ FROM (
         LEFT JOIN colleges 
             USING (contest_id) 
         LEFT JOIN challenges 
-            using (college_id) 
+            USING (college_id) 
         LEFT JOIN submission_stats 
-            using (challenge_id) 
+            USING (challenge_id) 
     GROUP BY 
         contest_id
     ) AS x 
@@ -45,15 +45,15 @@ FROM (
         LEFT JOIN colleges 
             USING (contest_id) 
         LEFT JOIN challenges 
-            using (college_id) 
+            USING (college_id) 
         LEFT JOIN view_stats 
-            using (challenge_id) 
+            USING (challenge_id) 
     GROUP BY 
         contest_id
         ) AS y
-        using (contest_id) 
+        USING (contest_id) 
     LEFT JOIN contests 
-        using (contest_id) 
+        USING (contest_id) 
 WHERE 
     COALESCE(total_submissions, total_accepted_submissions, total_views, total_unique_views) IS NOT NULL 
 ORDER BY 
