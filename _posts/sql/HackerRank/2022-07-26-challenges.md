@@ -54,8 +54,8 @@ FROM (
                 COUNT(*) = 1
             )
     ) AS z
-LEFT JOIN hackers 
-    USING (hacker_id) 
+    LEFT JOIN hackers 
+        USING (hacker_id) 
 ORDER BY 
     challenges_created DESC, hacker_id
 ```
