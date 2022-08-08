@@ -14,43 +14,8 @@ tags: [HackerRank, MySQL]
 `BST`는 (자식 노드, 부모 노드) 형태의 행을 가지는 2열로 구성된 테이블이다.  
 테이블 `BST`의 예시는 다음과 같다.
 
-<table width="50" style="margin-left: auto; margin-right: auto;">
-    <tr>
-        <th>N</th>
-        <th>P</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>8</td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>8</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>null</td>
-    </tr>
-</table>
-
 |N|P|
-|-|-|
+|:-:|:-:|
 |1|2|
 |3|2|
 |6|8|
@@ -90,19 +55,8 @@ WHERE
 
 (출력)
 
-<table border="1" style="margin-left: auto; margin-right: auto;">
-    <tr>
-        <td>n</td>
-        <td>node_type</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>Root</td>
-    </tr>
-</table>
-
 |n|node_type|
-|-|-|
+|:-:|:-:|
 |5|Root|
 
 ### 2. Leaf node에 해당하는 테이블을 구한다.
@@ -125,31 +79,8 @@ WHERE
 
 (출력)
 
-<table border="1" style="margin-left: auto; margin-right: auto;">
-    <tr>
-        <td>n</td>
-        <td>node_type</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Leaf</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Leaf</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>Leaf</td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>Leaf</td>
-    </tr>
-</table>
-
 |n|node_type|
-|-|-|
+|:-:|:-:|
 |1|Leaf|
 |3|Leaf|
 |6|Leaf|
@@ -175,23 +106,8 @@ WHERE
 
 (출력)
 
-<table border="1" style="margin-left: auto; margin-right: auto;">
-    <tr>
-        <td>n</td>
-        <td>node_type</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Inner</td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>Inner</td>
-    </tr>
-</table>
-
 |n|node_type|
-|-|-|
+|:-:|:-:|
 |2|Inner|
 |8|Inner|
 
@@ -251,43 +167,8 @@ ORDER BY n
 
 (출력)
 
-<table border="1" style="margin-left: auto; margin-right: auto;">
-    <tr>
-        <td>n</td>
-        <td>node_type</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Leaf</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Inner</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Leaf</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>Root</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>Leaf</td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>Inner</td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>Leaf</td>
-    </tr>
-</table>
-
 |n|node_type|
-|-|-|
+|:-:|:-:|
 |1|Leaf|
 |2|Inner|
 |3|Leaf|
