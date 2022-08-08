@@ -63,8 +63,8 @@ WHERE
 
 Leaf node는 자식 노드가 없는 노드다.  
 다시 말하면, 자식 노드 중에서 부모 노드 역할을 한 번도 하지 않은 노드이다.  
-즉, 자식 노드 집합을 A, 부모 노드 집합을 B라고 할 때 A - B에 해당한다.  
-차집합 A - B는 아래와 같이 WHERE 절 안에 서브쿼리를 작성하여 구할 수 있다.  
+즉, 자식 노드 집합을 A, 부모 노드 집합을 B라고 할 때 차집합 A - B에 해당한다.  
+A - B는 아래와 같이 WHERE 절 안에 서브쿼리를 작성하여 구할 수 있다.  
 부모 노드 집합 B는 `SELECT DISTINCT p FROM bst WHERE p IS NOT NULL`으로부터 구할 수 있다.
 
 ```sql
@@ -89,8 +89,8 @@ WHERE
 ### 3. Inner node에 해당하는 테이블을 구한다.
 
 Inner node는 Root node와 Leaf node가 아닌 노드다.  
-다시 말하면, 부모 노드 집합 중에서 Root node가 아닌 노드다.
-부모 노드 집합  `SELECT DISTINCT p FROM bst WHERE p IS NOT NULL`에서 Root node가 아닌 노드를 구하는 WHERE 절 `WHERE p != (SELECT n FROM bst WHERE p IS NULL)`을 추가하면 된다.  
+다시 말하면, 부모 노드 집합 중에서 Root node가 아닌 노드다.  
+부모 노드 집합을 구하는 쿼리 `SELECT DISTINCT p FROM bst WHERE p IS NOT NULL`에서 Root node가 아닌 노드를 구하는 WHERE 절 `WHERE p != (SELECT n FROM bst WHERE p IS NULL)`을 추가하면 된다.  
 참고로 위 WHERE 절 안의 서브쿼리 `SELECT n FROM bst WHERE p IS NULL`는 Root node를 출력한다.
 
 ```sql
@@ -113,7 +113,7 @@ WHERE
 
 ### 4. 위 세 개의 테이블을 `UNION`을 이용하여 세로 방향으로 결합한다.
 
-WITH 절을 이용하여 1.에서 구한 Root node를 `root_node` 이름을 가진 임시 테이블에 저장하고 2.에서 구한 Leaf node는 `leaf_node` 이름을 가진 임시 테이블에 저장하고 1.에서 구한 Inner node를 `inner_node` 이름을 가진 임시 테이블에 저장하자.
+WITH 절을 이용하여 1.에서 구한 Root node를 `root_node` 이름을 가진 임시 테이블에 저장하고 2.에서 구한 Leaf node는 `leaf_node` 이름을 가진 임시 테이블에 저장하고 3.에서 구한 Inner node를 `inner_node` 이름을 가진 임시 테이블에 저장하자.
 
 ```sql
 WITH root_node AS (
@@ -180,7 +180,7 @@ ORDER BY n
 ## 풀이
 
 ```sql
--- with 절로 root_node, leaf_node, inner_node 임시 테이블 생성
+-- WITH 절로 임시 테이블 root_node, leaf_node, inner_node 생성
 WITH root_node AS (
     SELECT 
         n, 
