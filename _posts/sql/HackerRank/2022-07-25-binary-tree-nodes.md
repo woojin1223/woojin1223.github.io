@@ -14,6 +14,41 @@ tags: [HackerRank, MySQL]
 `BST`는 (자식 노드, 부모 노드) 형태의 행을 가지는 2열로 구성된 테이블이다.  
 테이블 `BST`의 예시는 다음과 같다.
 
+<table border="1" style="margin-left: auto; margin-right: auto;">
+    <tr>
+        <td>N</td>
+        <td>P</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>null</td>
+    </tr>
+</table>
+
 |N|P|
 |-|-|
 |1|2|
@@ -55,6 +90,17 @@ WHERE
 
 (출력)
 
+<table border="1" style="margin-left: auto; margin-right: auto;">
+    <tr>
+        <td>n</td>
+        <td>node_type</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Root</td>
+    </tr>
+</table>
+
 |n|node_type|
 |-|-|
 |5|Root|
@@ -65,7 +111,7 @@ Leaf node는 자식 노드가 없는 노드다.
 다시 말하면, 자식 노드 중에서 부모 노드 역할을 한 번도 하지 않은 노드이다.  
 즉, 자식 노드 집합을 A, 부모 노드 집합을 B라고 할 때 차집합 A - B에 해당한다.  
 A - B는 아래와 같이 WHERE 절 안에 서브쿼리를 작성하여 구할 수 있다.  
-부모 노드 집합 B는 `SELECT DISTINCT p FROM bst WHERE p IS NOT NULL`으로부터 구할 수 있다.
+부모 노드 집합 B는 쿼리 `SELECT DISTINCT p FROM bst WHERE p IS NOT NULL`으로부터 구할 수 있다.
 
 ```sql
 SELECT 
@@ -78,6 +124,29 @@ WHERE
 ```
 
 (출력)
+
+<table border="1" style="margin-left: auto; margin-right: auto;">
+    <tr>
+        <td>n</td>
+        <td>node_type</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Leaf</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Leaf</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Leaf</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Leaf</td>
+    </tr>
+</table>
 
 |n|node_type|
 |-|-|
@@ -105,6 +174,21 @@ WHERE
 ```
 
 (출력)
+
+<table border="1" style="margin-left: auto; margin-right: auto;">
+    <tr>
+        <td>n</td>
+        <td>node_type</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Inner</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Inner</td>
+    </tr>
+</table>
 
 |n|node_type|
 |-|-|
@@ -166,6 +250,41 @@ ORDER BY n
 ```
 
 (출력)
+
+<table border="1" style="margin-left: auto; margin-right: auto;">
+    <tr>
+        <td>n</td>
+        <td>node_type</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Leaf</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Inner</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Leaf</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Root</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Leaf</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Inner</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Leaf</td>
+    </tr>
+</table>
 
 |n|node_type|
 |-|-|
