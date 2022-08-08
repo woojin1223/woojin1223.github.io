@@ -34,3 +34,9 @@ https://slowsteadystat.tistory.com/10?category=922379
 https://slowsteadystat.tistory.com/15?category=922379
 https://slowsteadystat.tistory.com/25?category=922381
 https://slowsteadystat.tistory.com/19?category=922386
+
+1. 데이터 분석 기술 면접 예상 질문과 나의 대답
+2. RStudio addin이란
+3. 유용한 addin - assign align
+4. 유용한 addin - beautify
+5. 나만의 addin 만들기 - addinwj
