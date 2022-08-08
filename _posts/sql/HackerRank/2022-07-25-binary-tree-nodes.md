@@ -40,6 +40,9 @@ Inner node는 Root node와 Leaf node가 아닌 노드를 말하며, 그림에서
 
 ### 1. Root node에 해당하는 테이블을 구한다.
 
+Root node는 부모 노드가 없는 노드다.  
+즉, `WHERE p IS NULL`을 이용하여 Root node를 `BST`로부터 분리할 수 있다.
+
 ```sql
 SELECT 
     n, 
@@ -47,10 +50,21 @@ SELECT
 FROM 
     bst 
 WHERE 
-    P IS NULL
+    p IS NULL
 ```
 
+(출력)
+|n|node_type|
+|-|-|
+|5|Root|
+
 ### 2. Leaf node에 해당하는 테이블을 구한다.
+
+Leaf node는 자식 노드가 없는 노드다.  
+다시 말하면, 자식 노드 중에서 부모 노드 역할을 한 번도 하지 않은 노드이다.  
+즉, 자식 노드 집합을 A, 부모 노드 집합을 B라고 할 때 A - B에 해당한다.  
+차집합 A - B는 아래와 같이 WHERE 절 안에 서브쿼리를 작성하여 구할 수 있다.  
+부모 노드 집합 B는 `SELECT DISTINCT p FROM bst WHERE p IS NOT NULL`으로부터 구할 수 있다.
 
 ```sql
 SELECT 
@@ -62,7 +76,20 @@ WHERE
     n NOT IN (SELECT DISTINCT p FROM bst WHERE p IS NOT NULL)
 ```
 
+(출력)
+|n|node_type|
+|-|-|
+|1|Leaf|
+|3|Leaf|
+|6|Leaf|
+|9|Leaf|
+
 ### 3. Inner node에 해당하는 테이블을 구한다.
+
+Inner node는 Root node와 Leaf node가 아닌 노드다.  
+다시 말하면, 부모 노드 집합 중에서 Root node가 아닌 노드다.
+부모 노드 집합  `SELECT DISTINCT p FROM bst WHERE p IS NOT NULL`에서 Root node가 아닌 노드를 구하는 WHERE 절 `WHERE p != (SELECT n FROM bst WHERE p IS NULL)`을 추가하면 된다.  
+참고로 위 WHERE 절 안의 서브쿼리 `SELECT n FROM bst WHERE p IS NULL`는 Root node를 출력한다.
 
 ```sql
 SELECT 
@@ -72,41 +99,116 @@ FROM
     bst 
 WHERE 
     p IS NOT NULL AND 
-    p != (SELECT n FROM bst WHERE P IS NULL) 
+    p != (SELECT n FROM bst WHERE p IS NULL)
 ```
+
+(출력)
+|n|node_type|
+|-|-|
+|2|Inner|
+|8|Inner|
 
 ### 4. 위 세 개의 테이블을 `UNION`을 이용하여 세로 방향으로 결합한다.
 
+WITH 절을 이용하여 1.에서 구한 Root node를 `root_node` 이름을 가진 임시 테이블에 저장하고 2.에서 구한 Leaf node는 `leaf_node` 이름을 가진 임시 테이블에 저장하고 1.에서 구한 Inner node를 `inner_node` 이름을 가진 임시 테이블에 저장하자.
+
+```sql
+WITH root_node AS (
+    SELECT 
+        n, 
+        'Root' AS node_type 
+    FROM 
+        bst 
+    WHERE 
+        p IS NULL
+), leaf_node AS (
+    SELECT 
+        n, 
+        'Leaf' AS node_type 
+    FROM 
+        bst 
+    WHERE 
+        n NOT IN (SELECT DISTINCT p FROM bst WHERE p IS NOT NULL)
+), inner_node AS (
+    SELECT 
+        DISTINCT p AS n, 
+        'Inner'    AS node_type 
+    FROM 
+        bst 
+    WHERE 
+        p IS NOT NULL AND 
+        p != (SELECT n FROM bst WHERE p IS NULL)
+) 
+```
+
+그 후에 `UNION`을 이용하여 세 개의 임시 테이블 `root_node`, `leaf_node`, `inner_node`을 세로 방향으로 결합한 MySQL 코드는 다음과 같다.
+
+```sql
+SELECT * FROM root_node 
+UNION 
+SELECT * FROM leaf_node 
+UNION 
+SELECT * FROM inner_node
+```
+
 ### 5. Node 값을 기준으로 오름차순 정렬한다.
 
+```sql
+SELECT * FROM root_node 
+UNION 
+SELECT * FROM leaf_node 
+UNION 
+SELECT * FROM inner_node 
+ORDER BY n
+```
+
+(출력)
+|n|node_type|
+|-|-|
+|1|Leaf|
+|2|Inner|
+|3|Leaf|
+|5|Root|
+|6|Leaf|
+|8|Inner|
+|9|Leaf|
 
 ## 풀이
 
 ```sql
-SELECT 
-    n, 
-    'Root' AS node_type 
-FROM 
-    bst 
-WHERE 
-    P IS NULL 
+-- with 절로 root_node, leaf_node, inner_node 임시 테이블 생성
+WITH root_node AS (
+    SELECT 
+        n, 
+        'Root' AS node_type 
+    FROM 
+        bst 
+    WHERE 
+        p IS NULL
+), leaf_node AS (
+    SELECT 
+        n, 
+        'Leaf' AS node_type 
+    FROM 
+        bst 
+    WHERE 
+        n NOT IN (SELECT DISTINCT p FROM bst WHERE p IS NOT NULL)
+), inner_node AS (
+    SELECT 
+        DISTINCT p AS n, 
+        'Inner'    AS node_type 
+    FROM 
+        bst 
+    WHERE 
+        p IS NOT NULL AND 
+        p != (SELECT n FROM bst WHERE p IS NULL)
+)
+
+-- UNION으로 root_node, leaf_node, inner_node 결합 후 정렬
+SELECT * FROM root_node 
 UNION 
-SELECT 
-    n, 
-    'Leaf' AS node_type 
-FROM 
-    bst 
-WHERE 
-    n NOT IN (SELECT DISTINCT p FROM bst WHERE p IS NOT NULL) 
+SELECT * FROM leaf_node 
 UNION 
-SELECT 
-    DISTINCT p AS n, 
-    'Inner'    AS node_type 
-FROM 
-    bst 
-WHERE 
-    p IS NOT NULL AND 
-    p != (SELECT n FROM bst WHERE P IS NULL) 
-ORDER BY 
-    n
+SELECT * FROM inner_node 
+ORDER BY n
 ```
