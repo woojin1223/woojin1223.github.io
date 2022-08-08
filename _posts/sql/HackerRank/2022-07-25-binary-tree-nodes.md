@@ -14,10 +14,10 @@ tags: [HackerRank, MySQL]
 `BST`는 (자식 노드, 부모 노드) 형태의 행을 가지는 2열로 구성된 테이블이다.  
 테이블 `BST`의 예시는 다음과 같다.
 
-<table border="1" style="margin-left: auto; margin-right: auto;">
+<table width="50" style="margin-left: auto; margin-right: auto;">
     <tr>
-        <td>N</td>
-        <td>P</td>
+        <th>N</th>
+        <th>P</th>
     </tr>
     <tr>
         <td>1</td>
