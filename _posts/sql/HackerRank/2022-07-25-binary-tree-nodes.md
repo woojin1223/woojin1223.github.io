@@ -41,7 +41,7 @@ Inner node는 Root node와 Leaf node가 아닌 노드를 말하며, 그림에서
 ### 1. Root node에 해당하는 테이블을 구한다.
 
 Root node는 부모 노드가 없는 노드다.  
-즉, `WHERE p IS NULL`을 이용하여 Root node를 `BST`로부터 분리할 수 있다.
+즉, `WHERE p IS NULL`을 이용하여 Root node를 구할 수 있다.
 
 ```sql
 SELECT 
@@ -54,6 +54,7 @@ WHERE
 ```
 
 (출력)
+
 |n|node_type|
 |-|-|
 |5|Root|
@@ -77,6 +78,7 @@ WHERE
 ```
 
 (출력)
+
 |n|node_type|
 |-|-|
 |1|Leaf|
@@ -103,6 +105,7 @@ WHERE
 ```
 
 (출력)
+
 |n|node_type|
 |-|-|
 |2|Inner|
@@ -163,6 +166,7 @@ ORDER BY n
 ```
 
 (출력)
+
 |n|node_type|
 |-|-|
 |1|Leaf|
