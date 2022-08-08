@@ -10,8 +10,9 @@ tags: [HackerRank, MySQL]
 
 ## 테이블 설명
 
-`BST`는 이진트리 구조를 (자식 노드, 부모 노드) 형태의 2열로 구성된 테이블이다.  
-테이블 예시는 다음과 같다.
+이진트리는 각각의 노드의 자식이 최대 두 개인 트리 자료 구조이다.  
+`BST`는 (자식 노드, 부모 노드) 형태의 행을 가지는 2열로 구성된 테이블이다.  
+테이블 `BST`의 예시는 다음과 같다.
 
 |N|P|
 |-|-|
@@ -34,6 +35,50 @@ tags: [HackerRank, MySQL]
 Root node는 부모 노드가 없는 노드를 말하며, 그림에서는 5번 노드가 이에 해당한다.  
 Leaf node는 자식 노드가 없는 노드를 말하며, 그림에서는 1번, 3번, 6번, 9번 노드가 이에 해당한다.  
 Inner node는 Root node와 Leaf node가 아닌 노드를 말하며, 그림에서는 2번, 8번 노드가 이에 해당한다.
+
+## 사고 과정
+
+### 1. Root node에 해당하는 테이블을 구한다.
+
+```sql
+SELECT 
+    n, 
+    'Root' AS node_type 
+FROM 
+    bst 
+WHERE 
+    P IS NULL
+```
+
+### 2. Leaf node에 해당하는 테이블을 구한다.
+
+```sql
+SELECT 
+    n, 
+    'Leaf' AS node_type 
+FROM 
+    bst 
+WHERE 
+    n NOT IN (SELECT DISTINCT p FROM bst WHERE p IS NOT NULL)
+```
+
+### 3. Inner node에 해당하는 테이블을 구한다.
+
+```sql
+SELECT 
+    DISTINCT p AS n, 
+    'Inner'    AS node_type 
+FROM 
+    bst 
+WHERE 
+    p IS NOT NULL AND 
+    p != (SELECT n FROM bst WHERE P IS NULL) 
+```
+
+### 4. 위 세 개의 테이블을 `UNION`을 이용하여 세로 방향으로 결합한다.
+
+### 5. Node 값을 기준으로 오름차순 정렬한다.
+
 
 ## 풀이
 
