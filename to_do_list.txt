@@ -1,6 +1,6 @@
 cd /mnt/c/Users/WooJin/Desktop/blog/woojin1223.github.io/
 
-[배틀그라운드 분석 올리기]
+[테이블 css 가운데 정렬 가능하게 수정하기]
 
 [구글 애널리틱스 적용하기]
 

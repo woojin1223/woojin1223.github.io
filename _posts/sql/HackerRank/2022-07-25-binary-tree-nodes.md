@@ -8,6 +8,8 @@ tags: [HackerRank, MySQL]
 
 <https://www.hackerrank.com/challenges/binary-search-tree-1/problem?isFullScreen=true>
 
+<br><br><br><br>
+
 ## 테이블 설명
 
 이진트리는 각각의 노드의 자식이 최대 두 개인 트리 자료 구조이다.  
@@ -26,6 +28,8 @@ tags: [HackerRank, MySQL]
 
 여기서 N은 자식 노드, P는 부모 노드에 해당한다.
 
+<br><br><br><br>
+
 ## 문제 설명
 
 위의 테이블을 이진트리 그림으로 나타내면 아래와 같다.
@@ -35,6 +39,8 @@ tags: [HackerRank, MySQL]
 Root node는 부모 노드가 없는 노드를 말하며, 그림에서는 5번 노드가 이에 해당한다.  
 Leaf node는 자식 노드가 없는 노드를 말하며, 그림에서는 1번, 3번, 6번, 9번 노드가 이에 해당한다.  
 Inner node는 Root node와 Leaf node가 아닌 노드를 말하며, 그림에서는 2번, 8번 노드가 이에 해당한다.
+
+<br><br><br><br>
 
 ## 사고 과정
 
@@ -176,6 +182,8 @@ ORDER BY n
 |6|Leaf|
 |8|Inner|
 |9|Leaf|
+
+<br><br><br><br>
 
 ## 풀이
 
