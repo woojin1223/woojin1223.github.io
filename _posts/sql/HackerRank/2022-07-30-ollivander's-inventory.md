@@ -8,6 +8,20 @@ tags: [HackerRank, MySQL]
 
 <https://www.hackerrank.com/challenges/harry-potter-and-wands/problem?isFullScreen=true>
 
+<br><br><br><br>
+
+## 테이블 설명
+
+<br><br><br><br>
+
+## 문제 설명
+
+<br><br><br><br>
+
+## 사고 과정
+
+<br><br><br><br>
+
 ## 풀이
 
 ```sql
