@@ -12,11 +12,14 @@ tags: [HackerRank, MySQL]
 
 ## 테이블 설명
 
+### `WANDS`
+
 `WANDS`는 Ollivander의 물품 목록에 해당하는 테이블이다.  
-`id`는 지팡이 id에 해당한다. 지팡이마다 전부 다른 id를 가지고 있다.  
-`code`는 지팡이 종류에 해당한다.  
-`coins_needed`는 지팡이를 사기 위한 돈에 해당한다.  
-`power`는 지팡이의 품질을 수치로 표현한 값이다. 값이 클 수록 좋은 품질을 가진다.
+
+- `id`: 지팡이 id에 해당한다. 지팡이마다 전부 다른 id를 가지고 있다.  
+- `code`: 지팡이 종류에 해당한다.  
+- `coins_needed`: 지팡이를 사기 위한 돈에 해당한다.  
+- `power`: 지팡이의 품질을 수치로 표현한 값이다. 값이 클 수록 좋은 품질을 가진다.
 
 |id|code|coins_needed|power|
 |:-:|:-:|:-:|:-:|
@@ -41,10 +44,13 @@ tags: [HackerRank, MySQL]
 |19|4|7651|6|
 |20|5|5689|3|
 
+### `WAND_PROPERTY`
+
 `WANDS_PROPERTY`는 지팡이 종류별 특징이 있는 테이블이다.  
-`code`는 지팡이 종류에 해당한다.  
-`age`는 지팡이 나이에 해당한다.  
-`is_evil`은 흑마법에 관련이 있는지를 0과 1로 나타내는 변수로, 0은 non-evil을 의미한다.
+
+- `code`: 지팡이 종류에 해당한다.  
+- `age`: 지팡이 나이에 해당한다.  
+- `is_evil`: 흑마법에 관련이 있는지를 0과 1로 나타내는 변수로, 0은 non-evil을 의미한다.
 
 |code|age|is_evil|
 |:-:|:-:|:-:|
@@ -58,13 +64,21 @@ tags: [HackerRank, MySQL]
 
 ## 문제 설명
 
-`age`와 `power`를 기준으로 지팡이를 그룹화한 후, 각 그룹에서 **non-evil**이고 **구매 가격이 가장 싼** 지팡이의 정보(`id`, `age`, `coins_needed`, `power`)를 구하는 문제다.
+`age`와 `power`별로 **non-evil**이고 **구매 가격이 가장 싼** 지팡이의 정보(`id`, `age`, `coins_needed`, `power`)를 구하는 문제다. 
+즉, **non-evil**인 지팡이 중에서 `age`와 `power`가 같은 지팡이가 여러 개가 있다면 구매 가격이 가장 싼 지팡이의 정보(`id`, `age`, `coins_needed`, `power`)를 구해야 한다.
+지팡이를 `age`와 `power`를 기준으로 그룹화한 후, 각 그룹에서 **non-evil**이고 **구매 가격이 가장 싼** 지팡이의 정보(`id`, `age`, `coins_needed`, `power`)를 구하는 문제다.
 
 <br><br><br><br>
 
 ## 사고 과정
 
-### 1. `WANDS`와 `WANDS_PROPERTY`를 `code`를 공통 키로 결합한다.
+### 1. `WANDS`와 `WANDS_PROPERTY`를 결합한다.
+
+테이블 `WANDS`에는 `age`와 `is_evil`이 존재하지 않는다.  
+테이블 `WANDS_PROPERTY`에 있는 `age`와 `is_evil`을 `WANDS`의 열로 추가할 필요가 있다.  
+`WANDS LEFT JOIN WANDS_PROPERTY`을 이용하여 `WANDS`의 모든 행에다가 `WANDS_PROPERTY`의 `age`와 `is_evil`을 추가한다.  
+여기서, `WANDS`와 `WANDS_PROPERTY`는 열 `code`를 공통으로 가지고 있기 때문에 `USING (code)`가 두 테이블의 결합 조건이다.
+
 
 ```sql
 SELECT 
@@ -75,7 +89,7 @@ FROM
       USING (code)
 ```
 
-### 2. non-evil 지팡이만 추출한다.
+### 2. 위 결과에서 non-evil 지팡이만 추출한다.
 
 ```sql
 SELECT 
@@ -90,27 +104,38 @@ WHERE
 
 ### 3. `code`, `age`, `power`를 기준으로 그룹화하여 가장 싼 구매 가격을 구한다.
 
-`age`, `power`를 기준으로 그룹화하여 각 그룹에서 non-evil이고 구매 가격이 가장 싼 지팡이의 정보를 구해야 한다.  
-`code`를 추가로 넣어서 그룹화하는 이유는 지팡이의 정보 중 `id`를 알기 위해서는 `code`, `coins_needed`, `power`의 값이 필요하기 때문이다.  
-그리고 `code`와 `age`는 1대1 매핑되어 있기 때문에, `age`, `power`를 기준으로 그룹화한 것과 `code`, `age`, `power`를 기준으로 그룹화한 것의 결과는 같다.  
+`age`와 `power` 값이 같은 지팡이가 있다면 구매 가격이 가장 싼 지팡이를 추출해야 한다.   
+즉, `age`, `power`를 기준으로 그룹화한 후, 각 그룹에서 구매 가격이 가장 싼 지팡이의 정보를 구해야 한다.  
+여기서, `code`를 추가로 넣어서 그룹화하는 이유는 지팡이의 정보 중 `id`를 알기 위해서는 `code`, `coins_needed`, `power`의 값이 필요하기 때문이다.  
+그리고 `code`와 `age`는 1대1 매핑되어 있기 때문에, `age`, `power`를 기준으로 그룹화한 것과 `code`, `age`, `power`를 기준으로 그룹화한 것의 결과는 같기 때문이다.  
 
 ```sql
 SELECT 
     code, 
     age, 
-    MIN(coins_needed) AS coins_needed, 
-    power 
+    power, 
+    MIN(coins_needed) AS coins_needed 
 FROM 
     wands 
     LEFT JOIN wands_property 
-      USING (code)
+      USING (code) 
 WHERE 
-    is_evil = 0
+    is_evil = 0 
 GROUP BY 
     code, age, power
 ```
 
-### 4. 지팡이의 `id`를 구하기 위해 3.에서 구한 테이블과 `WANDS`를 `code`, `coins_needed`, `power`를 공통 키로 결합한다.
+### 4. 지팡이의 `id`를 구하기 위해 3.에서 구한 테이블과 테이블 `WANDS`를 결합한다.
+
+3.에서 구한 테이블을 일부 출력한 결과는 다음과 같다.
+
+|code|age|power|coins_needed|
+|:-:|:-:|:-:|:-:|
+|2|40|7|6018|
+|4|20|5|504|
+
+위 테이블에는 지팡이의 `id`가 없기 때문에, 테이블 `WANDS`로부터 `id`를 불러 와야 한다.  
+3.에서 구한 테이블과 `WANDS`는 열 `code`, `coins_needed`, `power`를 공통으로 가지고 있고 `code`, `coins_needed`, `power`로 `id`를 특정할 수 있기 때문에 `LEFT JOIN WANDS USING (code, coins_needed, power)`을 이용하여 3.에서 구한 테이블에 `WANDS`의 `id` 값을 추가한다.
 
 ```sql
 SELECT 
@@ -122,8 +147,8 @@ FROM (
     SELECT 
         code, 
         age, 
-        MIN(coins_needed) AS coins_needed, 
-        power 
+        power, 
+        MIN(coins_needed) AS coins_needed 
     FROM 
         wands 
         LEFT JOIN wands_property 
@@ -149,8 +174,8 @@ FROM (
     SELECT 
         code, 
         age, 
-        MIN(coins_needed) AS coins_needed, 
-        power 
+        power, 
+        MIN(coins_needed) AS coins_needed 
     FROM 
         wands 
         LEFT JOIN wands_property 
@@ -180,8 +205,8 @@ FROM (
     SELECT 
         code, 
         age, 
-        MIN(coins_needed) AS coins_needed, 
-        power 
+        power, 
+        MIN(coins_needed) AS coins_needed 
     FROM 
         wands 
         LEFT JOIN wands_property 
