@@ -20,7 +20,7 @@ FROM (
         d.name AS department, 
         e.name AS employee, 
         salary, 
-        DENSE_RANK() OVER(PARTITION BY departmentId ORDER BY salary DESC) AS row_num 
+        DENSE_RANK() OVER (PARTITION BY departmentId ORDER BY salary DESC) AS row_num 
     FROM 
         employee AS e 
         LEFT JOIN department AS d 

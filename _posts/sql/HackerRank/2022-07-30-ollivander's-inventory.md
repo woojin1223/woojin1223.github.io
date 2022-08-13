@@ -21,6 +21,8 @@ tags: [HackerRank, MySQL]
 - `coins_needed`: 지팡이를 사기 위한 돈에 해당한다.  
 - `power`: 지팡이의 품질을 수치로 표현한 값이다. 값이 클 수록 좋은 품질을 가진다.
 
+(`WANDS` 예시)
+
 |id|code|coins_needed|power|
 |:-:|:-:|:-:|:-:|
 |1|4|3688|8|
@@ -52,6 +54,8 @@ tags: [HackerRank, MySQL]
 - `age`: 지팡이 나이에 해당한다.  
 - `is_evil`: 흑마법에 관련이 있는지를 0과 1로 나타내는 변수로, 0은 non-evil을 의미한다.
 
+(`WANDS_PROPERTY` 예시)
+
 |code|age|is_evil|
 |:-:|:-:|:-:|
 |1|45|0|
@@ -64,9 +68,8 @@ tags: [HackerRank, MySQL]
 
 ## 문제 설명
 
-`age`와 `power`별로 **non-evil**이고 **구매 가격이 가장 싼** 지팡이의 정보(`id`, `age`, `coins_needed`, `power`)를 구하는 문제다. 
-즉, **non-evil**인 지팡이 중에서 `age`와 `power`가 같은 지팡이가 여러 개가 있다면 구매 가격이 가장 싼 지팡이의 정보(`id`, `age`, `coins_needed`, `power`)를 구해야 한다.
-지팡이를 `age`와 `power`를 기준으로 그룹화한 후, 각 그룹에서 **non-evil**이고 **구매 가격이 가장 싼** 지팡이의 정보(`id`, `age`, `coins_needed`, `power`)를 구하는 문제다.
+`age`와 `power`별로 **non-evil**이고 **구매 가격이 가장 싼** 지팡이의 정보 `id`, `age`, `coins_needed`, `power`를 구하는 문제다. 
+즉, **non-evil**인 지팡이 중에서 `age`와 `power`가 같은 지팡이가 여러 개가 있다면 구매 가격이 가장 싼 지팡이의 정보를 구해야 한다.
 
 <br><br><br><br>
 
@@ -135,7 +138,7 @@ GROUP BY
 |4|20|5|504|
 
 위 테이블에는 지팡이의 `id`가 없기 때문에, 테이블 `WANDS`로부터 `id`를 불러 와야 한다.  
-3.에서 구한 테이블과 `WANDS`는 열 `code`, `coins_needed`, `power`를 공통으로 가지고 있고 `code`, `coins_needed`, `power`로 `id`를 특정할 수 있기 때문에 `LEFT JOIN WANDS USING (code, coins_needed, power)`을 이용하여 3.에서 구한 테이블에 `WANDS`의 `id` 값을 추가한다.
+3.에서 구한 테이블과 `WANDS`는 세 개 열 `code`, `coins_needed`, `power`를 공통으로 가지고 있고 `code`, `coins_needed`, `power`로 `id`를 특정할 수 있기 때문에 `LEFT JOIN WANDS USING (code, coins_needed, power)`을 이용하여 3.에서 구한 테이블에 `WANDS`의 `id` 값을 추가한다.
 
 ```sql
 SELECT 

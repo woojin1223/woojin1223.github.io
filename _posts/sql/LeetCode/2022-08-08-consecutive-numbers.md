@@ -16,8 +16,8 @@ SELECT
 FROM (
     SELECT 
         num, 
-        ROW_NUMBER() OVER(ORDER BY id)                  AS row_num1, 
-        ROW_NUMBER() OVER(PARTITION BY num ORDER BY id) AS row_num2 
+        ROW_NUMBER() OVER (ORDER BY id)                  AS row_num1, 
+        ROW_NUMBER() OVER (PARTITION BY num ORDER BY id) AS row_num2 
     FROM 
         logs
     ) AS x 

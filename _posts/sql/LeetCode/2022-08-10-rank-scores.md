@@ -13,7 +13,7 @@ tags: [LeetCode, MySQL]
 ```sql
 SELECT 
     score, 
-    DENSE_RANK() OVER(ORDER BY score DESC) AS 'rank' 
+    DENSE_RANK() OVER (ORDER BY score DESC) AS 'rank' 
 FROM 
     scores 
 ORDER BY 
