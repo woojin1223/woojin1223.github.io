@@ -6,41 +6,28 @@ tags: [HackerRank, MySQL]
 
 ## 문제 링크
 
-<https://www.hackerrank.com/challenges/symmetric-pairs/problem?isFullScreen=true>
+<https://www.hackerrank.com/challenges/symmetric-pairse/problem?isFullScreen=true>
 
 ## 풀이
 
 ```sql
 SELECT 
-    * 
+    CAST(SUBSTRING_INDEX(tuple, ',', 1) AS SIGNED) AS x, 
+    CAST(SUBSTRING_INDEX(tuple, ',', -1) AS SIGNED) AS y 
 FROM (
     SELECT 
-        x, y 
+        CASE 
+            WHEN x > y 
+                THEN CONCAT_WS(',', y, x) 
+            ELSE CONCAT_WS(',', x, y) 
+        END AS tuple 
     FROM 
-        functions 
-    GROUP BY 
-        x, y 
-    HAVING 
-        x = y AND 
-        COUNT(*) = 2
-    ) AS fn3 
-UNION 
-SELECT 
-    * 
-FROM (
-    SELECT 
-        fn1.x, 
-        fn1.y 
-    FROM 
-        functions AS fn1 
-        INNER JOIN functions AS fn2 
-            ON (fn1.x, fn1.y) = (fn2.y, fn2.x) AND 
-            (fn1.x, fn1.y) != (fn2.x, fn2.y)
-    GROUP BY 
-        x, y
-    ) AS fn4 
-WHERE 
-    x <= y 
+        functions
+    ) AS x 
+GROUP BY 
+    tuple 
+HAVING 
+    COUNT(*) >= 2 
 ORDER BY 
     x
 ```
