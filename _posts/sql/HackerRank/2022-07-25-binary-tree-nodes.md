@@ -6,7 +6,7 @@ tags: [HackerRank, MySQL]
 
 ## 문제 링크
 
-<https://www.hackerrank.com/challenges/binary-search-tree-1/problem?isFullScreen=true>
+<https://www.hackerrank.com/challenges/binary-search-tree-1/problem>
 
 <br><br><br><br>
 
@@ -16,7 +16,7 @@ tags: [HackerRank, MySQL]
 `BST`는 (자식 노드, 부모 노드) 형태의 행을 가지는 2열로 구성된 테이블이다.  
 테이블 `BST`의 예시는 다음과 같다.
 
-|N|P|
+|n|p|
 |:-:|:-:|
 |1|2|
 |3|2|
@@ -26,7 +26,7 @@ tags: [HackerRank, MySQL]
 |8|5|
 |5|null|
 
-여기서 N은 자식 노드, P는 부모 노드에 해당한다.
+여기서 n은 자식 노드, p는 부모 노드에 해당한다.
 
 <br><br><br><br>
 
@@ -37,9 +37,12 @@ tags: [HackerRank, MySQL]
 ![binary_tree_nodes](https://s3.amazonaws.com/hr-challenge-images/12888/1443773633-f9e6fd314e-simply_sql_bst.png)
 
 위와 같은 이진트리 구조에서 Root node, Leaf node, Inner node를 찾는 문제다.  
-Root node는 부모 노드가 없는 노드를 말하며, 그림에서는 5번 노드가 이에 해당한다.  
-Leaf node는 자식 노드가 없는 노드를 말하며, 그림에서는 1번, 3번, 6번, 9번 노드가 이에 해당한다.  
-Inner node는 Root node와 Leaf node가 아닌 노드를 말하며, 그림에서는 2번, 8번 노드가 이에 해당한다.
+
+- Root node: 부모 노드가 없는 노드를 말하며, 그림에서는 5번 노드가 이에 해당한다.  
+- Leaf node: 자식 노드가 없는 노드를 말하며, 그림에서는 1번, 3번, 6번, 9번 노드가 이에 해당한다.  
+- Inner node: Root node와 Leaf node가 아닌 노드를 말하며, 그림에서는 2번, 8번 노드가 이에 해당한다.
+
+단, 노드 값을 기준으로 오름차순 정렬해야 한다.
 
 <br><br><br><br>
 

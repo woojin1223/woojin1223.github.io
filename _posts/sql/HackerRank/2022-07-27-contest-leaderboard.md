@@ -6,7 +6,7 @@ tags: [HackerRank, MySQL]
 
 ## 문제 링크
 
-<https://www.hackerrank.com/challenges/contest-leaderboard/problem?isFullScreen=true>
+<https://www.hackerrank.com/challenges/contest-leaderboard/problem>
 
 ## 풀이
 

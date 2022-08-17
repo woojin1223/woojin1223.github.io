@@ -6,7 +6,7 @@ tags: [HackerRank, MySQL]
 
 ## 문제 링크
 
-<https://www.hackerrank.com/challenges/harry-potter-and-wands/problem?isFullScreen=true>
+<https://www.hackerrank.com/challenges/harry-potter-and-wands/problem>
 
 <br><br><br><br>
 
@@ -16,12 +16,14 @@ tags: [HackerRank, MySQL]
 
 `WANDS`는 Ollivander의 물품 목록에 해당하는 테이블이다.  
 
+(컬럼 설명)
+
 - `id`: 지팡이 id에 해당한다. 지팡이마다 전부 다른 id를 가지고 있다.  
 - `code`: 지팡이 종류에 해당한다.  
 - `coins_needed`: 지팡이를 사기 위한 돈에 해당한다.  
 - `power`: 지팡이의 품질을 수치로 표현한 값이다. 값이 클 수록 좋은 품질을 가진다.
 
-(`WANDS` 예시)
+(예시)
 
 |id|code|coins_needed|power|
 |:-:|:-:|:-:|:-:|
@@ -50,11 +52,13 @@ tags: [HackerRank, MySQL]
 
 `WANDS_PROPERTY`는 지팡이 종류별 특징이 있는 테이블이다.  
 
+(컬럼 설명)
+
 - `code`: 지팡이 종류에 해당한다.  
 - `age`: 지팡이 나이에 해당한다.  
 - `is_evil`: 흑마법에 관련이 있는지를 0과 1로 나타내는 변수로, 0은 non-evil을 의미한다.
 
-(`WANDS_PROPERTY` 예시)
+(예시)
 
 |code|age|is_evil|
 |:-:|:-:|:-:|
@@ -68,8 +72,9 @@ tags: [HackerRank, MySQL]
 
 ## 문제 설명
 
-`age`와 `power`별로 **non-evil**이고 **구매 가격이 가장 싼** 지팡이의 정보 `id`, `age`, `coins_needed`, `power`를 구하는 문제다. 
-즉, **non-evil**인 지팡이 중에서 `age`와 `power`가 같은 지팡이가 여러 개가 있다면 구매 가격이 가장 싼 지팡이의 정보를 구해야 한다.
+`age`와 `power`별로 **non-evil**이고 **구매 가격이 가장 싼** 지팡이의 정보 `id`, `age`, `coins_needed`, `power`를 구하는 문제다.  
+즉, **non-evil**인 지팡이 중에서 `age`와 `power`가 같은 지팡이가 여러 개가 있다면 구매 가격이 가장 싼 지팡이의 정보를 구해야 한다.  
+단, `power`, `age` 순으로 내림차순 정렬해야 한다.
 
 <br><br><br><br>
 
