@@ -1,7 +1,7 @@
 ---
 title: "[Codility] SqlEventsDelta"
 categories: SQL
-tags: [codility, PostgreSQL]
+tags: [Codility, PostgreSQL]
 ---
 
 ## 문제 링크
