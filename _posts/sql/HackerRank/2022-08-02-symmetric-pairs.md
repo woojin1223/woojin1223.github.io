@@ -12,7 +12,7 @@ tags: [HackerRank, MySQL]
 
 ## 테이블 설명
 
-`FUNCTIONS` 테이블의 두 컬럼 x, y는 각각 데카르트 좌표계의 x 좌표값, y 좌표값을 의미한다.
+`Functions` 테이블의 두 컬럼 x, y는 각각 데카르트 좌표계의 x 좌표값, y 좌표값을 의미한다.
 
 (예시)
 
@@ -30,7 +30,7 @@ tags: [HackerRank, MySQL]
 ## 문제 설명
 
 데카르트 좌표계의 두 점 $(x_1, y_1)$와 $(x_2, y_2)$가 $(x_1, y_1) = (y_2, x_2)$를 만족할 때 **symmetric pairs**라고 부른다.  
-`FUNCTIONS` 테이블에서 $x \leq y$를 만족하는 symmetric pairs $(x, y)$를 찾는 문제다.  
+`Functions` 테이블에서 $x \leq y$를 만족하는 symmetric pairs $(x, y)$를 찾는 문제다.  
 단, $x$ 값에 대해 오름차순으로 정렬해야 한다.
 
 <br><br><br><br>

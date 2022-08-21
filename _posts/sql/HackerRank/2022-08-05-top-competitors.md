@@ -8,38 +8,40 @@ tags: [HackerRank, MySQL]
 
 <https://www.hackerrank.com/challenges/full-score/problem>
 
+<br><br><br><br>
+
+## 테이블 설명
+
+<br><br><br><br>
+
+## 문제 설명
+
+<br><br><br><br>
+
+## 사고 과정
+
+<br><br><br><br>
+
 ## 풀이
 
 ```sql
 SELECT 
-    hacker_id, 
-    name 
-FROM (
-    SELECT 
-        hacker_id, 
-        COUNT(DISTINCT challenge_id) AS cnt 
-    FROM (
-        SELECT 
-            s.hacker_id, 
-            s.challenge_id, 
-            s.score AS s_score, 
-            d.score AS d_score 
-        FROM 
-            submissions AS s 
-            LEFT JOIN challenges 
-                USING (challenge_id) 
-            LEFT JOIN difficulty AS d 
-                USING (difficulty_level) 
-        WHERE 
-            s.score = d.score
-        ) AS x 
-    GROUP BY 
-        hacker_id
-    ) AS y 
-    LEFT JOIN hackers 
-        USING (hacker_id) 
+    h.hacker_id, 
+    h.name 
+FROM 
+    submissions AS s 
+    LEFT JOIN challenges 
+        USING (challenge_id) 
+    LEFT JOIN difficulty AS d 
+        USING (difficulty_level) 
+    LEFT JOIN hackers AS h 
+        ON s.hacker_id = h.hacker_id 
 WHERE 
-    cnt > 1 
+    s.score = d.score 
+GROUP BY 
+    h.hacker_id, h.name 
+HAVING 
+    COUNT(*) > 1 
 ORDER BY 
-    cnt DESC, hacker_id
+    COUNT(*) DESC, h.hacker_id
 ```

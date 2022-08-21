@@ -12,9 +12,9 @@ tags: [HackerRank, MySQL]
 
 ## 테이블 설명
 
-### `WANDS`
+### `Wands`
 
-`WANDS`는 Ollivander의 물품 목록에 해당하는 테이블이다.  
+`Wands`는 Ollivander의 물품 목록에 해당하는 테이블이다.  
 
 (컬럼 설명)
 
@@ -48,9 +48,9 @@ tags: [HackerRank, MySQL]
 |19|4|7651|6|
 |20|5|5689|3|
 
-### `WAND_PROPERTY`
+### `Wand_Property`
 
-`WANDS_PROPERTY`는 지팡이 종류별 특징이 있는 테이블이다.  
+`Wand_Property`는 지팡이 종류별 특징이 있는 테이블이다.  
 
 (컬럼 설명)
 
@@ -80,12 +80,12 @@ tags: [HackerRank, MySQL]
 
 ## 사고 과정
 
-### 1. `WANDS`와 `WANDS_PROPERTY`를 결합한다.
+### 1. `Wands`와 `Wands_Property`를 결합한다.
 
-테이블 `WANDS`에는 `age`와 `is_evil`이 존재하지 않는다.  
-테이블 `WANDS_PROPERTY`에 있는 `age`와 `is_evil`을 `WANDS`의 열로 추가할 필요가 있다.  
-`WANDS LEFT JOIN WANDS_PROPERTY`을 이용하여 `WANDS`의 모든 행에다가 `WANDS_PROPERTY`의 `age`와 `is_evil`을 추가한다.  
-여기서, `WANDS`와 `WANDS_PROPERTY`는 열 `code`를 공통으로 가지고 있기 때문에 `USING (code)`가 두 테이블의 결합 조건이다.
+테이블 `Wands`에는 `age`와 `is_evil`이 존재하지 않는다.  
+테이블 `Wands_Property`에 있는 `age`와 `is_evil`을 `Wands`의 열로 추가할 필요가 있다.  
+`wands LEFT JOIN wands_property`을 이용하여 `Wands`의 모든 행에다가 `Wands_Property`의 `age`와 `is_evil`을 추가한다.  
+여기서, `Wands`와 `Wands_Property`는 열 `code`를 공통으로 가지고 있기 때문에 `USING (code)`가 두 테이블의 결합 조건이다.
 
 
 ```sql
@@ -142,8 +142,8 @@ GROUP BY
 |2|40|7|6018|
 |4|20|5|504|
 
-위 테이블에는 지팡이의 `id`가 없기 때문에, 테이블 `WANDS`로부터 `id`를 불러 와야 한다.  
-3.에서 구한 테이블과 `WANDS`는 세 개 열 `code`, `coins_needed`, `power`를 공통으로 가지고 있고 `code`, `coins_needed`, `power`로 `id`를 특정할 수 있기 때문에 `LEFT JOIN WANDS USING (code, coins_needed, power)`을 이용하여 3.에서 구한 테이블에 `WANDS`의 `id` 값을 추가한다.
+위 테이블에는 지팡이의 `id`가 없기 때문에, 테이블 `Wands`로부터 `id`를 불러 와야 한다.  
+3.에서 구한 테이블과 `Wands`는 세 개 열 `code`, `coins_needed`, `power`를 공통으로 가지고 있고 `code`, `coins_needed`, `power`로 `id`를 특정할 수 있기 때문에 `LEFT JOIN wands USING (code, coins_needed, power)`을 이용하여 3.에서 구한 테이블에 `Wands`의 `id` 값을 추가한다.
 
 ```sql
 SELECT 
