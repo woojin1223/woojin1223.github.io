@@ -8,6 +8,16 @@ tags: [Codility, PostgreSQL]
 
 <https://app.codility.com/programmers/trainings/6/sql_world_cup/start/>
 
+<br><br><br><br>
+
+## 테이블 설명
+
+<br><br><br><br>
+
+## 문제 설명
+
+<br><br><br><br>
+
 ## 풀이
 
 ```sql

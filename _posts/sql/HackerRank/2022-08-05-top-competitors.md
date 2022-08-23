@@ -139,7 +139,7 @@ FROM
 
 ### 2. 1.의 결과에서 만점을 받은 경우만 필터링한다.
 
-`Submissions`의 `score` 값과 `Difficulty`의 `score` 값이 같으면 해커가 제출한 문제에서 만점을 받은 것이다.  
+`Submissions`의 `score` 값과 `Difficulty`의 `score` 값이 같으면 제출한 문제에서 만점을 받은 것이다.  
 즉, WHERE 절 `WHERE s.score = d.score`를 추가하여 만점을 받은 제출만 필터링한다.
 
 ```sql
