@@ -83,7 +83,7 @@ tags: [HackerRank, MySQL]
 ### 1. `Wands`와 `Wands_Property`를 결합한다.
 
 테이블 `Wands`에는 `age`와 `is_evil`이 존재하지 않는다.  
-테이블 `Wands_Property`에 있는 `age`와 `is_evil`을 `Wands`의 열로 추가할 필요가 있다.  
+테이블 `Wands_Property`에 있는 `age`와 `is_evil`을 `Wands`의 열로 추가해야 한다.  
 `wands LEFT JOIN wands_property`을 이용하여 `Wands`의 모든 행에다가 `Wands_Property`의 `age`와 `is_evil`을 추가한다.  
 여기서, `Wands`와 `Wands_Property`는 열 `code`를 공통으로 가지고 있기 때문에 `USING (code)`가 두 테이블의 결합 조건이다.
 

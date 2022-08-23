@@ -38,7 +38,7 @@ tags: [HackerRank, MySQL]
 
 ### `Difficulty`
 
-`Difficulty`는 코딩 테스트의 문제의 난이도에 대한 테이블이다.
+`Difficulty`는 코딩 테스트 문제의 난이도에 대한 테이블이다.
 
 (컬럼 설명)
 
@@ -86,7 +86,7 @@ tags: [HackerRank, MySQL]
 - `submission_id`: 제출의 id
 - `hacker_id`: 제출한 해커의 id
 - `challenge_id`: 제출한 문제의 id
-- `score`: 제출한 문제에서 얻은 점수
+- `score`: 제출한 문제에서 해커가 얻은 점수
 
 (예시)
 
@@ -97,13 +97,19 @@ tags: [HackerRank, MySQL]
 ## 문제 설명
 
 코딩 테스트에서 **두 문제 이상 만점을 받은 해커**의 id와 이름을 찾는 문제다.  
-단, 만점을 받은 문제의 개수를 기준으로 내림차순, `hacker_id` 기준으로 오름차순 정렬해야 한다.
+단, 만점을 받은 문제의 개수를 기준으로 내림차순, `hacker_id`를 기준으로 오름차순 정렬해야 한다.
 
 <br><br><br><br>
 
 ## 사고 과정
 
 ### 1. `Submissions`와 `Challenges`, `Difficulty`, `Hackers`를 결합한다.
+
+두 문제 이상 만점을 받은 해커의 id와 이름을 찾으려면 테이블 `Submissions`의 정보에다가 해커의 이름과 제출한 문제의 만점에 해당하는 점수가 필요하다. 연속된 테이블 결합을 통해서 `Submissions`에 필요한 열을 추가할 수 있다.
+
+1. 테이블 `Challenges`로부터 각 문제의 난이도에 해당하는 `difficulty_level` 열을 가져 온다.
+2. 테이블 `Difficulty`로부터 각 문제의 난이도별 만점에 해당하는 점수인 `score` 열을 가져 온다. (`Submissions`의 `score` 열과 다름)
+3. 테이블 `Hackers`로부터 해커의 이름에 해당하는 `name` 열을 가져 온다.
 
 ```sql
 SELECT 
@@ -132,6 +138,9 @@ FROM
 |65300|77726|Bonnie|21089|1|10|20|
 
 ### 2. 1.의 결과에서 만점을 받은 경우만 필터링한다.
+
+`Submissions`의 `score` 값과 `Difficulty`의 `score` 값이 같으면 해커가 제출한 문제에서 만점을 받은 것이다.  
+즉, WHERE 절 `WHERE s.score = d.score`를 추가하여 만점을 받은 제출만 필터링한다.
 
 ```sql
 SELECT 
@@ -163,6 +172,9 @@ WHERE
 |97431|90411|Joe|71055|2|30|30|
 
 ### 3. 두 문제 이상 만점을 받은 해커의 id와 이름을 구한다.
+
+**두 문제 이상** 만점을 받은 해커의 id와 이름을 구하기 위해 2.의 결과에서 `hacker_id`와 `name`을 기준으로 그룹화하여 그룹에 속한 행이 두 개 이상인 경우만 필터링한다.  
+아래와 같이 `GROUP BY ... HAVING ...`을 추가하여 구할 수 있다.
 
 ```sql
 SELECT 
