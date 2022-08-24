@@ -165,7 +165,7 @@ FROM (
         is_evil = 0 
     GROUP BY 
         code, age, power
-    ) AS x 
+    ) AS sub 
     LEFT JOIN wands 
         USING (code, coins_needed, power)
 ```
@@ -192,7 +192,7 @@ FROM (
         is_evil = 0 
     GROUP BY 
         code, age, power
-    ) AS x 
+    ) AS sub 
     LEFT JOIN wands 
         USING (code, coins_needed, power) 
 ORDER BY 
@@ -223,7 +223,7 @@ FROM (
         is_evil = 0 
     GROUP BY 
         code, age, power
-    ) AS x 
+    ) AS sub 
     LEFT JOIN wands 
         USING (code, coins_needed, power) 
 ORDER BY 

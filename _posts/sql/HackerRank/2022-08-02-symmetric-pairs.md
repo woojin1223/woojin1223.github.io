@@ -69,7 +69,7 @@ FROM (
         GREATEST(x, y) AS y 
     FROM 
         functions
-    ) AS fns 
+    ) AS sub 
 GROUP BY 
     x, y 
 HAVING 
@@ -87,7 +87,7 @@ FROM (
         GREATEST(x, y) AS y 
     FROM 
         functions
-    ) AS fns 
+    ) AS sub 
 GROUP BY 
   x, y 
 HAVING 
@@ -108,7 +108,7 @@ FROM (
         GREATEST(x, y) AS y 
     FROM 
         functions
-    ) AS fns 
+    ) AS sub 
 GROUP BY 
     x, y 
 HAVING 
