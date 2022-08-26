@@ -193,7 +193,7 @@ WHERE
 GROUP BY 
     h.hacker_id, h.name 
 HAVING 
-    COUNT(*) > 1
+    COUNT(*) >= 2
 ```
 
 (출력)
@@ -221,7 +221,7 @@ WHERE
 GROUP BY 
     h.hacker_id, h.name 
 HAVING 
-    COUNT(*) > 1 
+    COUNT(*) >= 2 
 ORDER BY 
     COUNT(*) DESC, h.hacker_id
 ```
@@ -247,7 +247,7 @@ WHERE
 GROUP BY 
     h.hacker_id, h.name 
 HAVING 
-    COUNT(*) > 1 
+    COUNT(*) >= 2 
 ORDER BY 
     COUNT(*) DESC, h.hacker_id
 ```
