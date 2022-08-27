@@ -16,7 +16,7 @@ tags: [HackerRank, MySQL]
 `BST`는 (자식 노드, 부모 노드) 형태의 행을 가지는 2열로 구성된 테이블이다.  
 테이블 `BST`의 예시는 다음과 같다.
 
-|n|p|
+|N|P|
 |:-:|:-:|
 |1|2|
 |3|2|
@@ -26,13 +26,13 @@ tags: [HackerRank, MySQL]
 |8|5|
 |5|null|
 
-여기서 n은 자식 노드, p는 부모 노드에 해당한다.
+여기서 N은 자식 노드, P는 부모 노드에 해당한다.
 
 <br><br><br><br>
 
 ## 문제 설명
 
-위의 테이블 `BST`를 이진트리 그림으로 나타내면 아래와 같다.
+위 테이블 `BST`를 이진트리 그림으로 나타내면 아래와 같다.
 
 ![binary_tree_nodes](https://s3.amazonaws.com/hr-challenge-images/12888/1443773633-f9e6fd314e-simply_sql_bst.png)
 

@@ -16,10 +16,10 @@ tags: [HackerRank, MySQL]
 
 `Hackers`는 <u>코딩 테스트 참가자</u>(해커)의 정보가 있는 테이블이다.
 
-(컬럼 설명)
+(열 설명)
 
-- `hacker_id`: 해커의 id
-- `name`: 해커의 이름
+- `hacker_id`: 해커의 id에 해당한다.
+- `name`: 해커의 이름에 해당한다.
 
 (예시)
 
@@ -40,10 +40,10 @@ tags: [HackerRank, MySQL]
 
 `Difficulty`는 코딩 테스트 문제의 난이도에 대한 테이블이다.
 
-(컬럼 설명)
+(열 설명)
 
-- `difficulty_level`: 문제의 난이도
-- `score`: 만점에 해당하는 점수
+- `difficulty_level`: 문제의 난이도에 해당한다.
+- `score`: 만점에 해당하는 점수에 해당한다.
 
 (예시)
 
@@ -61,11 +61,11 @@ tags: [HackerRank, MySQL]
 
 `Challenges`는 코딩 테스트의 문제에 대한 테이블이다.
 
-(컬럼 설명)
+(열 설명)
 
-- `challenge_id`: 문제의 id
-- `hacker_id`: 문제를 만든 해커의 id (사용하지 않는 열)
-- `difficulty_level`: 문제의 난이도
+- `challenge_id`: 문제의 id에 해당한다.
+- `hacker_id`: 문제를 만든 해커의 id에 해당한다. (사용하지 않는 열)
+- `difficulty_level`: 문제의 난이도에 해당한다.
 
 (예시)
 
@@ -81,12 +81,12 @@ tags: [HackerRank, MySQL]
 
 `Submissions`는 코딩 테스트 제출 정보에 대한 테이블이다.
 
-(컬럼 설명)
+(열 설명)
 
-- `submission_id`: 제출의 id
-- `hacker_id`: 제출한 해커의 id
-- `challenge_id`: 제출한 문제의 id
-- `score`: 제출한 문제에서 해커가 얻은 점수
+- `submission_id`: 제출의 id에 해당한다.
+- `hacker_id`: 제출한 해커의 id에 해당한다.
+- `challenge_id`: 제출한 문제의 id에 해당한다.
+- `score`: 제출한 문제에서 해커가 얻은 점수에 해당한다.
 
 (예시)
 

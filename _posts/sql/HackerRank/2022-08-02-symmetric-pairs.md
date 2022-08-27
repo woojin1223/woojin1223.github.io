@@ -12,7 +12,7 @@ tags: [HackerRank, MySQL]
 
 ## 테이블 설명
 
-`Functions` 테이블의 두 컬럼 x, y는 각각 데카르트 좌표계의 x 좌표값, y 좌표값을 의미한다.
+`Functions` 테이블의 열 x, y는 각각 데카르트 좌표계의 x 좌표값, y 좌표값을 의미한다.
 
 (예시)
 

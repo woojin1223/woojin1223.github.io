@@ -14,9 +14,9 @@ tags: [HackerRank, MySQL]
 
 ### `Students`
 
-`Students`는 학생들의 정보에 해당하는 테이블이다.  
+`Students`는 학생들의 정보에 해당하는 테이블이다.
 
-(컬럼 설명)
+(열 설명)
 
 - `ID`: 학생 id에 해당한다.  
 - `Name`: 학생 이름에 해당한다.
@@ -35,7 +35,7 @@ tags: [HackerRank, MySQL]
 학생들은 단 한 명의 친구가 있다.  
 `Friends`는 학생이 누구와 친구인지를 알려 주는 테이블이다.
 
-(컬럼 설명)
+(열 설명)
 
 - `ID`: 학생 id에 해당한다.
 - `Friend_ID`: 친구 id에 해당한다.
@@ -53,7 +53,7 @@ tags: [HackerRank, MySQL]
 
 `Packages`는 학생들의 월급에 해당하는 테이블이다.
 
-(컬럼 설명)
+(열 설명)
 
 - `ID`: 학생 id에 해당한다.
 - `Salary`: 제안받은 월급에 해당한다.
