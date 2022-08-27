@@ -14,7 +14,7 @@ tags: [HackerRank, MySQL]
 
 ### `Wands`
 
-`Wands`는 Ollivander의 물품 목록에 해당하는 테이블이다.  
+`Wands`는 Ollivander의 물품 목록에 해당하는 테이블이다.
 
 (컬럼 설명)
 
@@ -50,7 +50,7 @@ tags: [HackerRank, MySQL]
 
 ### `Wand_Property`
 
-`Wand_Property`는 지팡이 종류별 특징이 있는 테이블이다.  
+`Wand_Property`는 지팡이 종류별 특징이 있는 테이블이다.
 
 (컬럼 설명)
 

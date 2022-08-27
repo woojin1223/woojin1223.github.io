@@ -92,10 +92,10 @@ tags: [HackerRank, MySQL]
 ```sql
 SELECT 
     f.id, 
+    name, 
     f.friend_id, 
     p1.salary, 
-    p2.salary AS friend_salary, 
-    name 
+    p2.salary AS friend_salary
 FROM 
     friends AS f 
     LEFT JOIN students 
@@ -108,12 +108,12 @@ FROM
 
 (출력)
 
-|name|id|friend_id|salary|friend_salary|
+|id|name|friend_id|salary|friend_salary|
 |:-:|:-:|:-:|:-:|:-:|
-|Ashely|1|2|15.20|10.06|
-|Samantha|2|3|10.06|11.55|
-|Julia|3|4|11.55|12.12|
-|Scarlet|4|1|12.12|15.20|
+|1|Ashely|2|15.20|10.06|
+|2|Samantha|3|10.06|11.55|
+|3|Julia|4|11.55|12.12|
+|4|Scarlet|1|12.12|15.20|
 
 ### 2. 본인 월급보다 친구 월급이 더 많은 학생의 이름을 구한다.
 
