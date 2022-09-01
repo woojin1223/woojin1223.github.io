@@ -130,6 +130,12 @@ FROM (
     ) AS sub1
 ```
 
+(출력)
+
+|MAX(challenges_created)|
+|:-:|
+|6|
+
 중복되지 않은 `challenges_created` 값을 가진 데이터에 해당하는 서브 쿼리는 다음과 같다.
 
 ```sql
@@ -149,6 +155,14 @@ GROUP BY
 HAVING 
     COUNT(*) = 1
 ```
+
+(출력)
+
+|challenges_created|
+|:-:|
+|6|
+|5|
+|1|
 
 위 두 서브 쿼리와 HAVING 절을 이용해서 1.에서 만든 결과에서 두 학생 이상이 `challenges_created` 값이 같고 그 값이 `challenges_created`의 최댓값보다 작다면 해당 데이터를 제거할 수 있다.
 
