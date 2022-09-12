@@ -25,19 +25,17 @@ tags: [HackerRank, MySQL]
 ## 풀이
 
 ```sql
-SET @row_num = -1;
+SELECT COUNT(*) FROM station INTO @row_num;
 
 SELECT 
     ROUND(AVG(lat_n), 4) AS median 
 FROM (
     SELECT 
         lat_n, 
-        @row_num := @row_num + 1 AS num 
+        ROW_NUMBER() OVER (ORDER BY lat_n) AS num 
     FROM 
-        station 
-    ORDER BY 
-        LAT_N
-    ) AS x
+        station
+    ) AS sub 
 WHERE 
-    num IN (FLOOR(@row_num/2), CEIL(@row_num/2))
+    num IN (FLOOR((@row_num+1) / 2), CEIL((@row_num+1) / 2))
 ```
