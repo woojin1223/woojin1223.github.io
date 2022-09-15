@@ -117,7 +117,7 @@ tags: [HackerRank, MySQL]
 
 ## 문제 설명
 
-대회별로 `total_submissions`의 합, `total_accepted_submissions`의 합, `total_view`의 합, `total_unique_views`의 합을 구하는 문제다.  
+대회별로 `contest_id`, `hacker_id`, `name`, `total_submissions`의 합, `total_accepted_submissions`의 합, `total_view`의 합, `total_unique_views`의 합을 구하는 문제다.  
 단, `contest_id` 열을 기준으로 정렬하고 위 네 개의 합이 모두 0인 데이터를 제외해야 한다.
 
 <br><br><br><br>
@@ -125,6 +125,11 @@ tags: [HackerRank, MySQL]
 ## 사고 과정
 
 ### 1. 테이블 `Colleges`, `Challenges`, `Submission_Stats`를 결합하여 대회별로 `total_submissions`의 합, `total_accepted_submissions`의 합을 구한다.
+
+하나의 `contest_id`에 여러 개의 `college_id`가 매칭될 수 있고, 하나의 `college_id`에 여러 개의 `challenge_id`가 매칭될 수 있으므로 테이블 `Colleges`, `Challenges`, `Submission_Stats` 순으로 `LEFT JOIN`을 이용하여 결합한다.  
+그러고 나서 `GROUP BY contest_id`를 이용하여 대회별로 `total_submissions`의 합, `total_accepted_submissions`의 합을 구한다.
+
+(SQL 코드)
 
 ```sql
 SELECT 
@@ -141,7 +146,20 @@ GROUP BY
     contest_id
 ```
 
+(실행 결과)
+
+|contest_id|total_submissions|total_accepted_submissions|
+|:-:|:-:|:-:|
+|66406|111|39|
+|66556|NULL|NULL|
+|94828|150|38|
+
 ### 2. 테이블 `Colleges`, `Challenges`, `View_Stats`를 결합하여 대회별로 `total_views`의 합, `total_unique_views`의 합을 구한다.
+
+1.에서의 과정과 동일하게 테이블 `Colleges`, `Challenges`, `View_Stats` 순으로 `LEFT JOIN`을 이용하여 결합한다.  
+그러고 나서 `GROUP BY contest_id`를 이용하여 대회별로 `total_views`의 합, `total_unique_views`의 합을 구한다.
+
+(SQL 코드)
 
 ```sql
 SELECT 
@@ -158,7 +176,19 @@ GROUP BY
     contest_id
 ```
 
-### 3. 1.과 2.에서 만든 두 테이블과 `Contests` 테이블을 결합한다.
+(실행 결과)
+
+|contest_id|total_views|total_unique_views|
+|:-:|:-:|:-:|
+|66406|156|56|
+|66556|11|10|
+|94828|41|15|
+
+### 3. 1.과 2.에서 만든 두 테이블과 테이블 `Contests` 을 결합한다.
+
+테이블 `Contests`에 각 `contest_id`에 대응하는 `hacker_id`, `name`이 있기 때문에 1.과 2.에서 만든 두 테이블을 `INNER JOIN`으로 결합한 후 `Contests` 테이블과 결합해야 한다.
+
+(SQL 코드)
 
 ```sql
 SELECT 
@@ -202,7 +232,21 @@ FROM (
         USING (contest_id)
 ```
 
+(실행 결과)
+
+|contest_id|hacker_id|name|total_submissions|total_accepted_submissions|total_views|total_unique_views|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|66406|17973|Rose|111|39|156|56|
+|66556|79153|Angela|NULL|NULL|11|10|
+|94828|80275|Frank|150|38|41|15|
+
 ### 4. 네 개의 합이 모두 0인 데이터를 제외하고, `contest_id` 열을 기준으로 정렬한다.
+
+1.과 2.에서 구한 `total_submissions`의 합, `total_accepted_submissions`의 합, `total_view`의 합, `total_unique_views`의 합이 0인 경우는 곧 NULL인 경우와 같다.  
+따라서, `COALESCE` 함수를 이용하여 네 개의 합이 모두 0인 데이터를 제외할 수 있다.  
+참고: `COALESCE(a, b, c, d)`: a가 NULL인 경우 b를 반환, b가 NULL인 경우 c를 반환, c가 NULL인 경우 d를 반환, d가 NULL인 경우 NULL을 반환
+
+(SQL 코드)
 
 ```sql
 SELECT 
@@ -249,6 +293,14 @@ WHERE
 ORDER BY 
     contest_id
 ```
+
+(실행 결과)
+
+|contest_id|hacker_id|name|total_submissions|total_accepted_submissions|total_views|total_unique_views|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|66406|17973|Rose|111|39|156|56|
+|66556|79153|Angela|NULL|NULL|11|10|
+|94828|80275|Frank|150|38|41|15|
 
 <br><br><br><br>
 
