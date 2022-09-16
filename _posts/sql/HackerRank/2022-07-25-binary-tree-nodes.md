@@ -1,4 +1,5 @@
 ---
+publised: true
 title: "[HackerRank] Binary Tree Nodes"
 categories: SQL
 tags: [HackerRank, MySQL]
