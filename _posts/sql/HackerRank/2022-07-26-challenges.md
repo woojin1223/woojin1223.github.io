@@ -80,6 +80,8 @@ tags: [HackerRank, MySQL]
 
 테이블 `Challenges`에는 학생의 이름에 대한 정보가 없기 때문에 테이블 `Hackers`와의 결합을 통해 `Challenges`에 `name` 열을 추가한다. 그리고 `hacker_id`, `name`을 기준으로 그룹화하여 각 그룹별 `challenge_id`의 개수, 즉 `challenges_created`를 구한다. 그러고 나서 `challenges_created`를 기준으로 내림차순, `hacker_id` 기준으로 오름차순 정렬한다.
 
+(SQL 코드)
+
 ```sql
 SELECT 
     hacker_id, 
