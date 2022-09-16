@@ -12,9 +12,18 @@ tags: [HackerRank, MySQL]
 
 ## 테이블 설명
 
+### `BST`
+
 이진트리는 각각의 노드의 자식이 최대 두 개인 트리 자료 구조이다.  
 `BST`는 (자식 노드, 부모 노드) 형태의 행을 가지는 2열로 구성된 테이블이다.  
 테이블 `BST`의 예시는 다음과 같다.
+
+(열 설명)
+
+- `N`: 자식 노드의 번호에 해당한다.
+- `P`: 부모 노드의 번호에 해당한다.
+
+(예시)
 
 |N|P|
 |:-:|:-:|
@@ -25,8 +34,6 @@ tags: [HackerRank, MySQL]
 |2|5|
 |8|5|
 |5|null|
-
-여기서 N은 자식 노드, P는 부모 노드에 해당한다.
 
 <br><br><br><br>
 
@@ -42,7 +49,7 @@ tags: [HackerRank, MySQL]
 - Leaf node: 자식 노드가 없는 노드를 말하며, 그림에서는 1번, 3번, 6번, 9번 노드가 이에 해당한다.  
 - Inner node: Root node와 Leaf node가 아닌 노드를 말하며, 그림에서는 2번, 8번 노드가 이에 해당한다.
 
-단, 노드 값을 기준으로 오름차순 정렬해야 한다.
+단, 노드 번호를 기준으로 오름차순 정렬해야 한다.
 
 <br><br><br><br>
 
@@ -52,6 +59,8 @@ tags: [HackerRank, MySQL]
 
 Root node는 부모 노드가 없는 노드다.  
 즉, `WHERE p IS NULL`을 이용하여 Root node를 구할 수 있다.
+
+(SQL 코드)
 
 ```sql
 SELECT 
@@ -63,7 +72,7 @@ WHERE
     p IS NULL
 ```
 
-(출력)
+(실행 결과)
 
 |n|node_type|
 |:-:|:-:|
@@ -74,6 +83,8 @@ WHERE
 Inner node는 부모 노드 집합 중에서 Root node가 아닌 노드다.  
 1.의 쿼리 결과를 임시 테이블 `root_node`에 저장했다고 가정하자.  
 부모 노드 집합을 구하는 쿼리 `SELECT DISTINCT p FROM bst WHERE p IS NOT NULL`에서 Root node가 아닌 노드를 구하는 WHERE 절 `WHERE p != (SELECT n FROM root_node)`을 추가하여 Inner node를 구할 수 있다.
+
+(SQL 코드)
 
 ```sql
 SELECT 
@@ -86,7 +97,7 @@ WHERE
     p != (SELECT n FROM root_node)
 ```
 
-(출력)
+(실행 결과)
 
 |n|node_type|
 |:-:|:-:|
@@ -99,6 +110,8 @@ Leaf node는 Root node와 Inner node가 아닌 노드다.
 1.의 쿼리 결과를 임시 테이블 `root_node`, 2.의 쿼리 결과를 임시 테이블 `inner_node`에 저장했다고 가정하자.  
 Root node와 Inner node가 아닌 노드를 구하는 WHERE 절 `WHERE n NOT IN (SELECT n FROM root_node UNION SELECT n FROM inner_node)`을 추가하여 Leaf node를 구할 수 있다.
 
+(SQL 코드)
+
 ```sql
 SELECT 
     n, 
@@ -109,7 +122,7 @@ WHERE
     n NOT IN (SELECT n FROM root_node UNION SELECT n FROM inner_node)
 ```
 
-(출력)
+(실행 결과)
 
 |n|node_type|
 |:-:|:-:|
@@ -118,9 +131,11 @@ WHERE
 |6|Leaf|
 |9|Leaf|
 
-### 4. 위 세 개의 테이블을 `UNION`을 이용하여 세로 방향으로 결합한다.
+### 4. 위 세 개의 테이블을 `UNION`을 이용하여 세로 방향으로 결합한 후, 노드 번호를 기준으로 오름차순 정렬한다.
 
 WITH 절을 이용하여 1.에서 구한 Root node를 임시 테이블 `root_node`에 저장하고 2.에서 구한 Inner node는 임시 테이블 `inner_node`에 저장하고 3.에서 구한 Leaf node를 임시 테이블 `leaf_node`에 저장하자.
+
+(SQL 코드)
 
 ```sql
 WITH root_node AS (
@@ -151,17 +166,9 @@ WITH root_node AS (
 )
 ```
 
-그 후에 `UNION`을 이용하여 세 개의 임시 테이블 `root_node`, `inner_node`, `leaf_node`을 세로 방향으로 결합한다.
+그 후에 `UNION`을 이용하여 세 개의 임시 테이블 `root_node`, `inner_node`, `leaf_node`을 세로 방향으로 결합한 후, 노드 번호를 기준으로 오름차순 정렬한다.
 
-```sql
-SELECT * FROM root_node 
-UNION 
-SELECT * FROM inner_node 
-UNION 
-SELECT * FROM leaf_node
-```
-
-### 5. 마지막으로, Node 값을 기준으로 오름차순 정렬한다.
+(SQL 코드)
 
 ```sql
 SELECT * FROM root_node 
@@ -172,7 +179,7 @@ SELECT * FROM leaf_node
 ORDER BY n
 ```
 
-(출력)
+(실행 결과)
 
 |n|node_type|
 |:-:|:-:|
