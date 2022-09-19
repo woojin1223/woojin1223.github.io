@@ -1,0 +1,31 @@
+I"�<div style="margin-bottom:100px;"></div>
+
+<h2 id="영역-차트-area-chart">영역 차트 (Area chart)</h2>
+
+<p>영역 차트는 꺾은 선 그래프(line graph)를 그린 후 꺾은 선과 x축 사이의 영역을 채우는 시각화 방법이다. <code class="language-html highlighter-rouge">geom_area()</code>를 사용하여 구현할 수 있다.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># load package and data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span><span class="w">
+</span><span class="n">theme_set</span><span class="p">(</span><span class="n">theme_bw</span><span class="p">())</span><span class="w"> </span><span class="c1"># set the classic dark-on-light ggplot2 theme</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="s2">"economics"</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># compute percent returns</span><span class="w">
+</span><span class="n">economics</span><span class="o">$</span><span class="n">returns_percent</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="n">economics</span><span class="o">$</span><span class="n">psavert</span><span class="p">)</span><span class="o">/</span><span class="n">economics</span><span class="o">$</span><span class="n">psavert</span><span class="p">[</span><span class="o">-</span><span class="nf">length</span><span class="p">(</span><span class="n">economics</span><span class="o">$</span><span class="n">psavert</span><span class="p">)])</span><span class="w">
+
+</span><span class="c1"># create break points and labels for axis ticks</span><span class="w">
+</span><span class="n">brks</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">economics</span><span class="o">$</span><span class="n">date</span><span class="p">[</span><span class="n">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">economics</span><span class="o">$</span><span class="n">date</span><span class="p">),</span><span class="w"> </span><span class="m">12</span><span class="p">)]</span><span class="w">
+</span><span class="n">lbls</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">year</span><span class="p">(</span><span class="n">economics</span><span class="o">$</span><span class="n">date</span><span class="p">[</span><span class="n">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">economics</span><span class="o">$</span><span class="n">date</span><span class="p">),</span><span class="w"> </span><span class="m">12</span><span class="p">)])</span><span class="w">
+
+</span><span class="c1"># area chart</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">economics</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">50</span><span class="p">,])</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_area</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">returns_percent</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">scale_x_date</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">brks</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lbls</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"returns %"</span><span class="p">,</span><span class="w">
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Area chart"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Perent returns for personal savings"</span><span class="p">,</span><span class="w">
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"source: economics"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/public/img/2022-06-22-visualization-summary/area_chart-1.png" alt="" /></p>
+:ET

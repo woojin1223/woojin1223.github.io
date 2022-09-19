@@ -1,0 +1,35 @@
+I"�<div style="margin-bottom:100px;"></div>
+
+<h2 id="바이올린-플롯-violin-plot">바이올린 플롯 (Violin plot)</h2>
+
+<p>바이올린 플롯은 다섯가지 요약 수치를 보여주는 상자 그림과 다르게 <strong>그룹별 밀도</strong>를 보여준다. 그룹이 많은 경우, 바이올린 플롯이 밀도 그래프보다 그룹간 밀도를 비교하기 쉽다. <code class="language-html highlighter-rouge">geom_violin()</code>을 사용하여 시각화할 수 있다.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># load package and data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">gridExtra</span><span class="p">)</span><span class="w">
+</span><span class="n">theme_set</span><span class="p">(</span><span class="n">theme_bw</span><span class="p">())</span><span class="w"> </span><span class="c1"># set the classic dark-on-light ggplot2 theme</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="s2">"mpg"</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># violin plot</span><span class="w">
+</span><span class="n">violin</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_violin</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hwy</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mediumseagreen"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"class of vehicle"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"highway mileage"</span><span class="p">,</span><span class="w">
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Violin plot"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"highway mileage vs. class of vehicle"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"source: mpg"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># density plot</span><span class="w">
+</span><span class="n">density</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_density</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hwy</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">class</span><span class="p">),</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"city mileage"</span><span class="p">,</span><span class="w">
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Density plot"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"highway mileage vs. class of vehicle"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"class of vehicle"</span><span class="p">,</span><span class="w">
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"source: mpg"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">grid.arrange</span><span class="p">(</span><span class="n">violin</span><span class="p">,</span><span class="w"> </span><span class="n">density</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/public/img/2022-06-22-visualization-summary/violin_plot-1.png" alt="" /></p>
+:ET

@@ -1,0 +1,283 @@
+I"�1<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://leetcode.com/problems/department-top-three-salaries/">https://leetcode.com/problems/department-top-three-salaries/</a></p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="테이블-설명">테이블 설명</h2>
+
+<h3 id="employee"><code class="language-html highlighter-rouge">Employee</code></h3>
+
+<p><code class="language-html highlighter-rouge">Employee</code>는 직원들의 연봉이 있는 테이블이다.</p>
+
+<p>(열 설명)</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">id</code>: 직원의 id에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">name</code>: 직원의 이름에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">salary</code>: 직원의 연봉에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">departmentId</code>: 직원이 속한 부서의 id에 해당한다.</li>
+</ul>
+
+<p>(예시)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">id</th>
+      <th style="text-align: center">name</th>
+      <th style="text-align: center">salary</th>
+      <th style="text-align: center">departmentId</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Joe</td>
+      <td style="text-align: center">85000</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Henry</td>
+      <td style="text-align: center">80000</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">Sam</td>
+      <td style="text-align: center">60000</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">Max</td>
+      <td style="text-align: center">90000</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">Janet</td>
+      <td style="text-align: center">69000</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">Randy</td>
+      <td style="text-align: center">85000</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">Will</td>
+      <td style="text-align: center">70000</td>
+      <td style="text-align: center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="department"><code class="language-html highlighter-rouge">Department</code></h3>
+
+<p><code class="language-html highlighter-rouge">Department</code>는 부서의 정보가 있는 테이블이다.</p>
+
+<p>(열 설명)</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">id</code>: 부서의 id에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">name</code>: 부서의 이름에 해당한다.</li>
+</ul>
+
+<p>(예시)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">id</th>
+      <th style="text-align: center">name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">IT</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Sales</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p>각 부서별로 연봉 탑 3에 해당하는 인원들을 구하는 문제다.<br />
+단, 연봉이 같은 경우도 포함한다.</p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="사고-과정">사고 과정</h2>
+
+<h3 id="1-employee와-department를-결합한-후-각-부서별로-연봉-순위를-매긴다">1. <code class="language-html highlighter-rouge">Employee</code>와 <code class="language-html highlighter-rouge">Department</code>를 결합한 후, 각 부서별로 연봉 순위를 매긴다.</h3>
+
+<p><code class="language-html highlighter-rouge">DENSE_RANK() OVER ()</code>을 이용하면 같은 연봉이면 공동 순위로 기록된다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">d</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">department</span><span class="p">,</span> 
+    <span class="n">e</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">employee</span><span class="p">,</span> 
+    <span class="n">salary</span><span class="p">,</span> 
+    <span class="n">DENSE_RANK</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">PARTITION</span> <span class="k">BY</span> <span class="n">departmentId</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">salary</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="n">d_rank</span> 
+<span class="k">FROM</span> 
+    <span class="n">employee</span> <span class="k">AS</span> <span class="n">e</span> 
+    <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">department</span> <span class="k">AS</span> <span class="n">d</span> 
+        <span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">departmentId</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">id</span>
+</code></pre></div></div>
+
+<p>(출력)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">department</th>
+      <th style="text-align: center">employee</th>
+      <th style="text-align: center">salary</th>
+      <th style="text-align: center">d_rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">IT</td>
+      <td style="text-align: center">Max</td>
+      <td style="text-align: center">90000</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">IT</td>
+      <td style="text-align: center">Joe</td>
+      <td style="text-align: center">85000</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">IT</td>
+      <td style="text-align: center">Randy</td>
+      <td style="text-align: center">85000</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">IT</td>
+      <td style="text-align: center">Will</td>
+      <td style="text-align: center">70000</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">IT</td>
+      <td style="text-align: center">Janet</td>
+      <td style="text-align: center">69000</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Sales</td>
+      <td style="text-align: center">Henry</td>
+      <td style="text-align: center">80000</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Sales</td>
+      <td style="text-align: center">Sam</td>
+      <td style="text-align: center">60000</td>
+      <td style="text-align: center">2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="2-위-테이블에서-각-부서별-연봉-탑-3에-해당하는-인원들을-추출한다">2. 위 테이블에서 각 부서별 연봉 탑 3에 해당하는 인원들을 추출한다.</h3>
+
+<p>WHERE 절을 이용하면 연봉 탑 3를 추출할 수 있다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">Department</span><span class="p">,</span> 
+    <span class="n">Employee</span><span class="p">,</span> 
+    <span class="n">Salary</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">d</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">department</span><span class="p">,</span> 
+        <span class="n">e</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">employee</span><span class="p">,</span> 
+        <span class="n">salary</span><span class="p">,</span> 
+        <span class="n">DENSE_RANK</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">PARTITION</span> <span class="k">BY</span> <span class="n">departmentId</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">salary</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="n">d_rank</span> 
+    <span class="k">FROM</span> 
+        <span class="n">employee</span> <span class="k">AS</span> <span class="n">e</span> 
+        <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">department</span> <span class="k">AS</span> <span class="n">d</span> 
+            <span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">departmentId</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">id</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">sub</span> 
+<span class="k">WHERE</span> 
+    <span class="n">d_rank</span> <span class="o">&lt;=</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<p>(출력)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Department</th>
+      <th style="text-align: center">Employee</th>
+      <th style="text-align: center">Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">IT</td>
+      <td style="text-align: center">Max</td>
+      <td style="text-align: center">90000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">IT</td>
+      <td style="text-align: center">Joe</td>
+      <td style="text-align: center">85000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">IT</td>
+      <td style="text-align: center">Randy</td>
+      <td style="text-align: center">85000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">IT</td>
+      <td style="text-align: center">Will</td>
+      <td style="text-align: center">70000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Sales</td>
+      <td style="text-align: center">Henry</td>
+      <td style="text-align: center">80000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Sales</td>
+      <td style="text-align: center">Sam</td>
+      <td style="text-align: center">60000</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">Department</span><span class="p">,</span> 
+    <span class="n">Employee</span><span class="p">,</span> 
+    <span class="n">Salary</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">d</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">department</span><span class="p">,</span> 
+        <span class="n">e</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">employee</span><span class="p">,</span> 
+        <span class="n">salary</span><span class="p">,</span> 
+        <span class="n">DENSE_RANK</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">PARTITION</span> <span class="k">BY</span> <span class="n">departmentId</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">salary</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="n">d_rank</span> 
+    <span class="k">FROM</span> 
+        <span class="n">employee</span> <span class="k">AS</span> <span class="n">e</span> 
+        <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">department</span> <span class="k">AS</span> <span class="n">d</span> 
+            <span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="n">departmentId</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">id</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">sub</span> 
+<span class="k">WHERE</span> 
+    <span class="n">d_rank</span> <span class="o">&lt;=</span> <span class="mi">3</span>
+</code></pre></div></div>
+:ET

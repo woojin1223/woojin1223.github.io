@@ -1,0 +1,29 @@
+I"�<div style="margin-bottom:100px;"></div>
+
+<h2 id="트리맵-tree-map">트리맵 (Tree map)</h2>
+
+<p>트리맵은 <strong>계층 구조를 가진 데이터를 시각화</strong>하는 좋은 방법이다. 계층적으로 사각형의 넓이를 다르게 하여 구성을 표현한다. <code class="language-html highlighter-rouge">treemapify</code> 패키지의 <code class="language-html highlighter-rouge">geom_treemap()</code>과 <code class="language-html highlighter-rouge">geom_treemap_text()</code>를 사용하여 구현할 수 있다. 고려해야 할 중요 사항은 다음과 같다.</p>
+
+<ul>
+  <li>트리맵의 영역(넓이)을 나타내는 변수가 존재해야 한다. (<code class="language-html highlighter-rouge">area</code>, <code class="language-html highlighter-rouge">label</code>)</li>
+  <li>트리맵 안의 색을 채울 수 있는 변수가 존재해야 한다. (<code class="language-html highlighter-rouge">fill</code>)</li>
+  <li>각 트리들을 묶을 수 있는 부모 그룹이 존재해야 한다. (<code class="language-html highlighter-rouge">subgroup</code>)</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># load package and data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">treemapify</span><span class="p">)</span><span class="w">
+</span><span class="n">proglangs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/selva86/datasets/master/proglanguages.csv"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># treemap</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">proglangs</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> 
+                      </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w">
+                      </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> 
+                      </span><span class="n">subgroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_treemap</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_treemap_text</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dark2"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/public/img/2022-06-22-visualization-summary/treemap-1.png" alt="" /></p>
+:ET

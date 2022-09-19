@@ -1,0 +1,382 @@
+I"mV<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://www.hackerrank.com/challenges/harry-potter-and-wands/problem">https://www.hackerrank.com/challenges/harry-potter-and-wands/problem</a></p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="테이블-설명">테이블 설명</h2>
+
+<h3 id="wands"><code class="language-html highlighter-rouge">Wands</code></h3>
+
+<p><code class="language-html highlighter-rouge">Wands</code>는 Ollivander의 물품 목록에 해당하는 테이블이다.</p>
+
+<p>(열 설명)</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">id</code>: 지팡이 id에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">code</code>: 지팡이 종류에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">coins_needed</code>: 지팡이를 사기 위한 돈에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">power</code>: 지팡이의 품질을 수치로 표현한 값이다. 값이 클 수록 좋은 품질을 가진다.</li>
+</ul>
+
+<p>(예시)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">id</th>
+      <th style="text-align: center">code</th>
+      <th style="text-align: center">coins_needed</th>
+      <th style="text-align: center">power</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">3688</td>
+      <td style="text-align: center">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">9365</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">7187</td>
+      <td style="text-align: center">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">734</td>
+      <td style="text-align: center">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">6020</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">6773</td>
+      <td style="text-align: center">7</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">9873</td>
+      <td style="text-align: center">9</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">8</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">7721</td>
+      <td style="text-align: center">7</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">9</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1647</td>
+      <td style="text-align: center">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">504</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">11</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">7587</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">12</td>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">9897</td>
+      <td style="text-align: center">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">13</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">4651</td>
+      <td style="text-align: center">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">14</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">5408</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">15</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">6018</td>
+      <td style="text-align: center">7</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">16</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">7710</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">17</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">8798</td>
+      <td style="text-align: center">7</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">18</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">3312</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">19</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">7651</td>
+      <td style="text-align: center">6</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">5689</td>
+      <td style="text-align: center">3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="wand_property"><code class="language-html highlighter-rouge">Wand_Property</code></h3>
+
+<p><code class="language-html highlighter-rouge">Wand_Property</code>는 지팡이 종류별 특징이 있는 테이블이다.</p>
+
+<p>(열 설명)</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">code</code>: 지팡이 종류에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">age</code>: 지팡이 나이에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">is_evil</code>: 흑마법에 관련이 있는지를 0과 1로 나타내는 변수로, 0은 non-evil을 의미한다.</li>
+</ul>
+
+<p>(예시)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">code</th>
+      <th style="text-align: center">age</th>
+      <th style="text-align: center">is_evil</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">45</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">40</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">17</td>
+      <td style="text-align: center">0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p><code class="language-html highlighter-rouge">age</code>와 <code class="language-html highlighter-rouge">power</code>별로 <strong>non-evil</strong>이고 <strong>구매 가격이 가장 싼</strong> 지팡이의 정보 <code class="language-html highlighter-rouge">id</code>, <code class="language-html highlighter-rouge">age</code>, <code class="language-html highlighter-rouge">coins_needed</code>, <code class="language-html highlighter-rouge">power</code>를 구하는 문제다.<br />
+즉, <strong>non-evil</strong>인 지팡이 중에서 <code class="language-html highlighter-rouge">age</code>와 <code class="language-html highlighter-rouge">power</code>가 같은 지팡이가 여러 개가 있다면 구매 가격이 가장 싼 지팡이의 정보를 구해야 한다.<br />
+단, <code class="language-html highlighter-rouge">power</code>, <code class="language-html highlighter-rouge">age</code> 순으로 내림차순 정렬해야 한다.</p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="사고-과정">사고 과정</h2>
+
+<h3 id="1-wands와-wands_property를-결합한다">1. <code class="language-html highlighter-rouge">Wands</code>와 <code class="language-html highlighter-rouge">Wands_Property</code>를 결합한다.</h3>
+
+<p>테이블 <code class="language-html highlighter-rouge">Wands</code>에는 <code class="language-html highlighter-rouge">age</code>와 <code class="language-html highlighter-rouge">is_evil</code>이 존재하지 않는다.<br />
+테이블 <code class="language-html highlighter-rouge">Wands_Property</code>에 있는 <code class="language-html highlighter-rouge">age</code>와 <code class="language-html highlighter-rouge">is_evil</code>을 <code class="language-html highlighter-rouge">Wands</code>의 열로 추가해야 한다.<br />
+<code class="language-html highlighter-rouge">wands LEFT JOIN wands_property</code>을 이용하여 <code class="language-html highlighter-rouge">Wands</code>의 모든 행에다가 <code class="language-html highlighter-rouge">Wands_Property</code>의 <code class="language-html highlighter-rouge">age</code>와 <code class="language-html highlighter-rouge">is_evil</code>을 추가한다.<br />
+여기서, <code class="language-html highlighter-rouge">Wands</code>와 <code class="language-html highlighter-rouge">Wands_Property</code>는 열 <code class="language-html highlighter-rouge">code</code>를 공통으로 가지고 있기 때문에 <code class="language-html highlighter-rouge">USING (code)</code>가 두 테이블의 결합 조건이다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="o">*</span> 
+<span class="k">FROM</span> 
+    <span class="n">wands</span> 
+    <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">wands_property</span> 
+      <span class="k">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="2-위-결과에서-non-evil-지팡이만-추출한다">2. 위 결과에서 non-evil 지팡이만 추출한다.</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="o">*</span> 
+<span class="k">FROM</span> 
+    <span class="n">wands</span> 
+    <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">wands_property</span> 
+      <span class="k">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<span class="k">WHERE</span> 
+    <span class="n">is_evil</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<h3 id="3-code-age-power를-기준으로-그룹화하여-가장-싼-구매-가격을-구한다">3. <code class="language-html highlighter-rouge">code</code>, <code class="language-html highlighter-rouge">age</code>, <code class="language-html highlighter-rouge">power</code>를 기준으로 그룹화하여 가장 싼 구매 가격을 구한다.</h3>
+
+<p><code class="language-html highlighter-rouge">age</code>와 <code class="language-html highlighter-rouge">power</code> 값이 같은 지팡이가 있다면 구매 가격이 가장 싼 지팡이를 추출해야 한다. <br />
+즉, <code class="language-html highlighter-rouge">age</code>, <code class="language-html highlighter-rouge">power</code>를 기준으로 그룹화한 후, 각 그룹에서 구매 가격이 가장 싼 지팡이의 정보를 구해야 한다.<br />
+여기서, <code class="language-html highlighter-rouge">code</code>를 추가로 넣어서 그룹화하는 이유는 지팡이의 정보 중 <code class="language-html highlighter-rouge">id</code>를 알기 위해서는 <code class="language-html highlighter-rouge">code</code>, <code class="language-html highlighter-rouge">coins_needed</code>, <code class="language-html highlighter-rouge">power</code>의 값이 필요하기 때문이다.<br />
+그리고 <code class="language-html highlighter-rouge">code</code>와 <code class="language-html highlighter-rouge">age</code>는 1대1 매핑되어 있기 때문에, <code class="language-html highlighter-rouge">age</code>, <code class="language-html highlighter-rouge">power</code>를 기준으로 그룹화한 것과 <code class="language-html highlighter-rouge">code</code>, <code class="language-html highlighter-rouge">age</code>, <code class="language-html highlighter-rouge">power</code>를 기준으로 그룹화한 것의 결과는 같기 때문이다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">code</span><span class="p">,</span> 
+    <span class="n">age</span><span class="p">,</span> 
+    <span class="n">power</span><span class="p">,</span> 
+    <span class="k">MIN</span><span class="p">(</span><span class="n">coins_needed</span><span class="p">)</span> <span class="k">AS</span> <span class="n">coins_needed</span> 
+<span class="k">FROM</span> 
+    <span class="n">wands</span> 
+    <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">wands_property</span> 
+      <span class="k">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span> 
+<span class="k">WHERE</span> 
+    <span class="n">is_evil</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="k">GROUP</span> <span class="k">BY</span> 
+    <span class="n">code</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">power</span>
+</code></pre></div></div>
+
+<h3 id="4-지팡이의-id를-구하기-위해-3에서-구한-테이블과-테이블-wands를-결합한다">4. 지팡이의 <code class="language-html highlighter-rouge">id</code>를 구하기 위해 3.에서 구한 테이블과 테이블 <code class="language-html highlighter-rouge">WANDS</code>를 결합한다.</h3>
+
+<p>3.에서 구한 테이블을 일부 출력한 결과는 다음과 같다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">code</th>
+      <th style="text-align: center">age</th>
+      <th style="text-align: center">power</th>
+      <th style="text-align: center">coins_needed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">40</td>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">6018</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">504</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위 테이블에는 지팡이의 <code class="language-html highlighter-rouge">id</code>가 없기 때문에, 테이블 <code class="language-html highlighter-rouge">Wands</code>로부터 <code class="language-html highlighter-rouge">id</code>를 불러 와야 한다.<br />
+3.에서 구한 테이블과 <code class="language-html highlighter-rouge">Wands</code>는 세 개 열 <code class="language-html highlighter-rouge">code</code>, <code class="language-html highlighter-rouge">coins_needed</code>, <code class="language-html highlighter-rouge">power</code>를 공통으로 가지고 있고 <code class="language-html highlighter-rouge">code</code>, <code class="language-html highlighter-rouge">coins_needed</code>, <code class="language-html highlighter-rouge">power</code>로 <code class="language-html highlighter-rouge">id</code>를 특정할 수 있기 때문에 <code class="language-html highlighter-rouge">LEFT JOIN wands USING (code, coins_needed, power)</code>을 이용하여 3.에서 구한 테이블에 <code class="language-html highlighter-rouge">Wands</code>의 <code class="language-html highlighter-rouge">id</code> 값을 추가한다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">id</span><span class="p">,</span> 
+    <span class="n">age</span><span class="p">,</span> 
+    <span class="n">coins_needed</span><span class="p">,</span> 
+    <span class="n">power</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">code</span><span class="p">,</span> 
+        <span class="n">age</span><span class="p">,</span> 
+        <span class="n">power</span><span class="p">,</span> 
+        <span class="k">MIN</span><span class="p">(</span><span class="n">coins_needed</span><span class="p">)</span> <span class="k">AS</span> <span class="n">coins_needed</span> 
+    <span class="k">FROM</span> 
+        <span class="n">wands</span> 
+        <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">wands_property</span> 
+            <span class="k">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span> 
+    <span class="k">WHERE</span> 
+        <span class="n">is_evil</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="k">GROUP</span> <span class="k">BY</span> 
+        <span class="n">code</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">power</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">sub</span> 
+    <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">wands</span> 
+        <span class="k">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">coins_needed</span><span class="p">,</span> <span class="n">power</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="5-power-값과-age-값을-기준으로-내림차순-정렬한다">5. <code class="language-html highlighter-rouge">power</code> 값과 <code class="language-html highlighter-rouge">age</code> 값을 기준으로 내림차순 정렬한다.</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">id</span><span class="p">,</span> 
+    <span class="n">age</span><span class="p">,</span> 
+    <span class="n">coins_needed</span><span class="p">,</span> 
+    <span class="n">power</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">code</span><span class="p">,</span> 
+        <span class="n">age</span><span class="p">,</span> 
+        <span class="n">power</span><span class="p">,</span> 
+        <span class="k">MIN</span><span class="p">(</span><span class="n">coins_needed</span><span class="p">)</span> <span class="k">AS</span> <span class="n">coins_needed</span> 
+    <span class="k">FROM</span> 
+        <span class="n">wands</span> 
+        <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">wands_property</span> 
+            <span class="k">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span> 
+    <span class="k">WHERE</span> 
+        <span class="n">is_evil</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="k">GROUP</span> <span class="k">BY</span> 
+        <span class="n">code</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">power</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">sub</span> 
+    <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">wands</span> 
+        <span class="k">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">coins_needed</span><span class="p">,</span> <span class="n">power</span><span class="p">)</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> 
+    <span class="n">power</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">age</span> <span class="k">DESC</span>
+</code></pre></div></div>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">id</span><span class="p">,</span> 
+    <span class="n">age</span><span class="p">,</span> 
+    <span class="n">coins_needed</span><span class="p">,</span> 
+    <span class="n">power</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">code</span><span class="p">,</span> 
+        <span class="n">age</span><span class="p">,</span> 
+        <span class="n">power</span><span class="p">,</span> 
+        <span class="k">MIN</span><span class="p">(</span><span class="n">coins_needed</span><span class="p">)</span> <span class="k">AS</span> <span class="n">coins_needed</span> 
+    <span class="k">FROM</span> 
+        <span class="n">wands</span> 
+        <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">wands_property</span> 
+            <span class="k">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span> 
+    <span class="k">WHERE</span> 
+        <span class="n">is_evil</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="k">GROUP</span> <span class="k">BY</span> 
+        <span class="n">code</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">power</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">sub</span> 
+    <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">wands</span> 
+        <span class="k">USING</span> <span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">coins_needed</span><span class="p">,</span> <span class="n">power</span><span class="p">)</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> 
+    <span class="n">power</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">age</span> <span class="k">DESC</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,125 @@
+I"�_<div style="margin-bottom:100px;"></div>
+
+<h2 id="시계열-그래프-time-series-plot">시계열 그래프 (Time series plot)</h2>
+
+<p><strong>시간의 흐름에 따른 특정 값의 변화</strong>를 표현할 때 주로 활용된다.</p>
+
+<h3 id="time-series-plot-from-a-time-series-object-ts">Time series plot from a time series object (ts)</h3>
+
+<p><code class="language-html highlighter-rouge">ggfortify</code> 패키지를 사용하면 자동으로 시계열 객체(ts)를 시계열 그래프로 표현할 수 있다.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># load package and data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggfortify</span><span class="p">)</span><span class="w">
+</span><span class="n">theme_set</span><span class="p">(</span><span class="n">theme_classic</span><span class="p">())</span><span class="w"> </span><span class="c1"># set a classic-looking theme, with x and y axis lines and no grid lines</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="s2">"AirPassengers"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">autoplot</span><span class="p">(</span><span class="n">AirPassengers</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Air passengers"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">theme</span><span class="p">(</span><span class="n">plot.title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_text</span><span class="p">(</span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/public/img/2022-06-22-visualization-summary/ts_plot_ts-1.png" alt="" /></p>
+
+<h3 id="time-series-plot-from-a-time-dataframe">Time series plot from a time dataframe</h3>
+
+<p>시각화하고자 하는 대상이 시계열 객체가 아닌 데이터프레임 형태일때 <code class="language-html highlighter-rouge">geom_line()</code>을 사용하여 시계열 그래프로 표현할 수 있다.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># load package and data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">theme_set</span><span class="p">(</span><span class="n">theme_classic</span><span class="p">())</span><span class="w"> </span><span class="c1"># set a classic-looking theme, with x and y axis lines and no grid lines</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="s2">"economics"</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># compute percent returns</span><span class="w">
+</span><span class="n">economics</span><span class="o">$</span><span class="n">returns_percent</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="n">economics</span><span class="o">$</span><span class="n">psavert</span><span class="p">)</span><span class="o">/</span><span class="n">economics</span><span class="o">$</span><span class="n">psavert</span><span class="p">[</span><span class="o">-</span><span class="nf">length</span><span class="p">(</span><span class="n">economics</span><span class="o">$</span><span class="n">psavert</span><span class="p">)])</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">economics</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">returns_percent</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"returns %"</span><span class="p">,</span><span class="w">
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Time series plot"</span><span class="p">,</span><span class="w">
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Returns percentage"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"source: economics"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/public/img/2022-06-22-visualization-summary/ts_plot_df-1.png" alt="" /></p>
+
+<h3 id="time-series-plot-for-a-yearly-or-monthly-time-series">Time series plot for a yearly or monthly time series</h3>
+
+<p><code class="language-html highlighter-rouge">scale_x_date()</code>로 x축을 원하는 시간 간격으로 설정할 수 있다.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># load package and data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">gridExtra</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span><span class="w">
+</span><span class="n">theme_set</span><span class="p">(</span><span class="n">theme_bw</span><span class="p">())</span><span class="w"> </span><span class="c1"># set the classic dark-on-light ggplot2 theme</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="s2">"economics"</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># compute percent returns</span><span class="w">
+</span><span class="n">economics</span><span class="o">$</span><span class="n">returns_percent</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">diff</span><span class="p">(</span><span class="n">economics</span><span class="o">$</span><span class="n">psavert</span><span class="p">)</span><span class="o">/</span><span class="n">economics</span><span class="o">$</span><span class="n">psavert</span><span class="p">[</span><span class="o">-</span><span class="nf">length</span><span class="p">(</span><span class="n">economics</span><span class="o">$</span><span class="n">psavert</span><span class="p">)])</span><span class="w">
+
+</span><span class="c1"># prepare data</span><span class="w">
+</span><span class="n">economics_m</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">economics</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">24</span><span class="p">,]</span><span class="w"> 
+</span><span class="n">economics_y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">economics</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">90</span><span class="p">,]</span><span class="w">
+
+</span><span class="c1"># labels and breaks for x axis text</span><span class="w">
+</span><span class="n">m_lbls</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="nb">month.abb</span><span class="p">[</span><span class="n">month</span><span class="p">(</span><span class="n">economics_m</span><span class="o">$</span><span class="n">date</span><span class="p">)],</span><span class="w"> </span><span class="s2">" "</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">(</span><span class="n">economics_m</span><span class="o">$</span><span class="n">date</span><span class="p">))</span><span class="w"> 
+</span><span class="n">m_brks</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">economics_m</span><span class="o">$</span><span class="n">date</span><span class="w"> 
+
+</span><span class="c1"># monthly time series plot</span><span class="w">
+</span><span class="n">monthly</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">economics_m</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">returns_percent</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">scale_x_date</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_lbls</span><span class="p">,</span><span class="w"> </span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_brks</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># change to monthly ticks and labels</span><span class="w">
+  </span><span class="n">theme</span><span class="p">(</span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w"> </span><span class="c1"># rotate x axis text</span><span class="w">
+        </span><span class="n">panel.grid.minor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_blank</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># turn off minor grid</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"returns %"</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Monthly time series"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># labels and breaks for x axis text</span><span class="w">
+</span><span class="n">y_brks</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">economics_y</span><span class="o">$</span><span class="n">date</span><span class="p">[</span><span class="n">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">economics_y</span><span class="o">$</span><span class="n">date</span><span class="p">),</span><span class="w"> </span><span class="m">12</span><span class="p">)]</span><span class="w">
+</span><span class="n">y_lbls</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">year</span><span class="p">(</span><span class="n">y_brks</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># yearly time series </span><span class="w">
+</span><span class="n">yearly</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">economics_y</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">returns_percent</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_x_date</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_lbls</span><span class="p">,</span><span class="w"> </span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_brks</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># change to monthly ticks and labels</span><span class="w">
+  </span><span class="n">theme</span><span class="p">(</span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w"> </span><span class="c1"># rotate x axis text</span><span class="w">
+        </span><span class="n">panel.grid.minor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_blank</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># turn off minor grid</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"returns %"</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Yearly time series"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">grid.arrange</span><span class="p">(</span><span class="n">monthly</span><span class="p">,</span><span class="w"> </span><span class="n">yearly</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/public/img/2022-06-22-visualization-summary/ts_plot_ym-1.png" alt="" /></p>
+
+<h3 id="time-series-plot-from-a-multiple-columns-of-dataframe">Time series plot from a multiple columns of dataframe</h3>
+
+<p>두 개 이상의 그룹별 시계열 그래프를 시각화하고 싶을 때 <code class="language-html highlighter-rouge">geom_line()</code> 안의 <code class="language-html highlighter-rouge">aes()</code>의 <code class="language-html highlighter-rouge">col</code> 인자를 설정하면 된다.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># load package and data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span><span class="w">
+</span><span class="n">theme_set</span><span class="p">(</span><span class="n">theme_bw</span><span class="p">())</span><span class="w"> </span><span class="c1"># set the classic dark-on-light ggplot2 theme</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="s2">"economics_long"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># prepare data</span><span class="w">
+</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">economics_long</span><span class="p">[</span><span class="n">economics_long</span><span class="o">$</span><span class="n">variable</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"psavert"</span><span class="p">,</span><span class="w"> </span><span class="s2">"uempmed"</span><span class="p">),</span><span class="w"> </span><span class="p">]</span><span class="w"> 
+</span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">year</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">date</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1967</span><span class="o">:</span><span class="m">1981</span><span class="p">),]</span><span class="w"> 
+
+</span><span class="c1"># labels and breaks for x axis text </span><span class="w">
+</span><span class="n">brks</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">date</span><span class="p">[</span><span class="n">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">date</span><span class="p">),</span><span class="w"> </span><span class="m">12</span><span class="p">)]</span><span class="w"> 
+</span><span class="n">lbls</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">year</span><span class="p">(</span><span class="n">brks</span><span class="p">)</span><span class="w"> 
+
+</span><span class="c1"># time series plot </span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variable</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_x_date</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lbls</span><span class="p">,</span><span class="w"> </span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">brks</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># change to monthly ticks and labels </span><span class="w">
+  </span><span class="n">scale_color_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"psavert"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#00ba38"</span><span class="p">,</span><span class="w"> </span><span class="s2">"uempmed"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#f8766d"</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># line color </span><span class="w">
+  </span><span class="n">theme</span><span class="p">(</span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">),</span><span class="w"> </span><span class="c1"># rotate x axis text </span><span class="w">
+        </span><span class="n">panel.grid.minor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_blank</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># turn off minor grid </span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"returns %"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Time series of returns percentage"</span><span class="p">,</span><span class="w">
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"source: economics"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/public/img/2022-06-22-visualization-summary/ts_plot_mc-1.png" alt="" /></p>
+:ET

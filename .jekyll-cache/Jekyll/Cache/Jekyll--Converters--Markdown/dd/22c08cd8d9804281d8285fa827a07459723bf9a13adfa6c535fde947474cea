@@ -1,0 +1,136 @@
+I"�<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://www.hackerrank.com/challenges/symmetric-pairs/problem">https://www.hackerrank.com/challenges/symmetric-pairs/problem</a></p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="테이블-설명">테이블 설명</h2>
+
+<p><code class="language-html highlighter-rouge">Functions</code> 테이블의 열 x, y는 각각 데카르트 좌표계의 x 좌표값, y 좌표값을 의미한다.</p>
+
+<p>(예시)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">x</th>
+      <th style="text-align: center">y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">20</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">20</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">20</td>
+      <td style="text-align: center">21</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">23</td>
+      <td style="text-align: center">22</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">22</td>
+      <td style="text-align: center">23</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">21</td>
+      <td style="text-align: center">20</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p>데카르트 좌표계의 두 점 $(x_1, y_1)$와 $(x_2, y_2)$가 $(x_1, y_1) = (y_2, x_2)$를 만족할 때 <strong>symmetric pairs</strong>라고 부른다.<br />
+<code class="language-html highlighter-rouge">Functions</code> 테이블에서 $x \leq y$를 만족하는 symmetric pairs $(x, y)$를 찾는 문제다.<br />
+단, $x$ 값에 대해 오름차순으로 정렬해야 한다.</p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="사고-과정">사고 과정</h2>
+
+<h3 id="1-x와-y-중-작은-값을-x-큰-값을-y로-하여-새롭게-x-y를-만든다">1. x와 y 중 작은 값을 x, 큰 값을 y로 하여 새롭게 x, y를 만든다.</h3>
+
+<p>$(x_1, y_1) = (y_2, x_2)$일 때 x와 y 중 작은 값을 x, 큰 값을 y으로 설정하면 $(x_1, y_1) = (x_2, y_2)$가 된다.<br />
+즉, $(x_1, y_1)$와 $(x_2, y_2)$가 symmetric pairs라면 $x_1 \leq y_1$를 만족하는 $(x_1, y_1)$가 2개 이상 존재하게 된다.</p>
+
+<p>(함수 설명)</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">LEAST(col1, col2, ...)</code>: col1, col2, … 중 작은 값을 반환한다.</li>
+  <li><code class="language-html highlighter-rouge">GREAST(col1, col2, ...)</code>: col1, col2, … 중 큰 값을 반환한다.</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">LEAST</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>    <span class="k">AS</span> <span class="n">x</span><span class="p">,</span> 
+    <span class="n">GREATEST</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">AS</span> <span class="n">y</span> 
+<span class="k">FROM</span> 
+    <span class="n">functions</span>
+</code></pre></div></div>
+
+<h3 id="2-x-y를-기준으로-그룹화하여-그룹-내의-행-수가-2-이상인-경우만-추출한다">2. x, y를 기준으로 그룹화하여 그룹 내의 행 수가 2 이상인 경우만 추출한다.</h3>
+
+<p>위 과정을 통해 x, y를 새롭게 만들고 나면, $(x, y)$의 중복 유무로 symmetric pairs를 찾을 수 있다.<br />
+중복된 $(x, y)$는 x, y를 기준으로 그룹화한 후 그룹 내의 행 수가 2 이상인 $(x, y)$를 찾으면 된다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">LEAST</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>    <span class="k">AS</span> <span class="n">x</span><span class="p">,</span> 
+        <span class="n">GREATEST</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">AS</span> <span class="n">y</span> 
+    <span class="k">FROM</span> 
+        <span class="n">functions</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">sub</span> 
+<span class="k">GROUP</span> <span class="k">BY</span> 
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> 
+<span class="k">HAVING</span> 
+    <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> 
+</code></pre></div></div>
+
+<h3 id="3-x-값을-기준으로-오름차순-정렬한다">3. x 값을 기준으로 오름차순 정렬한다.</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">LEAST</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>    <span class="k">AS</span> <span class="n">x</span><span class="p">,</span> 
+        <span class="n">GREATEST</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">AS</span> <span class="n">y</span> 
+    <span class="k">FROM</span> 
+        <span class="n">functions</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">sub</span> 
+<span class="k">GROUP</span> <span class="k">BY</span> 
+  <span class="n">x</span><span class="p">,</span> <span class="n">y</span> 
+<span class="k">HAVING</span> 
+  <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">LEAST</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>    <span class="k">AS</span> <span class="n">x</span><span class="p">,</span> 
+        <span class="n">GREATEST</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">AS</span> <span class="n">y</span> 
+    <span class="k">FROM</span> 
+        <span class="n">functions</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">sub</span> 
+<span class="k">GROUP</span> <span class="k">BY</span> 
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> 
+<span class="k">HAVING</span> 
+    <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">x</span>
+</code></pre></div></div>
+:ET

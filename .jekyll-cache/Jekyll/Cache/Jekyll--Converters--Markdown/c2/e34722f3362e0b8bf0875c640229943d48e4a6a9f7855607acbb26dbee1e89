@@ -1,0 +1,26 @@
+I"C<div style="margin-bottom:100px;"></div>
+
+<h2 id="산점도-scatter-plot">산점도 (Scatter plot)</h2>
+
+<p><strong>두 수치형 변수의 관계</strong>를 살펴 보고자 할 때 가장 기본이 되는 도표는 산점도이다. 
+<code class="language-html highlighter-rouge">geom_point()</code>를 사용하여 기본적인 산점도를 그리고 <code class="language-html highlighter-rouge">geom_smooth()</code>를 통해서 스무딩 선을 시각화할 수 있다.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># load package and data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">theme_set</span><span class="p">(</span><span class="n">theme_bw</span><span class="p">())</span><span class="w"> </span><span class="c1"># set the classic dark-on-light ggplot2 theme</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="s2">"midwest"</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># scatter plot with smooth plot</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">midwest</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">area</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poptotal</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"loess"</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">coord_cartesian</span><span class="p">(</span><span class="n">xlim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">),</span><span class="w"> </span><span class="n">ylim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">500000</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"area"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"population"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Scatter plot"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"area vs. population"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"source: midwest"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/public/img/2022-06-22-visualization-summary/scatter_plot-1.png" alt="" /></p>
+:ET

@@ -1,0 +1,23 @@
+I"]<div style="margin-bottom:100px;"></div>
+
+<h2 id="상자-그림-box-plot">상자 그림 (Box plot)</h2>
+
+<p>상자 그림은 (min, Q1, Q2, Q3, max)인 <strong>다섯가지 요약 수치를 시각화</strong>하는 방법이다. 또한, 이상치(있는 경우)를 알 수 있다. <code class="language-html highlighter-rouge">geom_boxplot()</code>을 사용하여 시각화하고 <code class="language-html highlighter-rouge">varwidth = TRUE</code>는 상자의 너비가 데이터 수에 비례하도록 조정하는 기능을 한다.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># load package and data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">theme_set</span><span class="p">(</span><span class="n">theme_classic</span><span class="p">())</span><span class="w"> </span><span class="c1"># set a classic-looking theme, with x and y axis lines and no grid lines</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="s2">"mpg"</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># box plot</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_boxplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hwy</span><span class="p">),</span><span class="w"> </span><span class="n">varwidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"olivedrab4"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"class of vehicle"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"highway mileage"</span><span class="p">,</span><span class="w">
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Box plot"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Highway mileage grouped by class of vehicle"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"source: mpg"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/public/img/2022-06-22-visualization-summary/box_plot-1.png" alt="" /></p>
+:ET
