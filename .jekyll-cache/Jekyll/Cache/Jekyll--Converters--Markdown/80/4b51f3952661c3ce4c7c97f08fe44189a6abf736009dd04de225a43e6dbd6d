@@ -1,0 +1,59 @@
+I"H<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://app.codility.com/programmers/trainings/6/sql_world_cup/start/">https://app.codility.com/programmers/trainings/6/sql_world_cup/start/</a></p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="테이블-설명">테이블 설명</h2>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">team_id</span><span class="p">,</span> 
+    <span class="n">team_name</span><span class="p">,</span> 
+    <span class="n">COALESCE</span><span class="p">(</span><span class="n">num_points</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">AS</span> <span class="n">num_points</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">host_team</span><span class="p">,</span> 
+        <span class="k">SUM</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="k">AS</span> <span class="n">num_points</span> 
+    <span class="k">FROM</span> <span class="p">(</span>
+        <span class="k">SELECT</span> 
+            <span class="n">host_team</span><span class="p">,</span> 
+            <span class="k">CASE</span> 
+                <span class="k">WHEN</span> <span class="n">host_goals</span> <span class="o">&gt;</span> <span class="n">guest_goals</span> 
+                    <span class="k">THEN</span> <span class="mi">3</span> 
+                <span class="k">WHEN</span> <span class="n">host_goals</span> <span class="o">=</span> <span class="n">guest_goals</span> 
+                    <span class="k">THEN</span> <span class="mi">1</span> 
+                <span class="k">ELSE</span> <span class="mi">0</span>
+            <span class="k">END</span> <span class="k">AS</span> <span class="n">score</span> 
+        <span class="k">FROM</span> <span class="p">(</span>
+            <span class="k">SELECT</span> 
+                <span class="o">*</span> 
+            <span class="k">FROM</span> 
+                <span class="n">matches</span> 
+            <span class="k">UNION</span> 
+            <span class="k">SELECT</span> 
+                <span class="n">match_id</span><span class="p">,</span> 
+                <span class="n">guest_team</span>  <span class="k">AS</span> <span class="n">host_team</span><span class="p">,</span> 
+                <span class="n">host_team</span>   <span class="k">AS</span> <span class="n">guest_team</span><span class="p">,</span> 
+                <span class="n">guest_goals</span> <span class="k">AS</span> <span class="n">host_goals</span><span class="p">,</span> 
+                <span class="n">host_goals</span>  <span class="k">AS</span> <span class="n">guest_goals</span> 
+            <span class="k">FROM</span> 
+                <span class="n">matches</span>
+            <span class="p">)</span> <span class="k">AS</span> <span class="n">x</span>
+        <span class="p">)</span> <span class="k">AS</span> <span class="n">y</span> 
+    <span class="k">GROUP</span> <span class="k">BY</span> 
+        <span class="n">host_team</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">z</span> 
+    <span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">teams</span> 
+        <span class="k">ON</span> <span class="n">z</span><span class="p">.</span><span class="n">host_team</span> <span class="o">=</span> <span class="n">teams</span><span class="p">.</span><span class="n">team_id</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> 
+    <span class="n">num_points</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">team_id</span>
+</code></pre></div></div>
+:ET
