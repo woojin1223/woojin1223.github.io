@@ -25,8 +25,8 @@ version: 1.0.0
 
 # About/contact
 author:
-  name: Woo Jin
-  description: <strong>Data Scientist</strong>, Woo Jin.
+  name: WooJin
+  description: <strong>Data Scientist</strong>, WooJin.
   gravatar: 8b9b5b0f787c7b89e9914c86cfb26257 # md5 hash of your email address
   contact:
     # linkedin:  <hide>
@@ -65,4 +65,4 @@ google_analytics_token: 'G-7BD8CT32B0' # leave blank if you don't want google an
               # false (default), "disqus", "discourse", "facebook"
               # "staticman", "staticman_v2", "utterances", "custom"
   # disqus:
-    # shortname : # "greeksharifa-github-io"                    # disqus의 shortname 기재
+    # shortname : # "woojin1223-github-io"                    # disqus의 shortname 기재
