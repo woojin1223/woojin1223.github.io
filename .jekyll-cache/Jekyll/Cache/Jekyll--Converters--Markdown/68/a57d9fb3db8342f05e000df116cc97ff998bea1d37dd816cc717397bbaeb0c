@@ -1,0 +1,239 @@
+I"/<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://www.hackerrank.com/challenges/contest-leaderboard/problem">https://www.hackerrank.com/challenges/contest-leaderboard/problem</a></p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="테이블-설명">테이블 설명</h2>
+
+<h3 id="hackers"><code class="language-html highlighter-rouge">Hackers</code></h3>
+
+<p><code class="language-html highlighter-rouge">Hackers</code>는 <u>코딩 테스트 참가자</u>(해커)의 정보가 있는 테이블이다.</p>
+
+<p>(열 설명)</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">hacker_id</code>: 해커의 id</li>
+  <li><code class="language-html highlighter-rouge">name</code>: 해커의 이름</li>
+</ul>
+
+<p>(예시)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">hacker_id</th>
+      <th style="text-align: center">name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">4071</td>
+      <td style="text-align: center">Rose</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4806</td>
+      <td style="text-align: center">Angela</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">26071</td>
+      <td style="text-align: center">Frank</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">49438</td>
+      <td style="text-align: center">Patrick</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">74842</td>
+      <td style="text-align: center">Lisa</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">80305</td>
+      <td style="text-align: center">Kimberly</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">84072</td>
+      <td style="text-align: center">Bonnie</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">87868</td>
+      <td style="text-align: center">Michael</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">92118</td>
+      <td style="text-align: center">Todd</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">95895</td>
+      <td style="text-align: center">Joe</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="submissions"><code class="language-html highlighter-rouge">Submissions</code></h3>
+
+<p><code class="language-html highlighter-rouge">Submissions</code>는 코딩 테스트 제출 정보에 대한 테이블이다.</p>
+
+<p>(열 설명)</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">submission_id</code>: 제출의 id</li>
+  <li><code class="language-html highlighter-rouge">hacker_id</code>: 제출한 해커의 id</li>
+  <li><code class="language-html highlighter-rouge">challenge_id</code>: 제출한 문제의 id</li>
+  <li><code class="language-html highlighter-rouge">score</code>: 제출한 문제에서 해커가 얻은 점수</li>
+</ul>
+
+<p>(예시)</p>
+
+<p><img src="https://s3.amazonaws.com/hr-challenge-images/19503/1458523388-0896218137-ScreenShot2016-03-21at6.51.45AM.png" alt="" /></p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p>해커별 id와 이름과 코딩 테스트에서 얻은 총 점수를 찾는 문제다.<br />
+여기서 총 점수는 코딩 테스트 각 문제에서 기록한 점수들의 최댓값을 다 더한 점수다.<br />
+단, 총 점수가 0인 해커는 제외한다. 그리고 총 점수를 기준으로 내림차순, <code class="language-html highlighter-rouge">hacker_id</code>를 기준으로 오름차순 정렬해야 한다.</p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="사고-과정">사고 과정</h2>
+
+<h3 id="1-해커별로-각-문제에서-기록한-최댓값을-구한다">1. 해커별로 각 문제에서 기록한 최댓값을 구한다.</h3>
+
+<p><code class="language-html highlighter-rouge">hacker_id</code>와 <code class="language-html highlighter-rouge">challenge_id</code>를 기준으로 그룹화한 후 각 그룹별 점수의 최댓값을 구하여 <code class="language-html highlighter-rouge">max_score</code>라는 열에 저장한다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code> <span class="k">SELECT</span> 
+     <span class="n">hacker_id</span><span class="p">,</span> 
+     <span class="n">challenge_id</span><span class="p">,</span> 
+     <span class="k">MAX</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="k">AS</span> <span class="n">max_score</span> 
+ <span class="k">FROM</span> 
+     <span class="n">submissions</span> 
+ <span class="k">GROUP</span> <span class="k">BY</span> 
+     <span class="n">hacker_id</span><span class="p">,</span> <span class="n">challenge_id</span>
+</code></pre></div></div>
+
+<p>(일부 출력)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">hacker_id</th>
+      <th style="text-align: center">challenge_id</th>
+      <th style="text-align: center">max_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">4071</td>
+      <td style="text-align: center">19797</td>
+      <td style="text-align: center">95</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4071</td>
+      <td style="text-align: center">49593</td>
+      <td style="text-align: center">96</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="2-1의-결과에서-해커별로-id-이름-총-점수를-구한다">2. 1.의 결과에서 해커별로 id, 이름, 총 점수를 구한다.</h3>
+
+<p>1.의 결과에서 해커별로 총 점수를 구하기 전에 <code class="language-html highlighter-rouge">Hackers</code> 테이블과 결합하여 <code class="language-html highlighter-rouge">name</code> 열을 추가한다.<br />
+그러고 나서, <code class="language-html highlighter-rouge">hacker_id</code>와 <code class="language-html highlighter-rouge">name</code>을 기준으로 그룹화한 후 각 그룹별 점수의 합을 구하여 <code class="language-html highlighter-rouge">total_score</code>라는 열에 저장한다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">hacker_id</span><span class="p">,</span> 
+    <span class="n">name</span> <span class="k">AS</span> <span class="n">hacker_name</span><span class="p">,</span> 
+    <span class="k">SUM</span><span class="p">(</span><span class="n">max_score</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total_score</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">hacker_id</span><span class="p">,</span> 
+        <span class="k">MAX</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="k">AS</span> <span class="n">max_score</span> 
+    <span class="k">FROM</span> 
+        <span class="n">submissions</span> 
+    <span class="k">GROUP</span> <span class="k">BY</span> 
+        <span class="n">hacker_id</span><span class="p">,</span> <span class="n">challenge_id</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">sub</span>
+    <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">hackers</span> 
+        <span class="k">USING</span> <span class="p">(</span><span class="n">hacker_id</span><span class="p">)</span> 
+<span class="k">GROUP</span> <span class="k">BY</span> 
+    <span class="n">hacker_id</span><span class="p">,</span> <span class="n">name</span>
+</code></pre></div></div>
+
+<p>(일부 출력)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">hacker_id</th>
+      <th style="text-align: center">hacker_name</th>
+      <th style="text-align: center">total_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">4071</td>
+      <td style="text-align: center">Rose</td>
+      <td style="text-align: center">191</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">74842</td>
+      <td style="text-align: center">Lisa</td>
+      <td style="text-align: center">174</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="3-총-점수가-0인-해커를-제외하고-총-점수-기준으로-내림차순-hacker_id-기준으로-오름차순-정렬한다">3. 총 점수가 0인 해커를 제외하고 총 점수 기준으로 내림차순, <code class="language-html highlighter-rouge">hacker_id</code> 기준으로 오름차순 정렬한다.</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">hacker_id</span><span class="p">,</span> 
+    <span class="n">name</span> <span class="k">AS</span> <span class="n">hacker_name</span><span class="p">,</span> 
+    <span class="k">SUM</span><span class="p">(</span><span class="n">max_score</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total_score</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">hacker_id</span><span class="p">,</span> 
+        <span class="k">MAX</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="k">AS</span> <span class="n">max_score</span> 
+    <span class="k">FROM</span> 
+        <span class="n">submissions</span> 
+    <span class="k">GROUP</span> <span class="k">BY</span> 
+        <span class="n">hacker_id</span><span class="p">,</span> <span class="n">challenge_id</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">sub</span>
+    <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">hackers</span> 
+        <span class="k">USING</span> <span class="p">(</span><span class="n">hacker_id</span><span class="p">)</span> 
+<span class="k">GROUP</span> <span class="k">BY</span> 
+    <span class="n">hacker_id</span><span class="p">,</span> <span class="n">name</span> 
+<span class="k">HAVING</span> 
+    <span class="n">total_score</span> <span class="o">&gt;</span> <span class="mi">0</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> 
+    <span class="n">total_score</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">hacker_id</span>
+</code></pre></div></div>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">hacker_id</span><span class="p">,</span> 
+    <span class="n">name</span> <span class="k">AS</span> <span class="n">hacker_name</span><span class="p">,</span> 
+    <span class="k">SUM</span><span class="p">(</span><span class="n">max_score</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total_score</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">hacker_id</span><span class="p">,</span> 
+        <span class="k">MAX</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="k">AS</span> <span class="n">max_score</span> 
+    <span class="k">FROM</span> 
+        <span class="n">submissions</span> 
+    <span class="k">GROUP</span> <span class="k">BY</span> 
+        <span class="n">hacker_id</span><span class="p">,</span> <span class="n">challenge_id</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">sub</span>
+    <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">hackers</span> 
+        <span class="k">USING</span> <span class="p">(</span><span class="n">hacker_id</span><span class="p">)</span> 
+<span class="k">GROUP</span> <span class="k">BY</span> 
+    <span class="n">hacker_id</span><span class="p">,</span> <span class="n">name</span> 
+<span class="k">HAVING</span> 
+    <span class="n">total_score</span> <span class="o">&gt;</span> <span class="mi">0</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> 
+    <span class="n">total_score</span> <span class="k">DESC</span><span class="p">,</span> <span class="n">hacker_id</span>
+</code></pre></div></div>
+:ET

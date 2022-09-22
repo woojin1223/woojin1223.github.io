@@ -6,7 +6,6 @@ url: https://woojin1223.github.io
 logo: '/public/img/favicon/favicon.ico'
 
 # Site configurations
-future: true
 plugins: [jekyll-paginate]
 markdown: kramdown
 highlighter: rouge

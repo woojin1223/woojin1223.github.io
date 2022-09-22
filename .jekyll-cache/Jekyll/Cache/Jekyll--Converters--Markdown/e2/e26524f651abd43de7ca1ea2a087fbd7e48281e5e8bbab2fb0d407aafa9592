@@ -1,0 +1,97 @@
+I"�<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42576">https://programmers.co.kr/learn/courses/30/lessons/42576</a></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p>수많은 마라톤 선수들이 마라톤에 참여하였습니다.<br />
+단 <strong>한 명의 선수</strong>를 제외하고는 모든 선수가 마라톤을 완주하였습니다.<br />
+마라톤에 참여한 선수들의 이름이 담긴 배열 <code class="language-html highlighter-rouge">participant</code>와 완주한 선수들의 이름이 담긴 배열 <code class="language-html highlighter-rouge">completion</code>이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 <code class="language-html highlighter-rouge">solution</code> 함수를 작성해주세요.</p>
+
+<h2 id="제한-사항">제한 사항</h2>
+
+<ul>
+  <li>마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.</li>
+  <li><code class="language-html highlighter-rouge">completion</code>의 길이는 <code class="language-html highlighter-rouge">participant</code>의 길이보다 1 작습니다.</li>
+  <li>참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.</li>
+  <li>참가자 중에는 동명이인이 있을 수 있습니다.</li>
+</ul>
+
+<h2 id="입출력-예">입출력 예</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>participant</th>
+      <th>compeletion</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[“leo”, “kiki”, “eden”]</td>
+      <td>[“eden”, “kiki”]</td>
+      <td>“leo”</td>
+    </tr>
+    <tr>
+      <td>[“marina”, “josipa”, “nikola”, “vinko”, “filipa”]</td>
+      <td>[“josipa”, “filipa”, “marina”, “nikola”]</td>
+      <td>“vinko”</td>
+    </tr>
+    <tr>
+      <td>[“mislav”, “stanko”, “mislav”, “ana”]</td>
+      <td>[“stanko”, “ana”, “mislav”]</td>
+      <td>“mislav”</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="입출력-예-설명">입출력 예 설명</h2>
+
+<h3 id="입출력-예-1">입출력 예 #1</h3>
+
+<p>“leo”는 참여자 명단에는 있지만, 완주자 명단에는 없기 때문에 완주하지 못했습니다.</p>
+
+<h3 id="입출력-예-2">입출력 예 #2</h3>
+
+<p>“vinko”는 참여자 명단에는 있지만, 완주자 명단에는 없기 때문에 완주하지 못했습니다.</p>
+
+<h3 id="입출력-예-3">입출력 예 #3</h3>
+
+<p>“mislav”는 참여자 명단에는 두 명이 있지만, 완주자 명단에는 한 명밖에 없기 때문에 한명은 완주하지 못했습니다.</p>
+
+<h2 id="풀이-1">풀이 1</h2>
+
+<p><code class="language-html highlighter-rouge">collections</code> 모듈의 <code class="language-html highlighter-rouge">Counter</code> 클래스를 사용합니다.<br />
+<code class="language-html highlighter-rouge">Counter</code>는 iterable 객체 안의 각 원소의 개수를 나타내는 클래스입니다.<br />
+<code class="language-html highlighter-rouge">Counter</code> 클래스는 덧셈과 뺄셈 연산이 가능하며, 이 문제의 경우에는 뺄셈을 사용합니다.<br />
+뺄셈을 통해, 완주하지 못한 선수의 이름을 구할 수 있습니다.<br />
+아래의 코드에서 <code class="language-html highlighter-rouge">result_dict</code>는 <code class="language-html highlighter-rouge">{선수이름: 1}</code>과 같이 사전 형식의 객체이기 때문에 <code class="language-html highlighter-rouge">result_dict</code>의 <code class="language-html highlighter-rouge">key</code>를 반환해야 합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">participant</span><span class="p">,</span> <span class="n">completion</span><span class="p">):</span>
+    <span class="n">result_dict</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">participant</span><span class="p">)</span> <span class="o">-</span> <span class="n">Counter</span><span class="p">(</span><span class="n">completion</span><span class="p">)</span> <span class="c1"># Counter 클래스 간의 뺄셈
+</span>    
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result_dict</span><span class="p">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h2 id="풀이-2">풀이 2</h2>
+
+<p><code class="language-html highlighter-rouge">participant</code>과 <code class="language-html highlighter-rouge">completion</code>을 정렬한 후, <code class="language-html highlighter-rouge">zip</code> 함수로 두 리스트에서 같은 위치의 원소들을 비교합니다.<br />
+두 원소가 서로 다르다면, 참여자 명단에 있지만 완주자 명단에는 없는 사람이므로 그 값을 반환합니다.<br />
+만약 두 원소가 전부 같다면, 참여자 명단의 제일 끝에 있는 사람이 완주자 명단에 없는 유일한 사람입니다.<br />
+따라서, 참여자 명단의 제일 끝에 있는 값을 반환합니다.<br />
+(참고: <code class="language-html highlighter-rouge">completion</code>의 길이는 <code class="language-html highlighter-rouge">participant</code>의 길이보다 1 작습니다.)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">participant</span><span class="p">,</span> <span class="n">completion</span><span class="p">):</span>
+    <span class="n">participant</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">completion</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">participant</span><span class="p">,</span> <span class="n">completion</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="n">c</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">p</span>
+        
+    <span class="k">return</span> <span class="n">participant</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+:ET

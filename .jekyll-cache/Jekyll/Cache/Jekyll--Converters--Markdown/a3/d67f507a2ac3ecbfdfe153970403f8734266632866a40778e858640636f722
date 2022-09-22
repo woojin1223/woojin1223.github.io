@@ -1,0 +1,29 @@
+I"�<div style="margin-bottom:100px;"></div>
+
+<h2 id="지터-플롯-jitter-plot">지터 플롯 (Jitter plot)</h2>
+
+<p>지터는 데이터 값에 약간의 노이즈를 추가하는 방법을 말한다. 지터로 산점도를 그리면 데이터 값이 조금 움직여서 같은 값을 가지는 데이터가 그래프에 겹쳐져 표시되지 않는다. <code class="language-html highlighter-rouge">geom_point()</code>를 사용하는 대신 <code class="language-html highlighter-rouge">geom_jitter()</code>를 사용하여 시각화할 수 있다. <code class="language-html highlighter-rouge">geom_point()</code>와 <code class="language-html highlighter-rouge">geom_jitter()</code> 둘 다 산점도를 그리지만 <strong>겹쳐진 점을 표시하는 방법에 차이</strong>가 있다.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># load package and data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">gridExtra</span><span class="p">)</span><span class="w">
+</span><span class="n">theme_set</span><span class="p">(</span><span class="n">theme_bw</span><span class="p">())</span><span class="w"> </span><span class="c1"># set the classic dark-on-light ggplot2 theme</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="s2">"mpg"</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">cty</span><span class="p">,</span><span class="w"> </span><span class="n">hwy</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># scatter plot</span><span class="w">
+</span><span class="n">point</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Scatter plot with overlapping points"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"city vs. highway mileage"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># jitter plot</span><span class="w">
+</span><span class="n">jitter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_jitter</span><span class="p">(</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Jittered scatter plot"</span><span class="p">,</span><span class="w">
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"city vs. highway mileage"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">grid.arrange</span><span class="p">(</span><span class="n">point</span><span class="p">,</span><span class="w"> </span><span class="n">jitter</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/public/img/2022-06-22-visualization-summary/jitter_plot-1.png" alt="" /></p>
+:ET

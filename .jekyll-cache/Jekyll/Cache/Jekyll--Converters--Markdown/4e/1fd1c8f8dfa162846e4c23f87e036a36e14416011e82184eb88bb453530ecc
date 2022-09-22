@@ -1,0 +1,312 @@
+I"VD<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://www.hackerrank.com/challenges/sql-projects/problem">https://www.hackerrank.com/challenges/sql-projects/problem</a></p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="테이블-설명">테이블 설명</h2>
+
+<h3 id="projects"><code class="language-html highlighter-rouge">Projects</code></h3>
+
+<p><code class="language-html highlighter-rouge">Projects</code>는 일을 시작한 날짜와 끝낸 날짜가 있는 테이블이다.<br />
+각 행에서 시작한 날짜와 끝낸 날짜의 차이는 1일로 모두 동일하다.</p>
+
+<p>(열 설명)</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">Task_ID</code>: 일의 id에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">Start_Date</code>: 일을 시작한 날짜에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">End_Date</code>: 일을 끝낸 날짜에 해당한다.</li>
+</ul>
+
+<p>(예시)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Task_ID</th>
+      <th style="text-align: center">Start_Date</th>
+      <th style="text-align: center">End_Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2015-10-01</td>
+      <td style="text-align: center">2015-10-02</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2015-10-02</td>
+      <td style="text-align: center">2015-10-03</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2015-10-03</td>
+      <td style="text-align: center">2015-10-04</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">2015-10-13</td>
+      <td style="text-align: center">2015-10-14</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">2015-10-14</td>
+      <td style="text-align: center">2015-10-15</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">2015-10-28</td>
+      <td style="text-align: center">2015-10-29</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">2015-10-30</td>
+      <td style="text-align: center">2015-10-31</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p>테이블 <code class="language-html highlighter-rouge">Projects</code>의 일들을 프로젝트 단위로 묶어서 각 프로젝트의 시작한 날짜와 끝낸 날짜를 구하는 문제다.<br />
+일의 끝낸 날짜가 연속적인 경우, 해당 일들을 하나의 프로젝트로 취급한다.<br />
+단, 프로젝트의 기간과 시작한 날짜를 기준으로 오름차순 정렬해야 한다.</p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="사고-과정">사고 과정</h2>
+
+<h3 id="1-start_date와-end_date의-대칭-차집합을-구한다">1. <code class="language-html highlighter-rouge">start_date</code>와 <code class="language-html highlighter-rouge">end_date</code>의 <a href="https://ko.wikipedia.org/wiki/%EB%8C%80%EC%B9%AD%EC%B0%A8">대칭 차집합</a>을 구한다.</h3>
+
+<p>일들을 프로젝트 단위로 묶기 위해서는 열 <code class="language-html highlighter-rouge">start_date</code>와 열 <code class="language-html highlighter-rouge">end_date</code>에서 같은 값이 나오는지 확인 후 연속적으로 같은 값이 나오는 행들을 하나의 그룹으로 보고 각 그룹에서 <code class="language-html highlighter-rouge">start_date</code>의 최솟값과 <code class="language-html highlighter-rouge">end_date</code>의 최댓값을 구해야 한다.<br />
+이 복잡한 작업을 쉽게 하기 위해서 열 <code class="language-html highlighter-rouge">start_date</code>와 열 <code class="language-html highlighter-rouge">end_date</code>에서 공통적으로 나오는 데이터를 제외한다.<br />
+그러고 나서 공통 원소가 없는 <code class="language-html highlighter-rouge">start_date</code>와 <code class="language-html highlighter-rouge">end_date</code>를 각각 정렬하여 열 방향으로 결합하면 된다.<br />
+우선, 열 <code class="language-html highlighter-rouge">start_date</code>와 열 <code class="language-html highlighter-rouge">end_date</code>의 대칭 차집합을 구하자.<br />
+먼저, 차집합 <code class="language-html highlighter-rouge">start_date</code> - <code class="language-html highlighter-rouge">end_date</code>을 구한 후 날짜 순으로 행 번호를 매긴 열 <code class="language-html highlighter-rouge">row_num</code>을 추가한다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">start_date</span><span class="p">,</span> 
+    <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">start_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">row_num</span> 
+<span class="k">FROM</span> 
+    <span class="n">projects</span> 
+<span class="k">WHERE</span> 
+    <span class="n">start_date</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">end_date</span> <span class="k">FROM</span> <span class="n">projects</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>(출력)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">start_date</th>
+      <th style="text-align: center">row_num</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">2015-10-01</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-13</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-28</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-30</td>
+      <td style="text-align: center">4</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>다음으로, 차집합 <code class="language-html highlighter-rouge">end_date</code> - <code class="language-html highlighter-rouge">start_date</code>을 구한 후 날짜 순으로 행 번호를 매긴 열 <code class="language-html highlighter-rouge">row_num</code>을 추가한다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">end_date</span><span class="p">,</span> 
+    <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">end_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">row_num</span> 
+<span class="k">FROM</span> 
+    <span class="n">projects</span> 
+<span class="k">WHERE</span> 
+    <span class="n">end_date</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">start_date</span> <span class="k">FROM</span> <span class="n">projects</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>(출력)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">end_date</th>
+      <th style="text-align: center">row_num</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">2015-10-04</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-15</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-29</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-31</td>
+      <td style="text-align: center">4</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="2-열-row_num을-공통의-키로-하여-1에서-구한-두-차집합을-열-방향으로-합친다">2. 열 <code class="language-html highlighter-rouge">row_num</code>을 공통의 키로 하여, 1.에서 구한 두 차집합을 열 방향으로 합친다.</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">start_date</span><span class="p">,</span> 
+    <span class="n">end_date</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">start_date</span><span class="p">,</span> 
+        <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">start_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">row_num</span> 
+    <span class="k">FROM</span> 
+        <span class="n">projects</span> 
+    <span class="k">WHERE</span> 
+        <span class="n">start_date</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">end_date</span> <span class="k">FROM</span> <span class="n">projects</span><span class="p">)</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">start_dates</span> 
+    <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span>
+        <span class="k">SELECT</span> 
+            <span class="n">end_date</span><span class="p">,</span> 
+            <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">end_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">row_num</span> 
+        <span class="k">FROM</span> 
+            <span class="n">projects</span> 
+        <span class="k">WHERE</span> 
+            <span class="n">end_date</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">start_date</span> <span class="k">FROM</span> <span class="n">projects</span><span class="p">)</span>
+        <span class="p">)</span> <span class="k">AS</span> <span class="n">end_dates</span> 
+        <span class="k">USING</span> <span class="p">(</span><span class="n">row_num</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>(출력)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">start_date</th>
+      <th style="text-align: center">end_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">2015-10-01</td>
+      <td style="text-align: center">2015-10-04</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-13</td>
+      <td style="text-align: center">2015-10-15</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-28</td>
+      <td style="text-align: center">2015-10-29</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-30</td>
+      <td style="text-align: center">2015-10-31</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="3-프로젝트의-기간과-시작한-날짜를-기준으로-오름차순-정렬한다">3. 프로젝트의 기간과 시작한 날짜를 기준으로 오름차순 정렬한다.</h3>
+
+<p>2.에서 만든 두 열은 DATE 형식이기 때문에 <code class="language-html highlighter-rouge">DATEDIFF</code> 함수를 이용하여 두 열의 차이값을 계산할 수 있다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">start_date</span><span class="p">,</span> 
+    <span class="n">end_date</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">start_date</span><span class="p">,</span> 
+        <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">start_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">row_num</span> 
+    <span class="k">FROM</span> 
+        <span class="n">projects</span> 
+    <span class="k">WHERE</span> 
+        <span class="n">start_date</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">end_date</span> <span class="k">FROM</span> <span class="n">projects</span><span class="p">)</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">start_dates</span> 
+    <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span>
+        <span class="k">SELECT</span> 
+            <span class="n">end_date</span><span class="p">,</span> 
+            <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">end_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">row_num</span> 
+        <span class="k">FROM</span> 
+            <span class="n">projects</span> 
+        <span class="k">WHERE</span> 
+            <span class="n">end_date</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">start_date</span> <span class="k">FROM</span> <span class="n">projects</span><span class="p">)</span>
+        <span class="p">)</span> <span class="k">AS</span> <span class="n">end_dates</span> 
+        <span class="k">USING</span> <span class="p">(</span><span class="n">row_num</span><span class="p">)</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> 
+    <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">end_date</span><span class="p">,</span> <span class="n">start_date</span><span class="p">),</span> <span class="n">start_date</span>
+</code></pre></div></div>
+
+<p>(출력)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">start_date</th>
+      <th style="text-align: center">end_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">2015-10-28</td>
+      <td style="text-align: center">2015-10-29</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-30</td>
+      <td style="text-align: center">2015-10-31</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-13</td>
+      <td style="text-align: center">2015-10-15</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2015-10-01</td>
+      <td style="text-align: center">2015-10-04</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">start_date</span><span class="p">,</span> 
+    <span class="n">end_date</span> 
+<span class="k">FROM</span> <span class="p">(</span>
+    <span class="k">SELECT</span> 
+        <span class="n">start_date</span><span class="p">,</span> 
+        <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">start_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">row_num</span> 
+    <span class="k">FROM</span> 
+        <span class="n">projects</span> 
+    <span class="k">WHERE</span> 
+        <span class="n">start_date</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">end_date</span> <span class="k">FROM</span> <span class="n">projects</span><span class="p">)</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="n">start_dates</span> 
+    <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span>
+        <span class="k">SELECT</span> 
+            <span class="n">end_date</span><span class="p">,</span> 
+            <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">end_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">row_num</span> 
+        <span class="k">FROM</span> 
+            <span class="n">projects</span> 
+        <span class="k">WHERE</span> 
+            <span class="n">end_date</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">start_date</span> <span class="k">FROM</span> <span class="n">projects</span><span class="p">)</span>
+        <span class="p">)</span> <span class="k">AS</span> <span class="n">end_dates</span> 
+        <span class="k">USING</span> <span class="p">(</span><span class="n">row_num</span><span class="p">)</span> 
+<span class="k">ORDER</span> <span class="k">BY</span> 
+    <span class="n">DATEDIFF</span><span class="p">(</span><span class="n">end_date</span><span class="p">,</span> <span class="n">start_date</span><span class="p">),</span> <span class="n">start_date</span>
+</code></pre></div></div>
+:ET

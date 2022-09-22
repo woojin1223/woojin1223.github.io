@@ -1,0 +1,76 @@
+I"<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42586">https://programmers.co.kr/learn/courses/30/lessons/42586</a></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p>프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다.<br />
+또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다.<br />
+먼저 배포되어야 하는 순서대로 작업의 진도가 적힌 정수 배열 <code class="language-html highlighter-rouge">progresses</code>와 각 작업의 개발 속도가 적힌 정수 배열 <code class="language-html highlighter-rouge">speeds</code>가 주어질 때 <strong>각 배포마다 몇 개의 기능이 배포되는지</strong>를 return 하도록 <code class="language-html highlighter-rouge">solution</code> 함수를 완성하세요.</p>
+
+<h2 id="제한사항">제한사항</h2>
+
+<ul>
+  <li>작업의 개수(<code class="language-html highlighter-rouge">progresses</code>, <code class="language-html highlighter-rouge">speeds</code> 배열의 길이)는 100개 이하입니다.</li>
+  <li>작업 진도는 100 미만의 자연수입니다.</li>
+  <li>작업 속도는 100 이하의 자연수입니다.</li>
+  <li>배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다.</li>
+</ul>
+
+<h2 id="입출력-예">입출력 예</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>progresses</th>
+      <th>speeds</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[93, 30, 55]</td>
+      <td>[1, 30, 5]</td>
+      <td>[2, 1]</td>
+    </tr>
+    <tr>
+      <td>[95, 90, 99, 99, 80, 99]</td>
+      <td>[1, 1, 1, 1, 1, 1]</td>
+      <td>[1, 3, 2]</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="입출력-예-설명">입출력 예 설명</h2>
+
+<h3 id="입출력-예-1">입출력 예 #1</h3>
+
+<p>첫 번째 기능은 93% 완료되어 있고 하루에 1%씩 작업이 가능하므로 7일간 작업 후 배포가 가능합니다.<br />
+두 번째 기능은 30%가 완료되어 있고 하루에 30%씩 작업이 가능하므로 3일간 작업 후 배포가 가능합니다.<br />
+하지만 이전 첫 번째 기능이 아직 완성된 상태가 아니기 때문에 첫 번째 기능이 배포되는 7일째 배포됩니다.<br />
+세 번째 기능은 55%가 완료되어 있고 하루에 5%씩 작업이 가능하므로 9일간 작업 후 배포가 가능합니다.<br />
+따라서 7일째에 2개의 기능, 9일째에 1개의 기능이 배포됩니다.</p>
+
+<h3 id="입출력-예-2">입출력 예 #2</h3>
+
+<p>모든 기능이 하루에 1%씩 작업이 가능하므로, 작업이 끝나기까지 남은 일수는 각각 5일, 10일, 1일, 1일, 20일, 1일입니다.<br />
+어떤 기능이 먼저 완성되었더라도 앞에 있는 모든 기능이 완성되지 않으면 배포가 불가능합니다.<br />
+따라서 5일째에 1개의 기능, 10일째에 3개의 기능, 20일째에 2개의 기능이 배포됩니다.</p>
+
+<h2 id="풀이">풀이</h2>
+
+<p>각 작업(progress)이 완성되는 기간은 남은 작업 진도(100 - progress)에 해당 작업의 속도(speed)를 나눈 값의 올림입니다.<br />
+그리고 각 작업이 배포되는 기간은 이전 작업과 현재 작업의 최댓값이므로 각 작업이 완성되는 기간에 대한 배열(<code class="language-html highlighter-rouge">complete_days</code>)에 누적 최댓값을 적용하면 됩니다.<br />
+그렇게 해서 구한 배열 <code class="language-html highlighter-rouge">publish_days</code>에서 동일한 원소가 몇 번 연속하는지를 반환하면 됩니다.<br />
+누적 최댓값은 <code class="language-html highlighter-rouge">itertools</code> 모듈의 <code class="language-html highlighter-rouge">accumulate</code> 함수를 이용하고 연속된 값의 개수는 <code class="language-html highlighter-rouge">itertools</code> 모듈의 <code class="language-html highlighter-rouge">groupby</code> 함수를 이용합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">accumulate</span><span class="p">,</span> <span class="n">groupby</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">ceil</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">progresses</span><span class="p">,</span> <span class="n">speeds</span><span class="p">):</span>
+    <span class="n">compete_days</span> <span class="o">=</span> <span class="p">[</span><span class="n">ceil</span><span class="p">((</span><span class="mi">100</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">progresses</span><span class="p">,</span> <span class="n">speeds</span><span class="p">)]</span> <span class="c1"># 각 작업이 완성되는 기간에 대한 배열
+</span>    <span class="n">publish_days</span> <span class="o">=</span> <span class="n">accumulate</span><span class="p">(</span><span class="n">compete_days</span><span class="p">,</span> <span class="nb">max</span><span class="p">)</span>                           <span class="c1"># 각 작업이 배포되는 기간에 대한 배열, complete_days의 누적 최댓값
+</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">group</span><span class="p">))</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">groupby</span><span class="p">(</span><span class="n">publish_days</span><span class="p">)]</span>        <span class="c1"># itertools 모듈의 groupby 함수를 이용하여 각 누적 최댓값이 연속으로 몇 번 발생했는지 반환
+</span></code></pre></div></div>
+:ET

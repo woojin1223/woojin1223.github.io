@@ -1,0 +1,132 @@
+I"�<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://leetcode.com/problems/rank-scores/">https://leetcode.com/problems/rank-scores/</a></p>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="테이블-설명">테이블 설명</h2>
+
+<h3 id="scores"><code class="language-html highlighter-rouge">Scores</code></h3>
+
+<p><code class="language-html highlighter-rouge">Scores</code>는 게임의 점수가 있는 테이블이다.</p>
+
+<p>(열 설명)</p>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">id</code>: id에 해당한다.</li>
+  <li><code class="language-html highlighter-rouge">score</code>: 점수에 해당한다.</li>
+</ul>
+
+<p>(예시)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">id</th>
+      <th style="text-align: center">score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">3.50</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">3.65</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">4.00</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">3.85</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">4.00</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">3.65</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p>게임 점수의 순위를 매기는 문제다. 단, 순위는 다음의 규칙을 따른다.</p>
+
+<ol>
+  <li>점수가 감소하는 방향으로 순위를 매긴다. 즉, 높은 점수가 높은 순위를 가진다.</li>
+  <li>같은 점수인 경우 동일한 순위를 가진다.</li>
+  <li>동일한 순위를 매기고 난 후, 다음으로 매길 순위는 바로 다음 번호다. 즉, 순위를 매길 때 번호의 끊김없이 연속적으로 매긴다.</li>
+</ol>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="사고-과정">사고 과정</h2>
+
+<h3 id="1-점수의-순위를-매긴다">1. 점수의 순위를 매긴다.</h3>
+
+<p><code class="language-html highlighter-rouge">DENSE_RANK() OVER ()</code>을 이용하면 같은 점수면 공동 순위로 기록되고 번호의 끊김없이 연속적으로 매길 수 있다.<br />
+그리고 그렇게 매긴 순위를 기준으로 오름차순 정렬이 된다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">score</span><span class="p">,</span> 
+    <span class="n">DENSE_RANK</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">score</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="s1">'rank'</span> 
+<span class="k">FROM</span> 
+    <span class="n">scores</span>
+</code></pre></div></div>
+
+<p>(출력)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">score</th>
+      <th style="text-align: center">rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">4.00</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4.00</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3.85</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3.65</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3.65</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3.50</td>
+      <td style="text-align: center">4</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /><br /><br /><br /></p>
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">SELECT</span> 
+    <span class="n">score</span><span class="p">,</span> 
+    <span class="n">DENSE_RANK</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">score</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="s1">'rank'</span> 
+<span class="k">FROM</span> 
+    <span class="n">scores</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,27 @@
+I"�<div style="margin-bottom:100px;"></div>
+
+<h2 id="상관관계-그래프-correlogram">상관관계 그래프 (Correlogram)</h2>
+
+<p>동일한 데이터 내에 존재하는 여러 개의 수치형 변수의 상관관계 표 형태로 확인할 수 있다. <code class="language-html highlighter-rouge">ggcorplot</code> 패키지를 사용하여 편리하게 구현 가능하다.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="c1"># load package and data</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggcorrplot</span><span class="p">)</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="s2">"mtcars"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># correlation matrix</span><span class="w">
+</span><span class="n">corr_matrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">cor</span><span class="p">(</span><span class="n">mtcars</span><span class="p">),</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># correlogram</span><span class="w">
+</span><span class="n">ggcorrplot</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">hc.order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"lower"</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">lab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">lab_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"square"</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"skyblue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"white"</span><span class="p">,</span><span class="w"> </span><span class="s2">"lightpink"</span><span class="p">),</span><span class="w">
+           </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Correlogram of mtcars"</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">ggtheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">theme_bw</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/public/img/2022-06-22-visualization-summary/correlogram-1.png" alt="" /></p>
+:ET

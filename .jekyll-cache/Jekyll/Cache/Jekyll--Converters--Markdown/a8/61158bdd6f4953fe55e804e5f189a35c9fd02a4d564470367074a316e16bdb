@@ -1,0 +1,105 @@
+I"!<h2 id="문제-설명">문제 설명</h2>
+
+<p>n x m 크기 도화지에 그려진 그림의 색깔이 2차원 리스트로 주어집니다.<br />
+같은 색깔은 같은 숫자로 나타난다고 할 때, 그림에 있는 영역은 총 몇 개인지 알아내려 합니다.<br />
+영역이란 상하좌우로 연결된 같은 색상의 공간을 말합니다.</p>
+
+<p>예를 들어, <code class="language-html highlighter-rouge">[[1, 2, 3],  [3, 2, 1]]</code> 같은 리스트는 다음과 같이 표현할 수 있습니다.</p>
+
+<p><img src="https://grepp-programmers.s3.amazonaws.com/files/production/516f9d3375/3b7691f5-bc15-4dbb-b99a-a66240b41406.png" alt="그림1" /></p>
+
+<p>이때, 이 그림에는 총 5개 영역이 있습니다.</p>
+
+<p>도화지의 크기 <code class="language-html highlighter-rouge">n</code>과 <code class="language-html highlighter-rouge">m</code>, 도화지에 칠한 색깔 <code class="language-html highlighter-rouge">image</code>가 주어질 때, <strong>그림에서 영역이 몇 개 있는지</strong> 리턴하는 <code class="language-html highlighter-rouge">solution</code> 함수를 작성해주세요.</p>
+
+<p>제한 사항</p>
+
+<h2 id="제한사항">제한사항</h2>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">n</code>과 <code class="language-html highlighter-rouge">m</code>은 1 이상 250 이하인 정수입니다.</li>
+  <li>그림의 색깔은 1 이상 30000 미만인 정수로만 주어집니다.</li>
+</ul>
+
+<h2 id="입출력-예">입출력 예</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>n</th>
+      <th>m</th>
+      <th>images</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-html highlighter-rouge">2</code></td>
+      <td><code class="language-html highlighter-rouge">3</code></td>
+      <td><code class="language-html highlighter-rouge">[[1, 2, 3], [3, 2, 1]]</code></td>
+      <td><code class="language-html highlighter-rouge">5</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-html highlighter-rouge">3</code></td>
+      <td><code class="language-html highlighter-rouge">2</code></td>
+      <td><code class="language-html highlighter-rouge">[[1, 2], [1, 2], [4, 5]]</code></td>
+      <td><code class="language-html highlighter-rouge">4</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="입출력-예에-대한-설명">입출력 예에 대한 설명</h2>
+
+<ul>
+  <li>입출력 예 #1</li>
+</ul>
+
+<p>앞서 설명한 예와 같습니다.</p>
+
+<ul>
+  <li>입출력 예 #2</li>
+</ul>
+
+<p>주어진 이미지는 다음과 같이 표현할 수 있습니다.</p>
+
+<p><img src="https://grepp-programmers.s3.amazonaws.com/files/production/516f9d3375/3b7691f5-bc15-4dbb-b99a-a66240b41406.png" alt="그림2" /></p>
+
+<p>따라서 이 이미지에는 4개 영역이 있습니다.</p>
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">visited</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="n">start</span><span class="p">])</span>
+    <span class="n">dirs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">queue</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+        
+        <span class="k">for</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+            <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span>
+            
+            <span class="k">if</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="ow">or</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                <span class="k">continue</span>
+            
+            <span class="k">if</span> <span class="n">visited</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="ow">or</span> <span class="n">image</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">!=</span> <span class="n">image</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]:</span>
+                <span class="k">continue</span>
+                
+            <span class="n">visited</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">queue</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+                
+    <span class="k">return</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="n">bfs</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">visited</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">count</span>
+</code></pre></div></div>
+:ET

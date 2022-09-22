@@ -1,0 +1,56 @@
+I"�<h2 id="문제-링크">문제 링크</h2>
+
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/12939">https://programmers.co.kr/learn/courses/30/lessons/12939</a></p>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p>문자열 <code class="language-html highlighter-rouge">s</code>에는 공백으로 구분된 숫자들이 저장되어 있습니다.<br />
+str에 나타나는 숫자 중 최소값과 최대값을 찾아 이를 “(최소값) (최대값)” 형태의 문자열을 반환하는 함수, <code class="language-html highlighter-rouge">solution</code>을 완성하세요.<br />
+예를 들어 <code class="language-html highlighter-rouge">s</code>가 “1 2 3 4”라면 “1 4”를 리턴하고, “-1 -2 -3 -4”라면 “-4 -1”을 리턴하면 됩니다.</p>
+
+<h2 id="제한사항">제한사항</h2>
+
+<ul>
+  <li><code class="language-html highlighter-rouge">s</code>에는 둘 이상의 정수가 공백으로 구분되어 있습니다.</li>
+</ul>
+
+<h2 id="입출력-예">입출력 예</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>s</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>“1 2 3 4”</td>
+      <td>“1 4”</td>
+    </tr>
+    <tr>
+      <td>“-1 -2 -3 -4”</td>
+      <td>“-4 -1”</td>
+    </tr>
+    <tr>
+      <td>“-1 -1”</td>
+      <td>“-1 -1”</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="풀이">풀이</h2>
+
+<ol>
+  <li><code class="language-html highlighter-rouge">s.split()</code>: 문자열의 메서드 <code class="language-html highlighter-rouge">split()</code>을 이용하여 문자열 s를 <strong>공백을 기준으로 분리</strong>하여 만든 리스트</li>
+  <li><code class="language-html highlighter-rouge">list(map(int, s.split()))</code>: <code class="language-html highlighter-rouge">s.split()</code>으로 만든 리스트의 각 원소를 정수형으로 변환</li>
+  <li><code class="language-html highlighter-rouge">min(s_splited)</code>, <code class="language-html highlighter-rouge">max(s_splited)</code>: <code class="language-html highlighter-rouge">min()</code>과 <code class="language-html highlighter-rouge">max()</code>를 이용하여 <code class="language-html highlighter-rouge">s_splited</code>의 최솟값과 최댓값을 구함</li>
+  <li><code class="language-html highlighter-rouge">f"{min(s_splited)} {max(s_splited)}"</code>: <strong>f-string</strong>을 이용하여 “(최소값) (최대값)” 형태의 문자열을 구함</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="base16.solarized"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">s_splited</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">split</span><span class="p">()))</span>
+    
+    <span class="k">return</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">s_splited</span><span class="p">)</span><span class="si">}</span><span class="s"> </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">s_splited</span><span class="p">)</span><span class="si">}</span><span class="s">"</span>
+</code></pre></div></div>
+:ET
