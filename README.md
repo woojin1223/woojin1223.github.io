@@ -18,20 +18,29 @@
 | `build.py` | `site/`에 배포용 파일 3개를 만드는 스크립트 |
 | `site/` | 빌드 결과(배포용). 직접 고치지 않습니다. |
 
-## 디자인·내용 수정 → 배포 순서
+## 수정하는 두 가지 방법
 
-1. **수정**
-   - 문구·사진 순서·위치/크기 → `data/invite.json`
-   - 레이아웃·색·서체·효과 → `src/index.html` (CSS 변수 `--primary`가 포인트 컬러 #1d4a32)
-   - 새 사진 → `photos/<새id>.jpg`로 넣고 `data/invite.json`에서 그 id를 참조(예: `cover.reel`, `middle`, `gallery`)
+청첩장은 **claude.ai 청첩장 페이지**(위 편집용 페이지)를 작업 화면으로, 이 브랜치를 배포 기록으로 씁니다. 두 곳의 페이지 코드(`src/index.html` ↔ 페이지 `index.html`)와 저장 내용(`data/invite.json` ↔ 페이지 데이터베이스 `invite/main`)은 항상 같게 유지합니다.
+
+**A. 클로드 채팅으로 수정**
+1. 고치기 직전에 claude.ai 페이지의 최신 코드와 `invite/main`을 읽습니다(편집 모드에서 그사이 바뀐 내용을 덮어쓰지 않도록).
+2. 레이아웃·색·서체·효과 → 페이지 `index.html`을 고침. 문구·사진 순서·위치/크기 → `invite/main`을 고침.
+3. 새로 넣는 문구·사진은 편집 모드에서도 고칠 수 있게 `data-k` 항목과 `invite/main` 필드로 만듭니다(코드에 글자를 박아 넣지 않기).
+4. 바로 claude.ai 페이지에서 결과를 확인 → 승인 후 아래 "배포"로.
+
+**B. claude.ai 페이지 편집 모드에서 직접 수정**
+1. 편집 모드에서 고치고 저장합니다.
+2. 채팅에서 "반영해줘"라고 하면 아래 "배포"를 진행합니다.
+
+**배포(A·B 공통)**
+1. **가져오기**: 페이지 `index.html` → `src/index.html`, `invite/main` → `data/invite.json`(통째로). 새로 참조된 사진 id는 페이지 자산에서 받아 `photos/<id>.jpg`로 저장.
 2. **빌드**: `python3 build.py` → `site/index.html`, `site/og.jpg`, `site/.nojekyll`
-3. **확인**: `site/index.html`을 브라우저(가능하면 폭 390px 모바일 크기)로 열어 오류·레이아웃 확인
+3. **확인**: `site/index.html`을 폭 360·390·430px로 열어 가로 스크롤·JS 오류·레이아웃 확인(모바일에서 형식 유지가 목표)
 4. **커밋**: 원본 변경은 `invitation-src` 브랜치에 커밋
-5. **배포**: `site/`의 세 파일을 `main` 루트에 복사해 커밋 → push 전에 변경 파일 목록을 보여주고 승인받기 → push. 1~3분 뒤 공개 주소 확인
+5. **배포**: `site/`의 세 파일을 `main` 루트에 복사해 커밋 → push 전에 브랜치별 변경 파일 목록을 보여주고 승인받기(force push 금지) → push. 1~3분 뒤 공개 주소에서 제목·og.jpg·모바일 레이아웃 확인
+6. 디자인을 바꿨다면 디자인 시스템(Wooyouweddingday)에도 반영할지 묻기
 
-## claude.ai 편집 모드에서 고친 내용을 가져올 때
-
-claude.ai 청첩장 페이지의 편집 모드에서 고친 내용은 그 페이지의 데이터베이스(`invite/main` 문서)에 저장됩니다. Artifact 도구가 있는 대화라면 그 문서를 읽어 `data/invite.json`을 통째로 바꾼 뒤 빌드하세요. 편집 모드에서 새로 올린 사진은 id만 저장되므로, 그 사진 파일도 `photos/<id>.jpg`로 받아와야 빌드됩니다.
+참고: 페이지 코드나 내용의 출처가 둘 다 바뀌었으면(편집 모드 + 채팅) 항상 claude.ai 페이지의 최신본을 기준으로 합칩니다.
 
 ## 동작 메모
 
