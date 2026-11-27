@@ -1,8 +1,0 @@
-.idea/
-_site/
-.sass-cache/
-
-algorithm/
-*vcxproj*
-
-Gemfile.lock
