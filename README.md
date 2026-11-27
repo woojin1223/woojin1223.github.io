@@ -1,26 +1,23 @@
 # 우진 ♥ 유리 모바일 청첩장 — 원본(invitation-src)
 
-이 브랜치는 청첩장의 **원본**입니다. 하객이 보는 페이지는 `main` 브랜치 루트의 `index.html`, `og.jpg`, `.nojekyll` 세 파일이며, 모두 여기서 `build.py`로 만듭니다.
+**청첩장의 본체는 claude.ai 청첩장 페이지입니다**: https://claude.ai/artifact/QgoaxXDo48XwD1BFAeXBgv (slug `bfd0e7d0-880a-475c-b3f9-bb3c57315393`). 모든 수정은 그 페이지(코드 `index.html`, 내용 데이터베이스 `invite/main`, 사진 자산)에서 합니다.
 
-- 공개 주소: https://woojin1223.github.io/
-- 편집용 claude.ai 페이지(같은 코드): https://claude.ai/artifact/QgoaxXDo48XwD1BFAeXBgv (slug `bfd0e7d0-880a-475c-b3f9-bb3c57315393`)
+이 브랜치는 그 본체를 배포할 때 가져온 **사본**과 빌드 도구입니다. `src/`, `data/`, `photos/`를 여기서 직접 고치지 않습니다. 하객이 보는 https://woojin1223.github.io/ 는 `main` 브랜치 루트의 `index.html`, `og.jpg`, `.nojekyll` 세 파일로, 배포 시점의 본체를 `build.py`로 렌더링한 결과일 뿐입니다(본체를 고쳐도 배포 전까지는 바뀌지 않음).
 
 ## 폴더 구성
 
 | 경로 | 내용 |
 |---|---|
-| `src/index.html` | 청첩장 페이지 코드(HTML·CSS·JS 한 파일). 디자인 수정은 여기서 합니다. |
+| `src/index.html` | 청첩장 페이지 코드(HTML·CSS·JS 한 파일) — 본체 `index.html`의 사본 |
 | `src/fonts/` | Pretendard Regular(한글, 상용 2,350자 서브셋, OFL) |
 | `src/bg/paper.jpg` | 배경 종이 질감(투명도 30%로 깔림) |
 | `src/frames/instax-wide.webp` | 커버 폴라로이드 테두리(실제 스캔, 사진 창 투명) |
-| `data/invite.json` | 저장된 내용: 모든 문구, 커버 사진 순서, 편집 모드에서 옮긴 위치·크기(`style`) |
+| `data/invite.json` | 저장된 내용(본체 `invite/main`의 사본): 모든 문구, 커버 사진 순서, 편집 모드에서 옮긴 위치·크기(`style`) |
 | `photos/<id>.jpg` | `data/invite.json`이 id로 가리키는 사진. `og.jpg`는 링크 미리보기 이미지 |
 | `build.py` | `site/`에 배포용 파일 3개를 만드는 스크립트 |
 | `site/` | 빌드 결과(배포용). 직접 고치지 않습니다. |
 
-## 수정하는 두 가지 방법
-
-청첩장은 **claude.ai 청첩장 페이지**(위 편집용 페이지)를 작업 화면으로, 이 브랜치를 배포 기록으로 씁니다. 두 곳의 페이지 코드(`src/index.html` ↔ 페이지 `index.html`)와 저장 내용(`data/invite.json` ↔ 페이지 데이터베이스 `invite/main`)은 항상 같게 유지합니다.
+## 수정하는 두 가지 방법(둘 다 본체에서)
 
 **A. 클로드 채팅으로 수정**
 1. 고치기 직전에 claude.ai 페이지의 최신 코드와 `invite/main`을 읽습니다(편집 모드에서 그사이 바뀐 내용을 덮어쓰지 않도록).
@@ -40,7 +37,7 @@
 5. **배포**: `site/`의 세 파일을 `main` 루트에 복사해 커밋 → push 전에 브랜치별 변경 파일 목록을 보여주고 승인받기(force push 금지) → push. 1~3분 뒤 공개 주소에서 제목·og.jpg·모바일 레이아웃 확인
 6. 디자인을 바꿨다면 디자인 시스템(Wooyouweddingday)에도 반영할지 묻기
 
-참고: 페이지 코드나 내용의 출처가 둘 다 바뀌었으면(편집 모드 + 채팅) 항상 claude.ai 페이지의 최신본을 기준으로 합칩니다.
+본체와 이 브랜치가 다르면 항상 본체가 기준입니다. 배포의 "가져오기"는 본체로 이 브랜치를 덮어쓰는 단계입니다.
 
 ## 동작 메모
 
